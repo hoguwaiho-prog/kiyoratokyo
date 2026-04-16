@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kiyora Tokyo — Free Beauty Clinic Matching for Foreigners</title>
+<meta name="description" content="Find English-friendly beauty clinics in Tokyo — free matching, no Japanese needed. Facials, laser, skin care and more. Same-day bookings available." />
+<meta property="og:title" content="Kiyora Tokyo — Free Beauty Clinic Matching" />
+<meta property="og:description" content="Find the perfect beauty clinic in Tokyo. English support, verified clinics, completely free." />
+<meta property="og:url" content="https://kiyoratokyo.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Kiyora Tokyo — Free Beauty Clinic Matching" />
+<meta name="twitter:description" content="English-friendly beauty clinics in Tokyo. Free matching, no Japanese needed." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FFFCF8;
+    --blush: #E8C4B0;
+    --rose: #C9866A;
+    --deep-rose: #A35C43;
+    --charcoal: #2C2420;
+    --mid: #6B5349;
+    --soft: #B89B90;
+    --green: #4A7C59;
+    --green-light: #EAF2EC;
+    --gold: #C9A96E;
+    --urgent: #C94A4A;
+    --urgent-bg: #FFF0F0;
+    --navy: #1A2340;
+    --navy-light: #EEF1F8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,170,155,0.2);
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--charcoal);
+  }
+  .nav-logo span { color: var(--rose); }
+  .nav-cta {
+    background: var(--charcoal); color: var(--cream);
+    padding: 8px 20px; border-radius: 40px;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--deep-rose); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    padding: 100px 5vw 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    background: var(--warm-white);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -120px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,134,106,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(74,124,89,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-left { position: relative; z-index: 2; animation: fadeUp 0.8s ease both; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green-light); color: var(--green);
+    padding: 6px 14px; border-radius: 40px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; margin-bottom: 28px;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 300; line-height: 1.18;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  h1 em { font-style: italic; color: var(--rose); }
+  h1 strong { font-weight: 600; }
+
+  .hero-cn {
+    font-size: 0.88rem;
+    color: var(--mid);
+    border-left: 3px solid var(--blush);
+    padding-left: 12px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+
+  .hero-sub {
+    font-size: 1rem; color: var(--mid);
+    margin-bottom: 32px; max-width: 480px;
+    line-height: 1.75;
+  }
+
+  .urgency-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--urgent-bg); color: var(--urgent);
+    border: 1px solid rgba(201,74,74,0.2);
+    padding: 7px 14px; border-radius: 6px;
+    font-size: 0.8rem; font-weight: 600;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+  .urgency-tag .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--urgent);
+    animation: pulse 1.5s infinite;
+  }
+
+  /* ─── CTA BUTTONS ─── */
+  .cta-group { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--charcoal); color: var(--cream);
+    padding: 16px 32px; border-radius: 6px;
+    font-size: 0.95rem; font-weight: 600;
+    text-decoration: none; letter-spacing: 0.01em;
+    transition: all 0.2s; border: none; cursor: pointer;
+    position: relative; overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--deep-rose);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 0;
+  }
+  .btn-primary:hover::after { transform: translateX(0); }
+  .btn-primary span { position: relative; z-index: 1; }
+  .btn-primary .arrow { position: relative; z-index: 1; font-size: 1.1rem; transition: transform 0.2s; }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
+  .btn-secondary {
+    font-size: 0.85rem; color: var(--mid);
+    display: flex; align-items: center; gap: 6px;
+    cursor: pointer; text-decoration: underline;
+    text-underline-offset: 3px; background: none; border: none;
+  }
+
+  /* ─── TRUST PILLS ─── */
+  .trust-pills {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 32px;
+  }
+  .pill {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--cream); border: 1px solid rgba(184,155,144,0.3);
+    padding: 6px 12px; border-radius: 40px;
+    font-size: 0.78rem; color: var(--mid); font-weight: 500;
+  }
+  .pill .icon { font-size: 0.9rem; }
+
+  /* ─── HERO RIGHT — FORM ─── */
+  .hero-right {
+    position: relative; z-index: 2;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .matching-card {
+    background: white;
+    border-radius: 16px;
+    padding: 36px;
+    box-shadow: 0 8px 40px rgba(44,36,32,0.1), 0 2px 8px rgba(44,36,32,0.06);
+    position: relative;
+  }
+  .matching-card::before {
+    content: '✦ 100% FREE ✦';
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--green); color: white;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    padding: 4px 16px; border-radius: 40px;
+    white-space: nowrap;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600;
+    margin-bottom: 6px; text-align: center;
+  }
+  .card-sub { font-size: 0.82rem; color: var(--soft); text-align: center; margin-bottom: 28px; }
+
+  .form-group { margin-bottom: 16px; }
+  .form-label { font-size: 0.75rem; font-weight: 600; color: var(--mid); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; display: block; }
+  .form-select, .form-input {
+    width: 100%; padding: 12px 16px;
+    border: 1.5px solid rgba(184,155,144,0.35);
+    border-radius: 8px; background: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--charcoal);
+    appearance: none; outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-select:focus, .form-input:focus { border-color: var(--rose); }
+  .select-wrap { position: relative; }
+  .select-wrap::after {
+    content: '▾'; position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%); color: var(--soft); pointer-events: none;
+    font-size: 0.8rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .card-cta {
+    width: 100%; padding: 15px;
+    background: var(--charcoal); color: white;
+    border: none; border-radius: 8px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
+    letter-spacing: 0.02em; margin-top: 20px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: all 0.2s; position: relative; overflow: hidden;
+  }
+  .card-cta::after {
+    content: ''; position: absolute; inset: 0;
+    background: var(--deep-rose);
+    transform: translateY(100%); transition: transform 0.3s ease;
+  }
+  .card-cta:hover::after { transform: translateY(0); }
+  .card-cta span { position: relative; z-index: 1; }
+
+  .card-note {
+    font-size: 0.73rem; color: var(--soft); text-align: center;
+    margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 5px;
+  }
+
+  /* ─── TRUST BADGES BAR ─── */
+  .trust-badges {
+    background: var(--navy);
+    padding: 28px 5vw;
+  }
+  .trust-badges-inner {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; flex-wrap: wrap;
+    max-width: 900px; margin: 0 auto;
+  }
+  .trust-badge-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 40px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    flex: 1; min-width: 200px;
+  }
+  .trust-badge-item:last-child { border-right: none; }
+  .trust-badge-icon {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .trust-badge-text strong {
+    display: block; color: white;
+    font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.01em; margin-bottom: 2px;
+  }
+  .trust-badge-text span {
+    font-size: 0.75rem; color: rgba(255,255,255,0.55);
+    line-height: 1.4;
+  }
+
+  /* ─── HOW IT WORKS ─── */
+  .steps-section {
+    padding: 90px 5vw;
+    background: var(--cream);
+  }
+  .section-tag {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--rose); margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300;
+    color: var(--charcoal); line-height: 1.2; margin-bottom: 50px;
+  }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .step {
+    position: relative; padding: 28px;
+    background: white; border-radius: 12px;
+    border: 1px solid rgba(184,155,144,0.2);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .step:hover { box-shadow: 0 8px 30px rgba(44,36,32,0.08); transform: translateY(-3px); }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 300; color: rgba(201,134,106,0.25);
+    line-height: 1; margin-bottom: 16px;
+  }
+  .step-icon { font-size: 1.6rem; margin-bottom: 12px; }
+  .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+  .step p { font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
+  .step-time {
+    display: inline-block; margin-top: 12px;
+    background: var(--green-light); color: var(--green);
+    padding: 3px 10px; border-radius: 40px;
+    font-size: 0.72rem; font-weight: 600;
+  }
+
+  /* ─── RESULTS SECTION ─── */
+  .results-section {
+    padding: 90px 5vw;
+    background: white;
+  }
+  .results-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 40px;
+    flex-wrap: wrap; gap: 20px;
+  }
+  .availability-notice {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--urgent-bg); color: var(--urgent);
+    border: 1px solid rgba(201,74,74,0.15);
+    padding: 10px 18px; border-radius: 8px;
+    font-size: 0.82rem; font-weight: 600;
+  }
+  .availability-notice .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--urgent);
+    animation: pulse 1.5s infinite;
+  }
+
+  .clinic-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+
+  .clinic-card {
+    border: 1.5px solid rgba(184,155,144,0.25);
+    border-radius: 12px; overflow: hidden;
+    transition: all 0.2s; cursor: pointer;
+    background: white;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+  }
+  .clinic-card:hover {
+    border-color: var(--rose);
+    box-shadow: 0 6px 24px rgba(201,134,106,0.15);
+    transform: translateY(-2px);
+  }
+  .clinic-photo {
+    position: relative; overflow: hidden;
+    background: var(--cream);
+  }
+  .clinic-photo img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block; transition: transform 0.4s ease;
+  }
+  .clinic-card:hover .clinic-photo img { transform: scale(1.04); }
+
+  .clinic-content {
+    padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .clinic-card-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+  }
+  .clinic-name { font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
+  .clinic-area { font-size: 0.78rem; color: var(--soft); }
+  .clinic-specialty {
+    font-size: 0.78rem; color: var(--navy);
+    font-weight: 600; margin-top: 2px;
+    background: var(--navy-light); display: inline-block;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .clinic-rating {
+    display: flex; align-items: center; gap: 4px;
+    font-size: 0.85rem; font-weight: 600; color: var(--charcoal);
+    white-space: nowrap;
+  }
+  .star { color: #F0B429; }
+
+  .clinic-tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .tag {
+    padding: 4px 10px; border-radius: 40px;
+    font-size: 0.72rem; font-weight: 600;
+  }
+  .tag-green { background: var(--green-light); color: var(--green); }
+  .tag-blue { background: #EBF3FF; color: #2D6BC4; }
+  .tag-gold { background: #FFF8EC; color: #9A6E1C; }
+  .tag-urgent { background: var(--urgent-bg); color: var(--urgent); }
+
+  .clinic-review {
+    font-size: 0.78rem; color: var(--mid); line-height: 1.6;
+    font-style: italic; border-left: 2px solid var(--blush);
+    padding-left: 10px;
+  }
+
+  .clinic-footer {
+    padding: 12px 20px;
+    border-top: 1px solid rgba(184,155,144,0.15);
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: auto; flex-wrap: wrap; gap: 8px;
+  }
+  .clinic-price-wrap { display: flex; flex-direction: column; gap: 2px; }
+  .clinic-price { font-weight: 600; font-size: 0.9rem; }
+  .clinic-price span { font-size: 0.75rem; color: var(--soft); font-weight: 400; }
+  .clinic-price-range { font-size: 0.75rem; color: var(--mid); }
+
+  .book-btn {
+    padding: 9px 18px; background: var(--charcoal); color: white;
+    border: none; border-radius: 6px; font-size: 0.78rem; font-weight: 600;
+    cursor: pointer; transition: background 0.2s; letter-spacing: 0.02em;
+    font-family: 'DM Sans', sans-serif; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    white-space: nowrap;
+  }
+  .book-btn:hover { background: var(--deep-rose); }
+
+  @media (max-width: 700px) {
+    .clinic-card { grid-template-columns: 1fr; }
+    .clinic-photo { height: 180px; }
+    .clinic-content { padding: 14px 16px; }
+  }
+
+  /* ─── TRUST SECTION ─── */
+  .trust-section {
+    padding: 80px 5vw;
+    background: var(--charcoal); color: white;
+  }
+  .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .trust-item { text-align: center; }
+  .trust-icon { font-size: 2rem; margin-bottom: 16px; }
+  .trust-label { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 6px; line-height: 1.3; }
+  .trust-desc { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+  /* ─── FINAL CTA ─── */
+  .final-cta {
+    padding: 100px 5vw;
+    background: var(--warm-white);
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(201,134,106,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .final-cta .section-tag { text-align: center; }
+  .final-cta .section-title { margin: 0 auto 16px; max-width: 560px; }
+  .final-hook {
+    font-size: 0.95rem; color: var(--mid); margin-bottom: 36px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .final-hook::before { content: '💬'; }
+  .final-cta-group { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .final-cta .btn-primary { font-size: 1rem; padding: 18px 36px; }
+  .final-urgency {
+    margin-top: 20px; font-size: 0.8rem; color: var(--urgent); font-weight: 500;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--charcoal); color: rgba(255,255,255,0.45);
+    padding: 24px 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 0.78rem;
+  }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: white; }
+
+  /* ─── BOOKING MODAL ─── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(44,36,32,0.6);
+    backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
+    padding: 16px;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: white;
+    border-radius: 16px;
+    width: 100%; max-width: 620px;
+    max-height: 90vh;
+    display: flex; flex-direction: column;
+    box-shadow: 0 24px 80px rgba(44,36,32,0.25);
+    animation: modalIn 0.25s ease both;
+  }
+  .modal-header { flex-shrink: 0; }
+  .modal-steps  { flex-shrink: 0; }
+  .modal-body   { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .modal-footer { flex-shrink: 0; }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .modal-header {
+    padding: 24px 28px 0;
+    display: flex; align-items: flex-start; justify-content: space-between;
+    border-bottom: 1px solid rgba(184,155,144,0.2);
+    padding-bottom: 20px;
+  }
+  .modal-clinic-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600; line-height: 1.2;
+  }
+  .modal-subtitle {
+    font-size: 0.8rem; color: var(--soft); margin-top: 4px;
+  }
+  .modal-close {
+    background: none; border: none; cursor: pointer;
+    font-size: 1.2rem; color: var(--soft); line-height: 1;
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-left: 8px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .modal-close:hover { background: var(--cream); color: var(--charcoal); }
+
+  /* Step indicator */
+  .modal-steps {
+    display: flex; align-items: center;
+    padding: 20px 28px 0;
+    gap: 0;
+  }
+  .modal-step-dot {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; font-weight: 700;
+    flex-shrink: 0; transition: all 0.2s;
+    background: rgba(184,155,144,0.2); color: var(--soft);
+  }
+  .modal-step-dot.active { background: var(--charcoal); color: white; }
+  .modal-step-dot.done { background: var(--green); color: white; }
+  .modal-step-line {
+    flex: 1; height: 2px;
+    background: rgba(184,155,144,0.2);
+    transition: background 0.3s;
+  }
+  .modal-step-line.done { background: var(--green); }
+
+  .modal-body { padding: 24px 28px; }
+
+  /* Step panels */
+  .step-panel { display: none; }
+  .step-panel.active { display: block; }
+
+  .step-heading {
+    font-size: 1rem; font-weight: 600; margin-bottom: 6px;
+  }
+  .step-desc {
+    font-size: 0.83rem; color: var(--mid); margin-bottom: 20px; line-height: 1.6;
+  }
+
+  /* Step 1: Booking link */
+  .booking-link-box {
+    background: var(--navy-light);
+    border: 1.5px solid rgba(26,35,64,0.15);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 16px;
+  }
+  .booking-link-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .booking-link-text { flex: 1; }
+  .booking-link-text p {
+    font-size: 0.82rem; color: var(--mid); margin-bottom: 10px; line-height: 1.5;
+  }
+  .booking-link-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--rose); color: white;
+    padding: 13px 22px; border-radius: 8px;
+    font-size: 0.88rem; font-weight: 700;
+    text-decoration: none; letter-spacing: 0.01em;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 4px 14px rgba(201,134,106,0.35);
+    width: 100%; justify-content: center; margin-top: 4px;
+  }
+  .booking-link-btn:hover { background: var(--deep-rose); transform: translateY(-1px); }
+  .booking-link-btn svg { flex-shrink: 0; }
+
+  .step1-note {
+    font-size: 0.78rem; color: var(--soft);
+    background: var(--cream); border-radius: 8px;
+    padding: 12px 14px; line-height: 1.5;
+  }
+
+  /* Slot chosen confirmation */
+  .slot-chosen {
+    display: none; margin-top: 7px;
+    font-size: 0.75rem; font-weight: 600; color: var(--green);
+    background: var(--green-light); border-radius: 5px;
+    padding: 5px 10px; align-items: center; gap: 6px;
+  }
+  .slot-chosen.visible { display: flex; }
+
+  /* Step 3 trust bar */
+  .step3-refund-note {
+    font-size: 0.8rem; color: var(--mid); line-height: 1.6;
+    border-left: 3px solid var(--green); padding-left: 12px;
+    margin-top: 16px;
+  }
+
+  /* Step 2: Slot picker */
+  .slot-group { margin-bottom: 16px; }
+  .slot-label {
+    font-size: 0.72rem; font-weight: 700; color: var(--mid);
+    text-transform: uppercase; letter-spacing: 0.07em;
+    margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+  }
+  .slot-badge {
+    background: var(--rose); color: white;
+    font-size: 0.62rem; padding: 1px 7px; border-radius: 40px;
+  }
+  .slot-badge.optional {
+    background: rgba(184,155,144,0.35); color: var(--mid);
+  }
+  .slot-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .slot-row .form-input, .slot-row .form-select {
+    font-size: 0.85rem; padding: 10px 14px;
+  }
+
+  /* Step 3: Deposit */
+  .deposit-box {
+    background: #FFFBF0;
+    border: 1.5px solid rgba(201,169,110,0.4);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 20px;
+  }
+  .deposit-box h4 {
+    font-size: 0.95rem; font-weight: 600; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .deposit-box p {
+    font-size: 0.82rem; color: var(--mid); line-height: 1.6; margin-bottom: 12px;
+  }
+  .deposit-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 600; color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+  .deposit-note {
+    font-size: 0.75rem; color: var(--green); font-weight: 600;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .stripe-notice {
+    font-size: 0.78rem; color: var(--soft);
+    display: flex; align-items: center; gap: 6px;
+    background: var(--cream); border-radius: 6px; padding: 10px 12px;
+  }
+
+  /* Step 4: Confirm */
+  .confirm-summary {
+    background: var(--cream); border-radius: 10px;
+    padding: 18px 20px; margin-bottom: 20px;
+  }
+  .confirm-summary h4 {
+    font-size: 0.82rem; font-weight: 700; color: var(--mid);
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 12px;
+  }
+  .confirm-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 0.85rem; padding: 5px 0;
+    border-bottom: 1px solid rgba(184,155,144,0.2);
+  }
+  .confirm-row:last-child { border-bottom: none; }
+  .confirm-row .label { color: var(--soft); }
+  .confirm-row .value { font-weight: 600; text-align: right; max-width: 60%; }
+
+  .contact-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+
+  /* Modal footer nav */
+  .modal-footer {
+    padding: 16px 28px 24px;
+    border-top: 1px solid rgba(184,155,144,0.15);
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .btn-modal-back {
+    background: none; border: 1.5px solid rgba(184,155,144,0.4);
+    color: var(--mid); padding: 11px 22px; border-radius: 6px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-modal-back:hover { border-color: var(--rose); color: var(--rose); }
+  .btn-modal-next {
+    background: var(--charcoal); color: white;
+    border: none; padding: 12px 28px; border-radius: 6px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; transition: background 0.2s; flex: 1; max-width: 260px;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .btn-modal-next:hover { background: var(--deep-rose); }
+  .btn-modal-next.submit-btn { background: var(--green); }
+  .btn-modal-next.submit-btn:hover { background: #3a6347; }
+  .btn-modal-next:disabled { opacity: 0.7; cursor: not-allowed; }
+
+  /* Slot conflict / clear */
+  .slot-error {
+    display: none; font-size: 0.76rem; color: var(--urgent);
+    margin-top: 6px; padding: 6px 10px;
+    background: var(--urgent-bg); border-radius: 5px;
+  }
+  .slot-error.visible { display: block; }
+  .btn-clear-slots {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: 1.5px solid rgba(184,155,144,0.4);
+    color: var(--mid); font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; font-weight: 500;
+    padding: 7px 14px; border-radius: 6px;
+    cursor: pointer; transition: all 0.2s; margin-top: 6px;
+  }
+  .btn-clear-slots:hover { border-color: var(--rose); color: var(--rose); }
+
+  /* Loading spinner */
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinner {
+    display: inline-block; width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: white; border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.35; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .clinic-grid { grid-template-columns: 1fr; }
+    .trust-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .form-row { grid-template-columns: 1fr; }
+    .results-header { flex-direction: column; align-items: flex-start; }
+    .trust-badges-inner { flex-direction: column; }
+    .trust-badge-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 14px 20px; }
+    .trust-badge-item:last-child { border-bottom: none; }
+  }
+  @media (max-width: 600px) {
+    .trust-grid { grid-template-columns: 1fr; }
+    .hero { padding: 88px 5vw 60px; }
+    h1 { font-size: 2rem; }
+    /* Bottom-sheet modal on mobile */
+    .modal-overlay { padding: 0; align-items: flex-end; }
+    .modal {
+      max-height: 96vh; max-width: 100%;
+      border-radius: 16px 16px 0 0;
+    }
+    .modal-body { padding: 18px 20px; }
+    .modal-header { padding: 18px 20px 16px; }
+    .modal-steps { padding: 16px 20px 0; }
+    .modal-footer {
+      padding: 14px 20px 20px;
+      background: white;
+      border-top: 1px solid rgba(184,155,144,0.15);
+    }
+    .btn-modal-next { max-width: 100%; }
+    .slot-row { grid-template-columns: 1fr; }
+    .contact-fields { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Kiyora<span> Tokyo</span></div>
+  <a href="#match" class="nav-cta">Free Matching — Start Now →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left">
+
+    <div class="hero-badge">100% Free · No Credit Card Needed</div>
+
+    <h1>
+      Your <em>Trusted Guide</em> to<br>
+      <strong>Japanese Beauty.</strong>
+    </h1>
+
+    <p class="hero-sub">
+      No Hidden Fees, Just Real Results.<br>
+      English support, verified clinics, no Japanese needed.
+    </p>
+
+    <p class="hero-cn">
+      日本医美信赖之选。<br>
+      透明价格，真实案例，安心变美。
+    </p>
+
+    <div class="urgency-tag">
+      <span class="dot"></span>
+      Same-day bookings available — limited slots today
+    </div>
+
+    <div class="cta-group">
+      <a href="#match" class="btn-primary">
+        <span>Get My Free Match Now</span>
+        <span class="arrow">→</span>
+      </a>
+      <button class="btn-secondary">💬 Need help? We'll assist you in English — for free</button>
+    </div>
+
+    <div class="trust-pills">
+      <div class="pill"><span class="icon">🆓</span> Always Free for Users</div>
+      <div class="pill"><span class="icon">🇬🇧</span> Full English Support</div>
+      <div class="pill"><span class="icon">🔒</span> Verified Clinics Only</div>
+      <div class="pill"><span class="icon">💳</span> No Credit Card Ever</div>
+    </div>
+
+  </div>
+
+  <div class="hero-right" id="match">
+    <div class="matching-card">
+      <div class="card-title">Free Clinic Matching</div>
+      <p class="card-sub">3 questions · 100% free · We reply in English</p>
+
+      <form id="matchForm" action="https://formspree.io/f/xlgodkel" method="POST">
+
+        <div class="form-group">
+          <label class="form-label">What treatment are you looking for?</label>
+          <div class="select-wrap">
+            <select name="treatment" class="form-select" required>
+              <option value="">Select treatment type…</option>
+              <option>Facial / Skin Care</option>
+              <option>Hair Removal (Laser)</option>
+              <option>Anti-Aging / Wrinkle</option>
+              <option>Whitening / Brightening</option>
+              <option>Acne Treatment</option>
+              <option>Body Contouring</option>
+              <option>Eyelash / Eyebrow</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Preferred Area</label>
+            <div class="select-wrap">
+              <select name="area" class="form-select">
+                <option>Anywhere in Tokyo</option>
+                <option>Ginza / Shimbashi</option>
+                <option>Shibuya / Omotesando</option>
+                <option>Shinjuku</option>
+                <option>Akihabara / Ueno</option>
+                <option>Roppongi / Azabu</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Budget (per session)</label>
+            <div class="select-wrap">
+              <select name="budget" class="form-select">
+                <option>Any budget</option>
+                <option>Under ¥10,000</option>
+                <option>¥10,000 – ¥20,000</option>
+                <option>¥20,000 – ¥40,000</option>
+                <option>¥40,000+</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Preferred Date</label>
+          <input type="date" name="date" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Your Email <span style="color:var(--rose)">*</span></label>
+          <input type="email" name="email" class="form-input"
+                 placeholder="you@example.com" required />
+          <small style="font-size:0.72rem;color:var(--soft);margin-top:4px;display:block">
+            We'll send your matches here. No spam, ever.
+          </small>
+        </div>
+
+        <button type="submit" class="card-cta" id="submitBtn">
+          <span id="submitLabel">Get My Free Matches →</span>
+        </button>
+
+      </form>
+
+      <div id="thankYou" style="display:none; text-align:center; padding:32px 0;">
+        <div style="font-size:2.5rem; margin-bottom:16px;">🎉</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; margin-bottom:10px;">
+          We've got your request!
+        </div>
+        <div style="font-size:0.88rem; color:var(--mid); line-height:1.8;">
+          We'll email you your matches within a few hours.<br>
+          Check your inbox — and your spam folder just in case.
+        </div>
+      </div>
+
+      <p class="card-note" id="cardNote">🆓 100% Free · No credit card · No spam, ever</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BADGES BAR -->
+<section class="trust-badges">
+  <div class="trust-badges-inner">
+    <div class="trust-badge-item">
+      <div class="trust-badge-icon">✅</div>
+      <div class="trust-badge-text">
+        <strong>Verified Clinics</strong>
+        <span>Every clinic is individually reviewed before listing</span>
+      </div>
+    </div>
+    <div class="trust-badge-item">
+      <div class="trust-badge-icon">⚖️</div>
+      <div class="trust-badge-text">
+        <strong>No Foreigner Pricing</strong>
+        <span>Same rates as local patients — always transparent</span>
+      </div>
+    </div>
+    <div class="trust-badge-item">
+      <div class="trust-badge-icon">🇬🇧</div>
+      <div class="trust-badge-text">
+        <strong>English Support</strong>
+        <span>All clinics confirmed to have English communication</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="steps-section">
+  <div class="section-tag">How It Works</div>
+  <div class="section-title">From search to booking<br>in under a minute.</div>
+
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-icon">📋</div>
+      <h3>Tell Us What You Need</h3>
+      <p>Select your treatment, area, and budget. No account needed — just 3 quick questions.</p>
+      <span class="step-time">⚡ 20 seconds</span>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-icon">✨</div>
+      <h3>See Your Curated Matches</h3>
+      <p>We surface only vetted, English-friendly clinics that fit your needs — with real ratings, prices, and availability.</p>
+      <span class="step-time">⚡ Instant</span>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-icon">📅</div>
+      <h3>We Book It For You — Free</h3>
+      <p>Our team handles the reservation in English on your behalf. No phone calls in Japanese, no stress. Completely free.</p>
+      <span class="step-time">⚡ We reply within a few hours</span>
+    </div>
+  </div>
+</section>
+
+<!-- HIDDEN: filtered results (shown after form submit) -->
+<section class="results-section" id="results" style="display:none">
+  <div class="results-header">
+    <div>
+      <div class="section-tag">Your Matches</div>
+      <div class="section-title" style="margin-bottom:0">Top clinics for you today</div>
+    </div>
+    <div class="availability-notice">
+      <span class="dot"></span>
+      Limited slots today — book fast
+    </div>
+  </div>
+  <div class="clinic-grid" id="results-grid"></div>
+</section>
+
+<!-- FEATURED CLINICS (always visible) -->
+<section class="results-section" id="sample-results">
+  <div class="results-header">
+    <div>
+      <div class="section-tag">Featured Clinics</div>
+      <div class="section-title" style="margin-bottom:0">Carefully selected for international visitors</div>
+    </div>
+    <div class="availability-notice">
+      <span class="dot"></span>
+      Online booking available now
+    </div>
+  </div>
+  <div class="clinic-grid" id="featured-grid"></div>
+</section>
+
+<!-- TRUST -->
+<section class="trust-section">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <div class="trust-icon">🆓</div>
+      <div class="trust-label">Free — Always, for Users</div>
+      <div class="trust-desc">Our service is 100% free for you. Clinics pay us when you book — you never pay a matching fee.</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🌏</div>
+      <div class="trust-label">Trusted by International Visitors</div>
+      <div class="trust-desc">Used by travelers and expats across Asia, Europe, and beyond.</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🗣️</div>
+      <div class="trust-label">English Support Guaranteed</div>
+      <div class="trust-desc">All listed clinics have confirmed English-speaking staff or materials.</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🔍</div>
+      <div class="trust-label">Carefully Selected Clinics</div>
+      <div class="trust-desc">Every clinic is individually reviewed. We only list places we'd go to ourselves.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="section-tag">Ready to Book?</div>
+  <div class="section-title">Find your perfect Tokyo clinic —<br>free, fast, and in English.</div>
+  <p class="final-hook">Not sure which treatment you need? Tell us and we'll guide you — for free.</p>
+  <div class="final-cta-group">
+    <a href="#match" class="btn-primary">
+      <span>Get My Free Match Now</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+  <div class="final-urgency">⚠️ Same-day bookings available — limited slots today</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Kiyora Tokyo</div>
+  <div>© 2025 Kiyora Tokyo · kiyoratokyo.com · English Support</div>
+</footer>
+
+<!-- ─── BOOKING MODAL ─── -->
+<div class="modal-overlay" id="bookingModal" role="dialog" aria-modal="true">
+  <div class="modal" id="modalBox">
+
+    <div class="modal-header">
+      <div>
+        <div class="modal-clinic-name" id="modalClinicName">Clinic Name</div>
+        <div class="modal-subtitle">Availability Request — English Supported</div>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    </div>
+
+    <!-- Step indicator -->
+    <div class="modal-steps">
+      <div class="modal-step-dot active" id="sdot1">1</div>
+      <div class="modal-step-line" id="sline1"></div>
+      <div class="modal-step-dot" id="sdot2">2</div>
+      <div class="modal-step-line" id="sline2"></div>
+      <div class="modal-step-dot" id="sdot3">3</div>
+      <div class="modal-step-line" id="sline3"></div>
+      <div class="modal-step-dot" id="sdot4">4</div>
+    </div>
+
+    <div class="modal-body">
+
+      <!-- STEP 1: Real-time reference -->
+      <div class="step-panel active" id="panel1">
+        <div class="step-heading">Step 1 — Check Real-Time Availability</div>
+        <p class="step-desc">Open the clinic's official calendar to see today's open slots. Then come back here and pick your top 3 preferred times on the next screen.</p>
+
+        <div class="booking-link-box">
+          <div class="booking-link-icon">🗓️</div>
+          <div class="booking-link-text" style="width:100%">
+            <p><strong>Check the available slots in the new tab, then return here to select your top 3.</strong></p>
+            <a href="#" id="modalBookingLink" target="_blank" rel="noopener" class="booking-link-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Step 1: Check Real-time Availability — Open <span id="modalCalendarName">Clinic</span>'s Calendar
+            </a>
+          </div>
+        </div>
+
+        <div class="step1-note">
+          🔒 <strong>No payment required at this step.</strong> You're simply checking live availability — your slot preferences and deposit come in the next steps.
+        </div>
+      </div>
+
+      <!-- STEP 2: 3-slot selection -->
+      <div class="step-panel" id="panel2">
+        <div class="step-heading">Step 2 — Select Your Top 3 Preferred Slots</div>
+        <p class="step-desc">Choose up to 3 date/time preferences. We'll confirm the best available option with the clinic in English.</p>
+
+        <div class="slot-group">
+          <div class="slot-label">
+            1st Choice <span class="slot-badge">Required</span>
+          </div>
+          <div class="slot-row">
+            <input type="date" class="form-input" id="slot1date" />
+            <div class="select-wrap">
+              <select class="form-select" id="slot1time">
+                <option value="">Preferred time…</option>
+                <option>Morning (9:00 – 12:00)</option>
+                <option>Early Afternoon (12:00 – 15:00)</option>
+                <option>Late Afternoon (15:00 – 18:00)</option>
+                <option>Evening (18:00 – 20:00)</option>
+              </select>
+            </div>
+          </div>
+          <div class="slot-chosen" id="slot1chosen">✅ 1st Choice selected</div>
+        </div>
+
+        <div class="slot-group">
+          <div class="slot-label">
+            2nd Choice <span class="slot-badge optional">Optional</span>
+          </div>
+          <div class="slot-row">
+            <input type="date" class="form-input" id="slot2date" />
+            <div class="select-wrap">
+              <select class="form-select" id="slot2time">
+                <option value="">Preferred time…</option>
+                <option>Morning (9:00 – 12:00)</option>
+                <option>Early Afternoon (12:00 – 15:00)</option>
+                <option>Late Afternoon (15:00 – 18:00)</option>
+                <option>Evening (18:00 – 20:00)</option>
+              </select>
+            </div>
+          </div>
+          <div class="slot-chosen" id="slot2chosen">✅ 2nd Choice selected</div>
+          <div class="slot-error" id="slotError2">⚠️ This slot is the same as your 1st choice. Please pick a different time.</div>
+        </div>
+
+        <div class="slot-group">
+          <div class="slot-label">
+            3rd Choice <span class="slot-badge optional">Optional</span>
+          </div>
+          <div class="slot-row">
+            <input type="date" class="form-input" id="slot3date" />
+            <div class="select-wrap">
+              <select class="form-select" id="slot3time">
+                <option value="">Preferred time…</option>
+                <option>Morning (9:00 – 12:00)</option>
+                <option>Early Afternoon (12:00 – 15:00)</option>
+                <option>Late Afternoon (15:00 – 18:00)</option>
+                <option>Evening (18:00 – 20:00)</option>
+              </select>
+            </div>
+          </div>
+          <div class="slot-chosen" id="slot3chosen">✅ 3rd Choice selected</div>
+          <div class="slot-error" id="slotError3">⚠️ This slot duplicates a previous choice. Please pick a different time.</div>
+        </div>
+
+        <button type="button" class="btn-clear-slots" id="clearSlotsBtn">
+          ↺ Reset Selection
+        </button>
+      </div>
+
+      <!-- STEP 3: Deposit agreement -->
+      <div class="step-panel" id="panel3">
+        <div class="step-heading">Step 3 — Secure Your Spot</div>
+        <p class="step-desc">A small refundable deposit holds your reservation while we confirm with the clinic.</p>
+
+        <div class="deposit-box">
+          <h4>🛡️ Refundable Deposit</h4>
+          <div class="deposit-amount">¥10,000</div>
+          <p>This deposit is <strong>100% refundable</strong> if the clinic cannot confirm your requested slot. No charge is made until your booking is confirmed.</p>
+          <div class="deposit-note">✅ Authorize now · Captured only upon confirmation</div>
+        </div>
+
+        <div class="stripe-notice">
+          🔒 Secure payment powered by Stripe. Your card details are never stored on our servers.
+        </div>
+
+        <p class="step3-refund-note">
+          Your deposit is <strong>100% refundable</strong> if the clinic cannot accommodate your requested slots. No charge is captured until your booking is confirmed by the clinic.
+        </p>
+      </div>
+
+      <!-- STEP 4: Contact & Submit -->
+      <div class="step-panel" id="panel4">
+        <div class="step-heading">Step 4 — Confirm Your Request</div>
+        <p class="step-desc">Enter your details and we'll send your booking request to the clinic in English.</p>
+
+        <div class="confirm-summary" id="confirmSummary">
+          <h4>Your Request Summary</h4>
+          <div class="confirm-row">
+            <span class="label">Clinic</span>
+            <span class="value" id="confirmClinic">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="label">1st Choice</span>
+            <span class="value" id="confirmSlot1">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="label">2nd Choice</span>
+            <span class="value" id="confirmSlot2">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="label">3rd Choice</span>
+            <span class="value" id="confirmSlot3">—</span>
+          </div>
+          <div class="confirm-row">
+            <span class="label">Deposit</span>
+            <span class="value" style="color:var(--green)">¥10,000 (refundable)</span>
+          </div>
+        </div>
+
+        <div class="contact-fields">
+          <div class="form-group" style="margin:0">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-input" id="contactName" placeholder="Full name" />
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label">Email <span style="color:var(--rose)">*</span></label>
+            <input type="email" class="form-input" id="contactEmail" placeholder="you@example.com" />
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /modal-body -->
+
+    <div class="modal-footer">
+      <button class="btn-modal-back" id="modalBack" style="display:none">← Back</button>
+      <button class="btn-modal-next" id="modalNext">Continue →</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ── Load clinics from JSON and render cards ── */
+let clinicsData = [];
+let activeClinic = null;
+let currentStep = 1;
+const TOTAL_STEPS = 4;
+
+async function loadClinics() {
+  try {
+    const res = await fetch('clinics.json');
+    clinicsData = await res.json();
+    renderGrid('featured-grid', clinicsData);
+  } catch(e) {
+    console.error('Failed to load clinics.json', e);
+  }
+}
+
+function renderGrid(gridId, clinics) {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+  grid.innerHTML = clinics.map(c => buildCardHTML(c)).join('');
+  grid.querySelectorAll('.book-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const id = parseInt(btn.dataset.id);
+      openModal(clinicsData.find(c => c.id === id));
+    });
+  });
+  grid.querySelectorAll('.clinic-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+}
+
+function buildCardHTML(c) {
+  const tagClsMap = {
+    'Board-Certified': 'tag-gold', 'Premium': 'tag-gold',
+    'Verified': 'tag-green', 'Non-Surgical': 'tag-green', 'Personalized': 'tag-green',
+    'International': 'tag-blue', 'Surgical': 'tag-blue', 'Latest Technology': 'tag-blue',
+    'Regenerative': 'tag-blue', 'Discreet': 'tag-blue', 'Science-Based': 'tag-blue',
+  };
+  const tagsHTML = c.tags.map(t =>
+    `<span class="tag ${tagClsMap[t] || 'tag-blue'}">${t}</span>`
+  ).join('');
+  const doctorHTML = c.doctor
+    ? `<div class="clinic-area">👨‍⚕️ ${c.doctor.name} — ${c.doctor.specialization}</div>` : '';
+  return `
+  <div class="clinic-card">
+    <div class="clinic-photo">
+      <img src="${c.photo}" alt="${c.name}" loading="lazy" />
+    </div>
+    <div class="clinic-content">
+      <div class="clinic-card-header">
+        <div>
+          <div class="clinic-name">${c.name}</div>
+          <div class="clinic-area">📍 ${c.areaLabel}</div>
+          ${doctorHTML}
+          <div class="clinic-specialty">🎯 ${c.specialty}</div>
+        </div>
+        <div class="clinic-rating"><span class="star">⭐</span> ${c.rating}</div>
+      </div>
+      <div class="clinic-tags">${tagsHTML}</div>
+      <div class="clinic-review">"${c.review}"</div>
+      <div class="clinic-footer">
+        <div class="clinic-price-wrap">
+          <div class="clinic-price">From ${c.priceFromLabel}</div>
+          <div class="clinic-price-range">Range: ${c.priceRange}</div>
+        </div>
+        <button class="book-btn" data-id="${c.id}">
+          📅 Check Availability &amp; Book
+        </button>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Formspree AJAX submit ── */
+const form      = document.getElementById('matchForm');
+const submitBtn = document.getElementById('submitBtn');
+const submitLbl = document.getElementById('submitLabel');
+const thankYou  = document.getElementById('thankYou');
+const cardNote  = document.getElementById('cardNote');
+
+if (form) {
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitLbl.textContent = 'Sending…';
+    submitBtn.style.opacity = '0.7';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        if (cardNote) cardNote.style.display = 'none';
+        thankYou.style.display = 'block';
+        setTimeout(() => showResults(), 800);
+      } else {
+        submitLbl.textContent = 'Something went wrong — please try again';
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+      }
+    } catch(err) {
+      submitLbl.textContent = 'Network error — please try again';
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
+    }
+  });
+}
+
+function showResults() {
+  const sample = document.getElementById('sample-results');
+  const results = document.getElementById('results');
+  if (sample) sample.style.display = 'none';
+  if (results) {
+    renderGrid('results-grid', clinicsData);
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+/* ── Booking Modal ── */
+const overlay    = document.getElementById('bookingModal');
+const modalBack  = document.getElementById('modalBack');
+const modalNext  = document.getElementById('modalNext');
+const modalClose = document.getElementById('modalClose');
+
+function getSlotKey(dateId, timeId) {
+  const d = document.getElementById(dateId).value;
+  const t = document.getElementById(timeId).value;
+  return (d && t) ? `${d}|${t}` : null;
+}
+
+function updateSlotChosen() {
+  [[1,'slot1date','slot1time'],[2,'slot2date','slot2time'],[3,'slot3date','slot3time']].forEach(([n, dId, tId]) => {
+    const d = document.getElementById(dId).value;
+    const t = document.getElementById(tId).value;
+    const el = document.getElementById('slot' + n + 'chosen');
+    if (!el) return;
+    if (d && t) {
+      el.textContent = `✅ ${['1st','2nd','3rd'][n-1]} Choice: ${d} · ${t}`;
+      el.classList.add('visible');
+    } else if (d) {
+      el.textContent = `✅ ${['1st','2nd','3rd'][n-1]} Choice: ${d} — select a time`;
+      el.classList.add('visible');
+    } else {
+      el.classList.remove('visible');
+    }
+  });
+}
+
+function validateSlotConflicts() {
+  const k1 = getSlotKey('slot1date', 'slot1time');
+  const k2 = getSlotKey('slot2date', 'slot2time');
+  const k3 = getSlotKey('slot3date', 'slot3time');
+
+  const err2 = document.getElementById('slotError2');
+  const err3 = document.getElementById('slotError3');
+
+  const conflict2 = k2 && k1 && k2 === k1;
+  const conflict3 = k3 && ((k1 && k3 === k1) || (k2 && k3 === k2));
+
+  err2.classList.toggle('visible', !!conflict2);
+  err3.classList.toggle('visible', !!conflict3);
+
+  updateSlotChosen();
+  return !conflict2 && !conflict3;
+}
+
+// Attach conflict detection + chosen feedback to all slot inputs
+['slot1date','slot1time','slot2date','slot2time','slot3date','slot3time'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('change', validateSlotConflicts);
+});
+
+// Reset Selection button
+document.getElementById('clearSlotsBtn').addEventListener('click', () => {
+  ['slot1date','slot1time','slot2date','slot2time','slot3date','slot3time'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  ['slotError2','slotError3','slot1chosen','slot2chosen','slot3chosen'].forEach(id => {
+    document.getElementById(id).classList.remove('visible');
+  });
+});
+
+function openModal(clinic) {
+  activeClinic = clinic;
+  currentStep = 1;
+  document.getElementById('modalClinicName').textContent = clinic.name;
+  document.getElementById('modalCalendarName').textContent = clinic.name;
+  document.getElementById('modalBookingLink').href = clinic.booking_url;
+  // Restore Next button in case a previous submit changed it
+  modalNext.disabled = false;
+  modalNext.innerHTML = 'Continue →';
+  modalNext.classList.remove('submit-btn');
+  updateModalStep();
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  activeClinic = null;
+  currentStep = 1;
+  ['slot1date','slot1time','slot2date','slot2time','slot3date','slot3time','contactName','contactEmail'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  ['slotError2','slotError3','slot1chosen','slot2chosen','slot3chosen'].forEach(id => {
+    document.getElementById(id).classList.remove('visible');
+  });
+}
+
+function updateModalStep() {
+  for (let i = 1; i <= TOTAL_STEPS; i++) {
+    const panel = document.getElementById('panel' + i);
+    const dot   = document.getElementById('sdot' + i);
+    if (panel) panel.classList.toggle('active', i === currentStep);
+    if (dot) {
+      dot.classList.remove('active','done');
+      if (i === currentStep)     dot.classList.add('active');
+      else if (i < currentStep)  dot.classList.add('done');
+    }
+    if (i < TOTAL_STEPS) {
+      const line = document.getElementById('sline' + i);
+      if (line) line.classList.toggle('done', i < currentStep);
+    }
+  }
+  modalBack.style.display = currentStep > 1 ? 'block' : 'none';
+  if (currentStep === TOTAL_STEPS) {
+    modalNext.innerHTML = '🔒 Confirm &amp; Proceed to Deposit';
+    modalNext.classList.add('submit-btn');
+    populateConfirmSummary();
+  } else {
+    modalNext.innerHTML = 'Continue →';
+    modalNext.classList.remove('submit-btn');
+  }
+  // Scroll modal body to top on step change
+  const body = document.querySelector('.modal-body');
+  if (body) body.scrollTop = 0;
+}
+
+function populateConfirmSummary() {
+  document.getElementById('confirmClinic').textContent = activeClinic ? activeClinic.name : '—';
+  const slots = [
+    { date: document.getElementById('slot1date').value, time: document.getElementById('slot1time').value },
+    { date: document.getElementById('slot2date').value, time: document.getElementById('slot2time').value },
+    { date: document.getElementById('slot3date').value, time: document.getElementById('slot3time').value },
+  ];
+  slots.forEach((s, i) => {
+    const el = document.getElementById('confirmSlot' + (i+1));
+    if (el) el.textContent = (s.date && s.time) ? `${s.date} · ${s.time}` : (s.date ? s.date : '—');
+  });
+}
+
+modalNext.addEventListener('click', () => {
+  if (currentStep === 2) {
+    const slot1date = document.getElementById('slot1date').value;
+    if (!slot1date) {
+      document.getElementById('slot1date').focus();
+      document.getElementById('slot1date').style.borderColor = 'var(--urgent)';
+      setTimeout(() => { document.getElementById('slot1date').style.borderColor = ''; }, 2000);
+      return;
+    }
+    if (!validateSlotConflicts()) return;
+  }
+  if (currentStep === 4) {
+    const email = document.getElementById('contactEmail').value;
+    if (!email) {
+      document.getElementById('contactEmail').focus();
+      document.getElementById('contactEmail').style.borderColor = 'var(--urgent)';
+      setTimeout(() => { document.getElementById('contactEmail').style.borderColor = ''; }, 2000);
+      return;
+    }
+    submitBookingRequest();
+    return;
+  }
+  if (currentStep < TOTAL_STEPS) {
+    currentStep++;
+    updateModalStep();
+  }
+});
+
+modalBack.addEventListener('click', () => {
+  if (currentStep > 1) { currentStep--; updateModalStep(); }
+});
+modalClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+function submitBookingRequest() {
+  const slots = [
+    { choice: '1st', date: document.getElementById('slot1date').value, time: document.getElementById('slot1time').value },
+    { choice: '2nd', date: document.getElementById('slot2date').value, time: document.getElementById('slot2time').value },
+    { choice: '3rd', date: document.getElementById('slot3date').value, time: document.getElementById('slot3time').value },
+  ].filter(s => s.date);
+
+  const payload = {
+    clinic_id:   activeClinic ? activeClinic.id   : null,
+    clinic_name: activeClinic ? activeClinic.name : '',
+    booking_url: activeClinic ? activeClinic.booking_url : '',
+    system_type: activeClinic ? activeClinic.system_type : '',
+    slots,
+    deposit: { amount_jpy: 10000, mode: 'authorize_now_capture_on_confirm', refundable: true },
+    contact: {
+      name:  document.getElementById('contactName').value,
+      email: document.getElementById('contactEmail').value,
+    },
+    submitted_at: new Date().toISOString(),
+  };
+
+  // ── Console output for verification ──
+  console.group('[Kiyora Tokyo] Booking Request Submitted');
+  console.log('Clinic ID  :', payload.clinic_id);
+  console.log('Clinic Name:', payload.clinic_name);
+  console.table(payload.slots);
+  console.log('Full payload:', JSON.stringify(payload, null, 2));
+  console.groupEnd();
+
+  // State 1 — Sending
+  modalNext.disabled = true;
+  modalNext.innerHTML = '<span class="spinner"></span>&nbsp; Sending your request…';
+  modalBack.style.display = 'none';
+
+  // State 2 — Request sent, redirecting (after 1s)
+  setTimeout(() => {
+    modalNext.innerHTML = '✅ Request Sent! Redirecting to Secure Payment…';
+
+    // State 3 — Success modal (after another 1s = 2s total)
+    setTimeout(() => {
+      document.querySelector('.modal-body').innerHTML = `
+        <div style="text-align:center; padding:32px 0 16px;">
+          <div style="font-size:3rem; margin-bottom:16px;">🎉</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; margin-bottom:12px;">
+            Request Sent!
+          </div>
+          <div style="font-size:0.88rem; color:var(--mid); line-height:1.9; max-width:380px; margin:0 auto;">
+            Your booking request for <strong>${payload.clinic_name}</strong> has been received.<br>
+            We'll confirm your slot and send payment details to<br>
+            <strong>${payload.contact.email || 'you'}</strong> within a few hours.
+          </div>
+          <div style="margin-top:20px; font-size:0.78rem; background:var(--green-light); color:var(--green); display:inline-block; padding:8px 18px; border-radius:6px; font-weight:600; line-height:1.6;">
+            🔒 ¥10,000 deposit authorized · 100% refundable if not confirmed
+          </div>
+        </div>`;
+      document.querySelector('.modal-footer').innerHTML =
+        `<button class="btn-modal-next submit-btn" style="max-width:100%;width:100%" onclick="closeModal()">Done — Close ✕</button>`;
+    }, 1000);
+  }, 1000);
+}
+
+/* ── Scroll animation ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.step, .trust-item, .trust-badge-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+
+loadClinics();
+</script>
+
+</body>
+</html>
