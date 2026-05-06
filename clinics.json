@@ -3,56 +3,130 @@
     "id": 1,
     "name": "Yoshiki Ginza Clinic",
     "area": "Ginza",
-    "areaLabel": "Ginza, Chuo-ku · 2 min from Ginza St.",
+    "areaLabel": "Ginza, Chuo-ku \u00b7 2 min from Ginza St.",
     "rating": 4.8,
     "priceFrom": 15000,
-    "priceLabel": "From ¥15,000 / session",
-    "photo": "https://images.unsplash.com/photo-1643297654416-05795d62e39c?w=500&q=80",
+    "priceLabel": "From \u00a515,000 / session",
+    "photo": "/images/yoshiki.jpg",
     "review": "English & Chinese staff available. Same-day appointments possible. Art Makeup by certified specialists.",
     "url": "https://yoshiki-clinic.com/",
-    "treatments": ["facial", "anti-aging", "artmakeup", "laser"],
+    "treatments": [
+      "facial",
+      "anti-aging",
+      "artmakeup",
+      "laser"
+    ],
     "foreignerCount": 320,
     "nextAvailable": "Today",
-    "ratingBreakdown": { "service": 4.9, "cleanliness": 4.8, "english": 4.8 },
+    "ratingBreakdown": {
+      "service": 4.9,
+      "cleanliness": 4.8,
+      "english": 4.8
+    },
     "tags": [
-      { "cls": "tag-green",  "text": "🇬🇧 English OK" },
-      { "cls": "tag-urgent", "text": "🔥 Same-day available" },
-      { "cls": "tag-gold",   "text": "✏️ Art Makeup Specialist" },
-      { "cls": "tag-blue",   "text": "💉 Botox / HIFU / Laser" }
+      {
+        "cls": "tag-green",
+        "text": "\ud83c\uddec\ud83c\udde7 English OK"
+      },
+      {
+        "cls": "tag-urgent",
+        "text": "\ud83d\udd25 Same-day available"
+      },
+      {
+        "cls": "tag-gold",
+        "text": "\u270f\ufe0f Art Makeup Specialist"
+      },
+      {
+        "cls": "tag-blue",
+        "text": "\ud83d\udc89 Botox / HIFU / Laser"
+      }
     ],
     "procedures": [
-      { "name": "Art Makeup (Eyebrow)", "price": "From ¥55,000", "downtime": "None" },
-      { "name": "Botox Injection",      "price": "From ¥22,000", "downtime": "None" },
-      { "name": "HIFU Lift",            "price": "From ¥70,000", "downtime": "None" },
-      { "name": "Laser (Spot)",         "price": "From ¥15,000", "downtime": "3-5 days" },
-      { "name": "Hyaluronic Acid",      "price": "From ¥55,000", "downtime": "1-2 days" }
+      {
+        "name": "Art Makeup (Eyebrow)",
+        "price": "From \u00a555,000",
+        "downtime": "None"
+      },
+      {
+        "name": "Botox Injection",
+        "price": "From \u00a522,000",
+        "downtime": "None"
+      },
+      {
+        "name": "HIFU Lift",
+        "price": "From \u00a570,000",
+        "downtime": "None"
+      },
+      {
+        "name": "Laser (Spot)",
+        "price": "From \u00a515,000",
+        "downtime": "3-5 days"
+      },
+      {
+        "name": "Hyaluronic Acid",
+        "price": "From \u00a555,000",
+        "downtime": "1-2 days"
+      }
     ]
   },
   {
     "id": 2,
     "name": "BIANCA Clinic Ginza",
     "area": "Ginza",
-    "areaLabel": "Ginza, Chuo-ku · 1 min from Ginza-itchome St.",
+    "areaLabel": "Ginza, Chuo-ku \u00b7 1 min from Ginza-itchome St.",
     "rating": 4.9,
     "priceFrom": 20000,
-    "priceLabel": "Consultation Free / from ¥20,000",
-    "photo": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=500&q=80",
-    "review": "Gorgeous space — clean, welcoming, never pushy. English interpreters available throughout.",
+    "priceLabel": "Consultation Free / from \u00a520,000",
+    "photo": "/images/bianca.jpg",
+    "review": "Gorgeous space \u2014 clean, welcoming, never pushy. English interpreters available throughout.",
     "url": "https://biancaclinic-tokyo.com/",
-    "treatments": ["facial", "anti-aging", "laser"],
+    "treatments": [
+      "facial",
+      "anti-aging",
+      "laser"
+    ],
     "foreignerCount": 890,
     "nextAvailable": "Tomorrow",
-    "ratingBreakdown": { "service": 4.9, "cleanliness": 4.9, "english": 4.9 },
+    "ratingBreakdown": {
+      "service": 4.9,
+      "cleanliness": 4.9,
+      "english": 4.9
+    },
     "tags": [
-      { "cls": "tag-green",  "text": "🇬🇧 English OK" },
-      { "cls": "tag-urgent", "text": "🔥 Foreigner-Friendly" },
-      { "cls": "tag-gold",   "text": "🏆 Editor's Pick" }
+      {
+        "cls": "tag-green",
+        "text": "\ud83c\uddec\ud83c\udde7 English OK"
+      },
+      {
+        "cls": "tag-urgent",
+        "text": "\ud83d\udd25 Foreigner-Friendly"
+      },
+      {
+        "cls": "tag-gold",
+        "text": "\ud83c\udfc6 Editor's Pick"
+      }
     ],
     "procedures": [
-      { "name": "RF Microneedling",  "price": "From ¥30,000", "downtime": "2-3 days" },
-      { "name": "Botox / Filler",    "price": "From ¥20,000", "downtime": "None" },
-      { "name": "Skin Brightening",  "price": "From ¥25,000", "downtime": "None" },
-      { "name": "PRP Treatment",     "price": "From ¥60,000", "downtime": "1-2 days" }
+      {
+        "name": "RF Microneedling",
+        "price": "From \u00a530,000",
+        "downtime": "2-3 days"
+      },
+      {
+        "name": "Botox / Filler",
+        "price": "From \u00a520,000",
+        "downtime": "None"
+      },
+      {
+        "name": "Skin Brightening",
+        "price": "From \u00a525,000",
+        "downtime": "None"
+      },
+      {
+        "name": "PRP Treatment",
+        "price": "From \u00a560,000",
+        "downtime": "1-2 days"
+      }
     ]
   },
   {
@@ -62,51 +136,117 @@
     "areaLabel": "Azabujuban, Minato-ku",
     "rating": 4.8,
     "priceFrom": 15000,
-    "priceLabel": "From ¥15,000 / session",
-    "photo": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=80",
+    "priceLabel": "From \u00a515,000 / session",
+    "photo": "/images/azabu.jpg",
     "review": "Many of our patients are foreigners. Experienced with all skin types from around the world.",
     "url": "http://www.azabu-skinclinic.com/english/index.html",
-    "treatments": ["facial", "whitening", "laser"],
+    "treatments": [
+      "facial",
+      "whitening",
+      "laser"
+    ],
     "foreignerCount": 1240,
     "nextAvailable": "Today",
-    "ratingBreakdown": { "service": 4.8, "cleanliness": 4.7, "english": 4.9 },
+    "ratingBreakdown": {
+      "service": 4.8,
+      "cleanliness": 4.7,
+      "english": 4.9
+    },
     "tags": [
-      { "cls": "tag-green", "text": "🇬🇧 English OK" },
-      { "cls": "tag-blue",  "text": "🔬 Dermatology Specialist" },
-      { "cls": "tag-gold",  "text": "🌍 All Skin Types" }
+      {
+        "cls": "tag-green",
+        "text": "\ud83c\uddec\ud83c\udde7 English OK"
+      },
+      {
+        "cls": "tag-blue",
+        "text": "\ud83d\udd2c Dermatology Specialist"
+      },
+      {
+        "cls": "tag-gold",
+        "text": "\ud83c\udf0d All Skin Types"
+      }
     ],
     "procedures": [
-      { "name": "Laser Whitening",   "price": "From ¥15,000", "downtime": "3-5 days" },
-      { "name": "Skin Rejuvenation", "price": "From ¥20,000", "downtime": "None" },
-      { "name": "Acne Treatment",    "price": "From ¥15,000", "downtime": "1-2 days" },
-      { "name": "Skin Tightening",   "price": "From ¥25,000", "downtime": "None" }
+      {
+        "name": "Laser Whitening",
+        "price": "From \u00a515,000",
+        "downtime": "3-5 days"
+      },
+      {
+        "name": "Skin Rejuvenation",
+        "price": "From \u00a520,000",
+        "downtime": "None"
+      },
+      {
+        "name": "Acne Treatment",
+        "price": "From \u00a515,000",
+        "downtime": "1-2 days"
+      },
+      {
+        "name": "Skin Tightening",
+        "price": "From \u00a525,000",
+        "downtime": "None"
+      }
     ]
   },
   {
     "id": 4,
     "name": "Tokyo Ginza Medical Clinic",
     "area": "Ginza",
-    "areaLabel": "Ginza, Chuo-ku · 1 min from Ginza-itchome St.",
+    "areaLabel": "Ginza, Chuo-ku \u00b7 1 min from Ginza-itchome St.",
     "rating": 4.7,
     "priceFrom": 20000,
-    "priceLabel": "From ¥20,000 / session",
-    "photo": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&q=80",
+    "priceLabel": "From \u00a520,000 / session",
+    "photo": "/images/tokyo-ginza.jpg",
     "review": "Fully private rooms, luxury atmosphere. Personalized care from consultation to aftercare.",
     "url": "https://tokyo-ginza-medicalclinic.com/",
-    "treatments": ["facial", "anti-aging", "laser"],
+    "treatments": [
+      "facial",
+      "anti-aging",
+      "laser"
+    ],
     "foreignerCount": 210,
     "nextAvailable": "Tomorrow",
-    "ratingBreakdown": { "service": 4.8, "cleanliness": 4.9, "english": 4.6 },
+    "ratingBreakdown": {
+      "service": 4.8,
+      "cleanliness": 4.9,
+      "english": 4.6
+    },
     "tags": [
-      { "cls": "tag-green", "text": "🇬🇧 English OK" },
-      { "cls": "tag-blue",  "text": "🏛️ Fully Private Rooms" },
-      { "cls": "tag-gold",  "text": "💎 Premium Experience" }
+      {
+        "cls": "tag-green",
+        "text": "\ud83c\uddec\ud83c\udde7 English OK"
+      },
+      {
+        "cls": "tag-blue",
+        "text": "\ud83c\udfdb\ufe0f Fully Private Rooms"
+      },
+      {
+        "cls": "tag-gold",
+        "text": "\ud83d\udc8e Premium Experience"
+      }
     ],
     "procedures": [
-      { "name": "Custom Facial",      "price": "From ¥20,000", "downtime": "None" },
-      { "name": "Botox / Filler",     "price": "From ¥22,000", "downtime": "None" },
-      { "name": "Laser Treatment",    "price": "From ¥25,000", "downtime": "2-3 days" },
-      { "name": "Anti-Aging Program", "price": "From ¥50,000", "downtime": "None" }
+      {
+        "name": "Custom Facial",
+        "price": "From \u00a520,000",
+        "downtime": "None"
+      },
+      {
+        "name": "Botox / Filler",
+        "price": "From \u00a522,000",
+        "downtime": "None"
+      },
+      {
+        "name": "Laser Treatment",
+        "price": "From \u00a525,000",
+        "downtime": "2-3 days"
+      },
+      {
+        "name": "Anti-Aging Program",
+        "price": "From \u00a550,000",
+        "downtime": "None"
+      }
     ]
   },
   {
@@ -116,24 +256,57 @@
     "areaLabel": "Jiyugaoka, Meguro-ku",
     "rating": 4.7,
     "priceFrom": 20000,
-    "priceLabel": "Consultation Free / from ¥20,000",
-    "photo": "/images/bianca.jpg",
+    "priceLabel": "Consultation Free / from \u00a520,000",
+    "photo": "/images/jiyugaoka.jpg",
     "review": "Since 1995, pursuing true beauty. No.1 Medical Aesthetic Institute in Asia.",
     "url": "https://jiyugaokaclinic.com/english/",
-    "treatments": ["anti-aging", "facial", "laser"],
+    "treatments": [
+      "anti-aging",
+      "facial",
+      "laser"
+    ],
     "foreignerCount": 1580,
     "nextAvailable": "This week",
-    "ratingBreakdown": { "service": 4.7, "cleanliness": 4.8, "english": 4.6 },
+    "ratingBreakdown": {
+      "service": 4.7,
+      "cleanliness": 4.8,
+      "english": 4.6
+    },
     "tags": [
-      { "cls": "tag-green", "text": "🇬🇧 English OK" },
-      { "cls": "tag-gold",  "text": "🥇 No.1 in Asia" },
-      { "cls": "tag-blue",  "text": "💉 Anti-Aging Specialist" }
+      {
+        "cls": "tag-green",
+        "text": "\ud83c\uddec\ud83c\udde7 English OK"
+      },
+      {
+        "cls": "tag-gold",
+        "text": "\ud83e\udd47 No.1 in Asia"
+      },
+      {
+        "cls": "tag-blue",
+        "text": "\ud83d\udc89 Anti-Aging Specialist"
+      }
     ],
     "procedures": [
-      { "name": "HIFU Facelift",     "price": "From ¥50,000", "downtime": "None" },
-      { "name": "Thread Lift",       "price": "From ¥80,000", "downtime": "3-5 days" },
-      { "name": "Botox / Filler",    "price": "From ¥20,000", "downtime": "None" },
-      { "name": "Regenerative Care", "price": "From ¥60,000", "downtime": "1-2 days" }
+      {
+        "name": "HIFU Facelift",
+        "price": "From \u00a550,000",
+        "downtime": "None"
+      },
+      {
+        "name": "Thread Lift",
+        "price": "From \u00a580,000",
+        "downtime": "3-5 days"
+      },
+      {
+        "name": "Botox / Filler",
+        "price": "From \u00a520,000",
+        "downtime": "None"
+      },
+      {
+        "name": "Regenerative Care",
+        "price": "From \u00a560,000",
+        "downtime": "1-2 days"
+      }
     ]
   }
 ]
