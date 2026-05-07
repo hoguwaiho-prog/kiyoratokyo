@@ -159,6 +159,20 @@
   .trust-label { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 6px; line-height: 1.3; }
   .trust-desc { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
 
+  /* BLOG SECTION */
+  .blog-section { padding: 90px 5vw; background: var(--cream); }
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  .blog-card { background: white; border-radius: 12px; border: 1.5px solid rgba(184,155,144,0.2); overflow: hidden; transition: all 0.2s; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+  .blog-card:hover { box-shadow: 0 8px 32px rgba(44,36,32,0.1); transform: translateY(-3px); border-color: var(--rose); }
+  .blog-card-img { height: 140px; background: linear-gradient(135deg, var(--cream) 0%, var(--blush) 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .blog-card-body { padding: 20px 22px 24px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .blog-card-cat { display: inline-flex; background: var(--green-light); color: var(--green); padding: 3px 10px; border-radius: 40px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; align-self: flex-start; }
+  .blog-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; line-height: 1.3; color: var(--charcoal); }
+  .blog-card-excerpt { font-size: 0.8rem; color: var(--mid); line-height: 1.65; flex: 1; }
+  .blog-card-footer { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(184,155,144,0.15); font-size: 0.78rem; font-weight: 600; color: var(--rose); display: flex; align-items: center; gap: 4px; }
+  .blog-view-all { display: inline-flex; align-items: center; gap: 6px; margin-top: 36px; background: var(--charcoal); color: var(--cream); padding: 12px 28px; border-radius: 40px; font-size: 0.82rem; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+  .blog-view-all:hover { background: var(--deep-rose); }
+
   /* FINAL CTA */
   .final-cta { padding: 100px 5vw; background: var(--warm-white); text-align: center; position: relative; overflow: hidden; }
   .final-cta .section-tag { text-align: center; }
@@ -181,6 +195,10 @@
     .trust-grid { grid-template-columns: 1fr 1fr; }
     .form-row { grid-template-columns: 1fr; }
     .results-header { flex-direction: column; align-items: flex-start; }
+    .blog-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .blog-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 700px) {
     .clinic-card { grid-template-columns: 1fr; }
@@ -402,6 +420,41 @@
       <div class="faq-answer">Yes. Our clinics are experienced with diverse skin types from around the world. Many specialize in treating international patients with different skin tones and sensitivities.</div>
     </div>
   </div>
+</section>
+
+<section class="blog-section">
+  <div class="section-tag">From the Blog</div>
+  <div class="section-title">Learn before you book.</div>
+  <div class="blog-grid">
+    <a href="/blog/hifu-treatment-tokyo/" class="blog-card">
+      <div class="blog-card-img">🔬</div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Treatments</span>
+        <div class="blog-card-title">HIFU Treatment in Tokyo: What Expats Need to Know</div>
+        <div class="blog-card-excerpt">Devices, realistic prices, and how to find English-speaking clinics — everything before you book.</div>
+        <div class="blog-card-footer">Read article ⏱ 8 min →</div>
+      </div>
+    </a>
+    <a href="/blog/" class="blog-card" style="opacity:0.65;pointer-events:none;">
+      <div class="blog-card-img">💉</div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Botox</span>
+        <div class="blog-card-title">Botox in Tokyo: First-Timer's Complete Guide</div>
+        <div class="blog-card-excerpt">Unit pricing, forehead vs. jaw, and what to ask your doctor — coming soon.</div>
+        <div class="blog-card-footer">Coming soon</div>
+      </div>
+    </a>
+    <a href="/blog/" class="blog-card" style="opacity:0.65;pointer-events:none;">
+      <div class="blog-card-img">✨</div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Laser</span>
+        <div class="blog-card-title">Laser Skin Treatments in Tokyo: What to Know Before You Book</div>
+        <div class="blog-card-excerpt">Picosecond, CO₂, IPL — which laser fits your skin concern? Coming soon.</div>
+        <div class="blog-card-footer">Coming soon</div>
+      </div>
+    </a>
+  </div>
+  <a href="/blog/" class="blog-view-all">View all articles →</a>
 </section>
 
 <section class="trust-section">
