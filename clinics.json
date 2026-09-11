@@ -6,7 +6,7 @@
     "areaLabel": "Ginza",
     "priceFrom": 29800,
     "priceLabel": "From ¥29,800",
-    "photos": [],
+    "photos": ["images/yoshiki.jpg"],
     "url": "#",
     "treatments": [
       "Botox",
@@ -68,7 +68,7 @@
     "accessNote": "There is no entrance on Chuo-dori. Enter from the Hanatsubaki-dori side street, walk through the parking area, and take the elevator at the back.",
     "cancellation": "Free until 3 days before. ¥5,500 from 2 days before until 12:00 the previous day. ¥11,000 from 12:00 to 19:00 the previous day. ¥22,000 on the day, or for no-shows. Free if you cancel within 12 hours of booking. Rescheduling to another date also incurs these fees.\n\nTime change on the day: ¥3,300 for first-time patients (moving your time by an hour or more).",
     "fees": "First-visit fee ¥3,630 (when a treatment is performed the same day). ¥11,000 if you book a consultation only, without treatment. Optional fee to request the clinic director (varies by treatment). Some treatments carry a 20% Saturday surcharge.",
-    "confirmed": false
+    "confirmed": true
   },
   {
     "id": "bianca-ginza",
