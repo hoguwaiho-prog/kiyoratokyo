@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#f6f3ec}
+  :focus-visible{outline:2px solid var(--accent,#2f4a3f);outline-offset:3px}
+  input::placeholder{color:#a8a89c}
+  .kt-cta{transition:transform .15s ease, opacity .15s ease}
+  .kt-cta:hover{transform:translateY(-1px);opacity:.94}
+  @keyframes ktReveal{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  /* Scroll-driven reveal. On browsers without animation-timeline the rule is
+     ignored and the 0s animation lands on its end state = fully visible. */
+  .kt-reveal{animation:ktReveal both;animation-timeline:view();animation-range:entry 2% cover 24%}
+  @media (max-width:760px){ .kt-nav-links{display:none!important} }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} .kt-cta{transition:none} .kt-reveal{animation:none} }
+</style>
+</helmet>
+
+<div id="top" style="--accent:#2f4a3f;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#20251f;background:#f6f3ec;-webkit-font-smoothing:antialiased;line-height:1.5">
+
+  <!-- ============ SITE HEADER ============ -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(246,243,236,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #e7e2d6">
+    <div style="max-width:1140px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <a href="#top" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#20251f">
+        <span style="width:32px;height:32px;border-radius:50%;border:1.5px solid var(--accent,#2f4a3f);display:flex;align-items:center;justify-content:center;font-family:Georgia,'Times New Roman',serif;font-style:italic;color:var(--accent,#2f4a3f);font-size:18px">K</span>
+        <span style="font-family:Georgia,'Times New Roman',serif;font-size:20px;letter-spacing:.01em">Kiyora <span style="color:var(--accent,#2f4a3f)">Tokyo</span></span>
+      </a>
+      <nav class="kt-nav-links" style="display:flex;gap:30px;font-size:14.5px">
+        <a href="#how" style="color:#4a4f49;text-decoration:none">How it works</a>
+        <a href="#clinics" style="color:#4a4f49;text-decoration:none">Clinics</a>
+        <a href="#pricing" style="color:#4a4f49;text-decoration:none">Pricing</a>
+        <a href="#about" style="color:#4a4f49;text-decoration:none">About</a>
+      </nav>
+      <button type="button" class="kt-cta" onClick="{{ goToFormPlain }}" style="background:var(--accent,#2f4a3f);color:#fff;border:none;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit">Get matched — free</button>
+    </div>
+  </header>
+
+  <!-- ============ HERO (value left, intake form right) ============ -->
+  <section style="max-width:1140px;margin:0 auto;padding:clamp(40px,6vw,72px) 24px clamp(36px,4vw,56px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,56px);align-items:start">
+
+      <div class="kt-reveal" style="padding-top:8px">
+        <div style="display:inline-flex;align-items:center;gap:8px;color:var(--accent,#2f4a3f);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px">
+          <span style="width:24px;height:1px;background:#b08d57"></span>Ginza &amp; Azabu · for visitors
+        </div>
+        <h1 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(32px,4.4vw,52px);line-height:1.07;letter-spacing:-.01em;margin:0 0 22px">{{ heroHeadline }}</h1>
+        <p style="font-size:clamp(16px,1.6vw,18.5px);color:#54584f;line-height:1.62;max-width:32em;margin:0 0 28px">Kiyora Tokyo matches you with hand-picked, English-speaking aesthetic clinics in Ginza &amp; Azabu — free, with no tourist markup. Tell us what you want and we'll send 1–3 clinics with prices and details.</p>
+        <div style="display:flex;flex-direction:column;gap:13px;max-width:30em">
+          <div style="display:flex;gap:13px;align-items:flex-start"><span style="color:var(--accent,#2f4a3f);font-size:17px;line-height:1.3">✓</span><span style="font-size:15px;color:#3a3f39">Every clinic is doctor-led and English-speaking</span></div>
+          <div style="display:flex;gap:13px;align-items:flex-start"><span style="color:var(--accent,#2f4a3f);font-size:17px;line-height:1.3">✓</span><span style="font-size:15px;color:#3a3f39">Non-surgical treatments, ¥15,000–¥150,000</span></div>
+          <div style="display:flex;gap:13px;align-items:flex-start"><span style="color:var(--accent,#2f4a3f);font-size:17px;line-height:1.3">✓</span><span style="font-size:15px;color:#3a3f39">100% free for visitors — no markup, ever</span></div>
+        </div>
+        <div style="margin-top:26px"><a href="#how" style="color:var(--accent,#2f4a3f);text-decoration:none;font-weight:600;font-size:15px;border-bottom:1px solid #c9bfa6;padding-bottom:2px">See how it works →</a></div>
+      </div>
+
+      <!-- ===== INTAKE FORM / THANK-YOU (id=match) ===== -->
+      <div id="match" style="scroll-margin-top:84px">
+
+        <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onSubmit }}" style="background:#fff;border:1px solid #e3ddcf;border-radius:20px;padding:clamp(20px,3vw,28px);display:flex;flex-direction:column;gap:18px;box-shadow:0 18px 50px rgba(31,40,33,.08)">
+          <div>
+            <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(23px,2.4vw,28px);margin:0 0 6px;letter-spacing:-.01em">Get matched — free</h2>
+            <p style="margin:0;color:#54584f;font-size:14.5px;line-height:1.55">Tell us what you're after. We'll send vetted clinics in Ginza &amp; Azabu within a few hours.</p>
+          </div>
+
+          <sc-if value="{{ clinicSelected }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#eef2ec;border:1px solid #d7e0d6;border-radius:10px;padding:9px 12px">
+              <span style="font-size:13.5px;color:#2f4a3f">Asking about <strong>{{ clinic }}</strong></span>
+              <button type="button" onClick="{{ clearClinic }}" aria-label="Clear clinic" style="background:none;border:none;color:#6c7a6c;cursor:pointer;font-size:18px;line-height:1;font-family:inherit">×</button>
+            </div>
+          </sc-if>
+
+          <label style="display:block">
+            <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">What treatment are you interested in?</span>
+            <select value="{{ treatment }}" onChange="{{ onTreatment }}" style="width:100%;padding:12px 13px;border:1px solid #ddd7c9;border-radius:10px;font-family:inherit;font-size:15px;background:#fff;color:#20251f">
+              <option value="">Select a treatment…</option>
+              <option value="Botox">Botox</option>
+              <option value="HIFU">HIFU</option>
+              <option value="Art Makeup">Art Makeup</option>
+              <option value="Laser">Laser</option>
+              <option value="Filler">Filler</option>
+              <option value="RF Microneedling">RF Microneedling</option>
+              <option value="Not sure yet">Not sure yet — recommend for me</option>
+            </select>
+          </label>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <label style="display:block">
+              <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">Area</span>
+              <select value="{{ area }}" onChange="{{ onArea }}" style="width:100%;padding:12px 13px;border:1px solid #ddd7c9;border-radius:10px;font-family:inherit;font-size:15px;background:#fff;color:#20251f">
+                <option value="Ginza">Ginza</option>
+                <option value="Azabu">Azabu</option>
+                <option value="No preference">No preference</option>
+              </select>
+            </label>
+            <div>
+              <span style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">Budget <span style="color:var(--accent,#2f4a3f)">{{ budgetLabel }}</span></span>
+              <input type="range" min="15000" max="150000" step="5000" value="{{ budget }}" onChange="{{ onBudget }}" style="width:100%;accent-color:var(--accent,#2f4a3f);margin-top:9px" />
+              <div style="display:flex;justify-content:space-between;font-size:11px;color:#9a9a8c;margin-top:1px"><span>¥15k</span><span>¥150k</span></div>
+            </div>
+          </div>
+
+          <div>
+            <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">When will you be in Tokyo?</span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <input type="date" value="{{ arrival }}" onChange="{{ onArrival }}" aria-label="Arrival date" style="width:100%;padding:11px 12px;border:1px solid #ddd7c9;border-radius:10px;font-family:inherit;font-size:14.5px;color:#20251f;background:#fff" />
+              <input type="date" value="{{ departure }}" onChange="{{ onDeparture }}" aria-label="Departure date" style="width:100%;padding:11px 12px;border:1px solid #ddd7c9;border-radius:10px;font-family:inherit;font-size:14.5px;color:#20251f;background:#fff" />
+            </div>
+            <div style="font-size:12.5px;color:#7a7e74;margin-top:7px">We'll hold a slot during your stay.</div>
+            <div style="font-size:12px;color:#8a8e84;margin-top:4px">Same-day requests: we'll do our best — next-day booking is guaranteed.</div>
+          </div>
+
+          <div>
+            <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">Preferred time</span>
+            <div style="display:flex;gap:7px;flex-wrap:wrap">
+              <sc-for list="{{ times }}" as="t" hint-placeholder-count="4">
+                <button type="button" onClick="{{ t.onSelect }}" style="{{ t.style }}">{{ t.name }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div>
+            <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">Preferred language</span>
+            <div style="display:flex;gap:7px;flex-wrap:wrap">
+              <sc-for list="{{ languages }}" as="l" hint-placeholder-count="4">
+                <button type="button" onClick="{{ l.onSelect }}" style="{{ l.style }}">{{ l.name }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div>
+            <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">How should we reach you?</span>
+            <div style="display:flex;gap:7px;flex-wrap:wrap">
+              <sc-for list="{{ methods }}" as="m" hint-placeholder-count="4">
+                <button type="button" onClick="{{ m.onSelect }}" style="{{ m.style }}">{{ m.name }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <label style="display:block">
+            <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">{{ contactLabel }}</span>
+            <input type="text" value="{{ contactDetail }}" onChange="{{ onContactDetail }}" placeholder="{{ contactPlaceholder }}" required="{{ true }}" style="width:100%;padding:12px 13px;border:1px solid #ddd7c9;border-radius:10px;font-family:inherit;font-size:15px;color:#20251f" />
+          </label>
+
+          <label style="display:block">
+            <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">Backup email or phone <span style="font-weight:400;color:#9a9a8c">{{ backupHint }}</span></span>
+            <input type="text" value="{{ backup }}" onChange="{{ onBackup }}" placeholder="So we can follow up if chat doesn't connect" required="{{ backupRequired }}" style="width:100%;padding:12px 13px;border:1px solid #ddd7c9;border-radius:10px;font-family:inherit;font-size:15px;color:#20251f" />
+          </label>
+
+          <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+            <input type="checkbox" checked="{{ policyAgreed }}" onChange="{{ onPolicyAgreed }}" required="{{ true }}" style="margin-top:3px;width:16px;height:16px;flex-shrink:0;accent-color:var(--accent,#2f4a3f)" />
+            <span style="font-size:13px;color:#54584f;line-height:1.5">I understand the clinic's cancellation policy and first-visit fee. <button type="button" onClick="{{ openPolicyModal }}" style="background:none;border:none;padding:0;color:var(--accent,#2f4a3f);text-decoration:underline;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600">View details</button></span>
+          </label>
+
+          <button type="submit" class="kt-cta" disabled="{{ submitDisabled }}" style="background:var(--accent,#2f4a3f);color:#fff;border:none;padding:15px;border-radius:12px;cursor:pointer;font-family:inherit;font-size:16px;font-weight:600">{{ submitLabel }}</button>
+          <sc-if value="{{ submitErr }}" hint-placeholder-val="{{ false }}">
+            <div style="text-align:center;font-size:13px;color:#9a5a3a">Something went wrong sending your request — please try again, or message us directly below.</div>
+          </sc-if>
+          <div style="text-align:center;font-size:12px;color:#7a7e74;line-height:1.5">Free · No markup for visitors · All clinics English-speaking · Based in Tokyo</div>
+        </form>
+        </sc-if>
+
+        <!-- ===== THANK-YOU STATE (no page reload) ===== -->
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #e3ddcf;border-radius:20px;padding:clamp(24px,3.5vw,34px);box-shadow:0 18px 50px rgba(31,40,33,.08)">
+          <div style="width:52px;height:52px;border-radius:50%;background:#e9f0ea;color:var(--accent,#2f4a3f);display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:16px">✓</div>
+          <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(23px,2.6vw,30px);margin:0 0 12px;letter-spacing:-.01em">Request received — let's finish in chat</h2>
+          <p style="margin:0 0 8px;color:#54584f;font-size:15.5px;line-height:1.6">You'll get the fastest reply by messaging us directly. Your details are already filled in — just hit send.</p>
+          <p style="margin:0 0 22px;color:#7a7e74;font-size:14px">Based in Tokyo (JST) — we usually reply within a few hours.</p>
+
+          <!-- WhatsApp: a real link with prefilled text -->
+          <sc-if value="{{ thanksIsLink }}" hint-placeholder-val="{{ false }}">
+            <a href="{{ thanksHref }}" target="_blank" rel="noopener" class="kt-cta" style="display:inline-block;background:var(--accent,#2f4a3f);color:#fff;text-decoration:none;padding:15px 30px;border-radius:12px;font-size:16px;font-weight:600">{{ thanksLabel }}</a>
+          </sc-if>
+          <!-- WeChat: opens modal (QR + ID + copyable message) -->
+          <sc-if value="{{ isWeChat }}" hint-placeholder-val="{{ false }}">
+            <button type="button" onClick="{{ openQr }}" class="kt-cta" style="background:var(--accent,#2f4a3f);color:#fff;border:none;padding:15px 30px;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit">{{ thanksLabel }}</button>
+          </sc-if>
+
+          <!-- LINE / WeChat: copyable message (these links can't carry text) -->
+          <sc-if value="{{ showCopyBox }}" hint-placeholder-val="{{ false }}">
+            <div style="margin:20px 0 0;text-align:left;background:#f7f5ef;border:1px solid #e7e2d6;border-radius:12px;padding:15px">
+              <div style="font-size:12.5px;font-weight:600;color:#2f342d;margin-bottom:7px">{{ copyBoxLabel }}</div>
+              <div style="font-size:14px;color:#54584f;line-height:1.55">{{ prefillText }}</div>
+              <button type="button" onClick="{{ onCopy }}" style="margin-top:11px;background:#fff;border:1px solid #d8d2c4;color:#2f4a3f;padding:8px 15px;border-radius:9px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600">{{ copyLabel }}</button>
+            </div>
+          </sc-if>
+
+          <!-- LINE: link to add as friend -->
+          <sc-if value="{{ isLine }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:14px"><a href="{{ lineHref }}" target="_blank" rel="noopener" style="color:var(--accent,#2f4a3f);font-weight:600;font-size:14.5px;text-decoration:none;border-bottom:1px solid #c9bfa6;padding-bottom:2px">Open LINE to add us first →</a></div>
+          </sc-if>
+
+          <!-- Email: confirmation note -->
+          <sc-if value="{{ isEmail }}" hint-placeholder-val="{{ false }}">
+            <div style="background:#eef2ec;border:1px solid #d7e0d6;border-radius:12px;padding:16px 18px;font-size:15px;color:#2f4a3f;line-height:1.55">{{ emailNote }}</div>
+          </sc-if>
+
+          <div style="margin-top:20px"><button type="button" onClick="{{ resetForm }}" style="background:none;border:none;color:#7a7e74;text-decoration:underline;cursor:pointer;font-family:inherit;font-size:13.5px">Submit another request</button></div>
+        </div>
+        </sc-if>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ TRUST STRIP ============ -->
+  <section style="border-top:1px solid #e7e2d6;border-bottom:1px solid #e7e2d6;background:#fbfaf5">
+    <div style="max-width:1140px;margin:0 auto;padding:22px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 28px">
+      <div style="display:flex;align-items:center;gap:11px"><span style="color:var(--accent,#2f4a3f);font-size:18px">✓</span><span style="font-size:14.5px;color:#3a3f39">Licensed doctors only — required by law in Japan</span></div>
+      <div style="display:flex;align-items:center;gap:11px"><span style="color:var(--accent,#2f4a3f);font-size:18px">✓</span><span style="font-size:14.5px;color:#3a3f39">Every clinic is English-speaking</span></div>
+      <div style="display:flex;align-items:center;gap:11px"><span style="color:var(--accent,#2f4a3f);font-size:18px">✓</span><span style="font-size:14.5px;color:#3a3f39">No tourist markup — same price as locals</span></div>
+      <div style="display:flex;align-items:center;gap:11px"><span style="color:var(--accent,#2f4a3f);font-size:18px">✓</span><span style="font-size:14.5px;color:#3a3f39">100% free for visitors</span></div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section id="how" style="max-width:1140px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px">
+    <div class="kt-reveal" style="text-align:center;margin-bottom:48px">
+      <div style="color:var(--accent,#2f4a3f);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">How it works</div>
+      <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(27px,3.4vw,40px);margin:0;letter-spacing:-.01em">From message to booked, in three steps</h2>
+    </div>
+    <div class="kt-reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px">
+      <div style="background:#fff;border:1px solid #e7e2d6;border-radius:16px;padding:30px 26px">
+        <div style="font-family:Georgia,serif;font-size:22px;color:#b08d57;margin-bottom:14px">01</div>
+        <h3 style="font-size:19px;margin:0 0 9px;font-weight:600">Tell us what you want</h3>
+        <p style="margin:0;color:#5a5f58;font-size:15px;line-height:1.65">Share your treatment, dates, and budget in the form — one quick request.</p>
+      </div>
+      <div style="background:#fff;border:1px solid #e7e2d6;border-radius:16px;padding:30px 26px">
+        <div style="font-family:Georgia,serif;font-size:22px;color:#b08d57;margin-bottom:14px">02</div>
+        <h3 style="font-size:19px;margin:0 0 9px;font-weight:600">Get matched, free</h3>
+        <p style="margin:0;color:#5a5f58;font-size:15px;line-height:1.65">We reply on your chosen app with 1–3 vetted clinics in Ginza or Azabu, with prices.</p>
+      </div>
+      <div style="background:#fff;border:1px solid #e7e2d6;border-radius:16px;padding:30px 26px">
+        <div style="font-family:Georgia,serif;font-size:22px;color:#b08d57;margin-bottom:14px">03</div>
+        <h3 style="font-size:19px;margin:0 0 9px;font-weight:600">We book it for you</h3>
+        <p style="margin:0;color:#5a5f58;font-size:15px;line-height:1.65">Pick your clinic and we'll arrange the appointment around your trip.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLINICS ============ -->
+  <section id="clinics" style="background:#fbfaf5;border-top:1px solid #e7e2d6;border-bottom:1px solid #e7e2d6">
+    <div style="max-width:1140px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px">
+      <div class="kt-reveal" style="margin-bottom:40px">
+        <div style="color:var(--accent,#2f4a3f);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">Partner clinics</div>
+        <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(27px,3.4vw,40px);margin:0 0 10px;letter-spacing:-.01em">Hand-picked clinics in Ginza &amp; Azabu</h2>
+        <p style="margin:0;max-width:42em;color:#54584f;font-size:16px;line-height:1.6">Doctor-led clinics we've personally vetted for English-speaking care and transparent, visitor-friendly pricing.</p>
+      </div>
+
+      <sc-if value="{{ clinicsLoading }}" hint-placeholder-val="{{ true }}">
+        <div style="text-align:center;padding:60px 0;color:#7a7e74;font-size:15px">Loading clinics…</div>
+      </sc-if>
+
+      <sc-if value="{{ clinicsError }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:48px 24px;background:#fff;border:1px solid #e7e2d6;border-radius:16px;color:#54584f">
+          <p style="margin:0 0 14px">We couldn't load the clinic list right now.</p>
+          <button type="button" class="kt-cta" onClick="{{ goToFormPlain }}" style="background:var(--accent,#2f4a3f);color:#fff;border:none;padding:12px 22px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:600">Get matched — free</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ clinicsReady }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px">
+          <sc-for list="{{ clinics }}" as="c" hint-placeholder-count="3">
+            <div class="kt-reveal" style="background:#fff;border:1px solid #e7e2d6;border-radius:18px;overflow:hidden;display:flex;flex-direction:column">
+              <div style="position:relative;aspect-ratio:16/10;background:#eef0e9;overflow:hidden">
+                <sc-if value="{{ c.hasPhotos }}" hint-placeholder-val="{{ false }}">
+                  <img src="{{ c.cover }}" alt="{{ c.photoAlt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" />
+                </sc-if>
+                <sc-if value="{{ c.noPhotos }}" hint-placeholder-val="{{ true }}">
+                  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(150deg,#eef0e9,#e4e7dd)">
+                    <span style="width:46px;height:46px;border-radius:50%;border:1.5px solid var(--accent,#2f4a3f);display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-style:italic;color:var(--accent,#2f4a3f);font-size:24px">K</span>
+                    <span style="font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:#8d8a78;letter-spacing:.04em">clinic photo</span>
+                  </div>
+                </sc-if>
+                <span style="position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);border-radius:999px;padding:5px 11px;font-size:12.5px;font-weight:600;color:#2f342d">📍 {{ c.areaLabel }}</span>
+              </div>
+
+              <div style="padding:22px;display:flex;flex-direction:column;gap:14px;flex:1">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+                  <div>
+                    <h3 style="margin:0;font-size:20px;font-family:Georgia,serif;font-weight:400">{{ c.name }}</h3>
+                    <div style="font-size:13px;color:#7a7e74;margin-top:3px">{{ c.treatmentsStr }}</div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0">
+                    <div style="font-size:12.5px;color:#7a7e74">From</div>
+                    <div style="font-size:15px;color:#2f342d;font-weight:700;white-space:nowrap">{{ c.priceShort }}</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid #f0ece1;border-bottom:1px solid #f0ece1;padding:12px 0">
+                  <sc-for list="{{ c.procedures }}" as="p" hint-placeholder-count="3">
+                    <div style="display:flex;justify-content:space-between;gap:12px;font-size:13.5px"><span style="color:#3a3f39">{{ p.name }}</span><span style="color:#2f342d;font-weight:600;white-space:nowrap">{{ p.price }}</span></div>
+                  </sc-for>
+                </div>
+
+                <div style="display:flex;flex-wrap:wrap;gap:7px">
+                  <sc-for list="{{ c.tagsView }}" as="t" hint-placeholder-count="2">
+                    <span style="{{ t.style }}">{{ t.text }}</span>
+                  </sc-for>
+                </div>
+
+                <!-- Real rating data only — shown just when the clinic actually has it -->
+                <sc-if value="{{ c.hasRating }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-size:13px;color:#5a5f58;font-style:italic;line-height:1.5">"{{ c.review }}"</div>
+                </sc-if>
+                <!-- No real rating yet: honest highlights instead of an unearned score -->
+                <sc-if value="{{ c.noRating }}" hint-placeholder-val="{{ true }}">
+                  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px">
+                    <sc-for list="{{ c.highlights }}" as="h" hint-placeholder-count="2">
+                      <li style="display:flex;gap:8px;font-size:13px;color:#3a3f39"><span style="color:var(--accent,#2f4a3f);flex-shrink:0">✓</span>{{ h }}</li>
+                    </sc-for>
+                  </ul>
+                </sc-if>
+
+                <div style="font-size:12.5px;color:#7a7e74;line-height:1.5"><strong style="color:#3a3f39">Access:</strong> {{ c.access }} <span style="display:block;margin-top:2px">{{ c.accessNote }}</span></div>
+
+                <div style="border-top:1px solid #f0ece1;padding-top:12px">
+                  <button type="button" onClick="{{ c.onToggleBooking }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:600;color:#2f342d">
+                    <span>Booking &amp; cancellation</span><span style="color:var(--accent,#2f4a3f);font-size:18px;line-height:1;flex-shrink:0">{{ c.bookingSign }}</span>
+                  </button>
+                  <sc-if value="{{ c.bookingOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top:10px;font-size:13px;color:#5a5f58;line-height:1.6">
+                      <div style="margin-bottom:8px">{{ c.cancellationText }}</div>
+                      <div>{{ c.feesText }}</div>
+                    </div>
+                  </sc-if>
+                </div>
+
+                <button type="button" onClick="{{ c.onAsk }}" class="kt-cta" style="margin-top:auto;text-align:center;background:#eef2ec;border:1px solid #d7e0d6;color:var(--accent,#2f4a3f);padding:12px;border-radius:11px;font-size:14.5px;font-weight:600;cursor:pointer;font-family:inherit">Ask about this clinic</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- ============ PRICING / TREATMENTS ============ -->
+  <section id="pricing" style="max-width:980px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px">
+    <div class="kt-reveal" style="text-align:center;margin-bottom:42px">
+      <div style="color:var(--accent,#2f4a3f);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">Treatments &amp; pricing</div>
+      <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(27px,3.4vw,40px);margin:0 0 10px;letter-spacing:-.01em">Non-surgical only · ¥15,000–¥150,000</h2>
+      <p style="margin:0 auto;max-width:38em;color:#54584f;font-size:16px;line-height:1.6">Transparent, visitor-friendly pricing. Representative starting prices below — your match confirms the exact figure, with no markup for visitors.</p>
+    </div>
+    <div class="kt-reveal" style="background:#fff;border:1px solid #e7e2d6;border-radius:16px;overflow:hidden">
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:0;background:#2f4a3f;color:#fff;font-size:13px;font-weight:600;letter-spacing:.03em">
+        <div style="padding:14px 20px">Treatment</div><div style="padding:14px 16px">From</div><div style="padding:14px 16px">Downtime</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:14.5px;border-bottom:1px solid #f0ece1"><div style="padding:15px 20px;font-weight:600">Laser (toning &amp; facials)</div><div style="padding:15px 16px;color:#2f4a3f;font-weight:600">¥15,000</div><div style="padding:15px 16px;color:#6c706a">Minimal</div></div>
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:14.5px;border-bottom:1px solid #f0ece1"><div style="padding:15px 20px;font-weight:600">Botox</div><div style="padding:15px 16px;color:#2f4a3f;font-weight:600">¥18,000</div><div style="padding:15px 16px;color:#6c706a">None</div></div>
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:14.5px;border-bottom:1px solid #f0ece1"><div style="padding:15px 20px;font-weight:600">RF Microneedling</div><div style="padding:15px 16px;color:#2f4a3f;font-weight:600">¥35,000</div><div style="padding:15px 16px;color:#6c706a">1–2 days</div></div>
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:14.5px;border-bottom:1px solid #f0ece1"><div style="padding:15px 20px;font-weight:600">Filler</div><div style="padding:15px 16px;color:#2f4a3f;font-weight:600">¥45,000</div><div style="padding:15px 16px;color:#6c706a">Minimal</div></div>
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:14.5px;border-bottom:1px solid #f0ece1"><div style="padding:15px 20px;font-weight:600">Art Makeup (brows &amp; lips)</div><div style="padding:15px 16px;color:#2f4a3f;font-weight:600">¥55,000</div><div style="padding:15px 16px;color:#6c706a">1–2 days</div></div>
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:14.5px"><div style="padding:15px 20px;font-weight:600">HIFU</div><div style="padding:15px 16px;color:#2f4a3f;font-weight:600">¥78,000</div><div style="padding:15px 16px;color:#6c706a">None</div></div>
+    </div>
+    <div style="text-align:center;margin-top:22px"><button type="button" class="kt-cta" onClick="{{ goToFormPlain }}" style="background:var(--accent,#2f4a3f);color:#fff;border:none;padding:14px 28px;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit">Get matched — free</button></div>
+  </section>
+
+  <!-- ============ DIFFERENTIATION ============ -->
+  <section style="background:#fbfaf5;border-top:1px solid #e7e2d6;border-bottom:1px solid #e7e2d6">
+    <div style="max-width:1140px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px">
+      <div class="kt-reveal" style="text-align:center;margin-bottom:42px">
+        <div style="color:var(--accent,#2f4a3f);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">Why Kiyora</div>
+        <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(27px,3.4vw,40px);margin:0 0 10px;letter-spacing:-.01em">One position no one else fills</h2>
+        <p style="margin:0 auto;max-width:40em;color:#54584f;font-size:16px;line-height:1.6">Travelers · non-surgical treatments · boutique clinics · English-speaking · free. Here's how that compares.</p>
+      </div>
+      <div class="kt-reveal" style="overflow-x:auto">
+        <div style="min-width:640px;background:#fff;border:1px solid #e7e2d6;border-radius:16px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr">
+            <div style="padding:16px 20px"></div>
+            <div style="padding:16px 14px;text-align:center;background:#2f4a3f;color:#fff;font-weight:700;font-family:Georgia,serif;font-size:16px">Kiyora Tokyo</div>
+            <div style="padding:16px 14px;text-align:center;color:#7a7e74;font-size:13px;font-weight:600">Large medical-travel agencies</div>
+            <div style="padding:16px 14px;text-align:center;color:#7a7e74;font-size:13px;font-weight:600">High-volume chains</div>
+          </div>
+          <sc-for list="{{ compareRows }}" as="r" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;border-top:1px solid #f0ece1;align-items:center">
+              <div style="padding:15px 20px;font-size:14.5px;font-weight:600;color:#2f342d">{{ r.label }}</div>
+              <div style="padding:15px 14px;text-align:center;background:#f3f6f2;color:var(--accent,#2f4a3f);font-size:18px;font-weight:700">{{ r.k }}</div>
+              <div style="padding:15px 14px;text-align:center;color:#b9b6a8;font-size:18px">{{ r.a }}</div>
+              <div style="padding:15px 14px;text-align:center;color:#b9b6a8;font-size:18px">{{ r.b }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" style="background:#2f4a3f;color:#f3f1e8">
+    <div style="max-width:1140px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(32px,5vw,60px);align-items:center">
+      <div class="kt-reveal">
+        <div style="color:#cdbb92;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px">Our story</div>
+        <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(26px,3.2vw,38px);margin:0 0 22px;line-height:1.18;letter-spacing:-.01em">It started with my own appointment in Ginza.</h2>
+        <p style="margin:0 0 16px;color:#d8d6c9;font-size:16px;line-height:1.72">I came to Tokyo as a visitor and booked Art Makeup at a small Ginza clinic. I expected to feel lost — instead the doctor explained everything in careful English, the room was immaculate, and the result was beautifully natural. No upsell, no markup, just real care.</p>
+        <p style="margin:0 0 24px;color:#d8d6c9;font-size:16px;line-height:1.72">I kept thinking: other visitors deserve to find this without the stress of guessing which clinic to trust. So I built Kiyora Tokyo — to introduce travelers to the clinics I'd send my own friends to, for free.</p>
+        <div style="font-family:Georgia,serif;font-style:italic;font-size:17px;color:#f3f1e8">— Founder, Kiyora Tokyo</div>
+      </div>
+      <div class="kt-reveal" style="aspect-ratio:1/1;border-radius:18px;background:repeating-linear-gradient(135deg,#3a5648,#3a5648 16px,#36513f 16px,#36513f 32px);display:flex;align-items:flex-end;padding:16px;border:1px solid #466253">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#bcc8bd;background:rgba(0,0,0,.2);padding:5px 9px;border-radius:6px">founder portrait</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section style="max-width:760px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px">
+    <div class="kt-reveal" style="text-align:center;margin-bottom:34px">
+      <div style="color:var(--accent,#2f4a3f);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">FAQ</div>
+      <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(27px,3.4vw,40px);margin:0;letter-spacing:-.01em">Good to know</h2>
+    </div>
+    <div style="border-top:1px solid #e7e2d6">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+        <div style="border-bottom:1px solid #e7e2d6">
+          <button type="button" onClick="{{ f.onToggle }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 4px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;font-size:17px;color:#20251f;font-weight:600">
+            <span>{{ f.q }}</span>
+            <span style="color:var(--accent,#2f4a3f);font-size:24px;flex-shrink:0;line-height:1">{{ f.sign }}</span>
+          </button>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 4px 22px;color:#5a5f58;font-size:15.5px;line-height:1.7">{{ f.a }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ BLOG ============ -->
+  <section style="background:#fbfaf5;border-top:1px solid #e7e2d6">
+    <div style="max-width:1140px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px">
+      <div class="kt-reveal" style="margin-bottom:34px">
+        <div style="color:var(--accent,#2f4a3f);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">From the journal</div>
+        <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(27px,3.4vw,40px);margin:0;letter-spacing:-.01em">Read before you book</h2>
+      </div>
+      <div class="kt-reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px">
+        <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
+          <a href="#" style="text-decoration:none;color:inherit;background:#fff;border:1px solid #e7e2d6;border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="aspect-ratio:16/9;background:repeating-linear-gradient(135deg,#ece6d8,#ece6d8 14px,#e6dfcf 14px,#e6dfcf 28px)"></div>
+            <div style="padding:20px">
+              <div style="font-size:12px;color:#b08d57;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:9px">{{ p.tag }} · {{ p.read }}</div>
+              <div style="font-family:Georgia,serif;font-size:18px;line-height:1.35">{{ p.title }}</div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:#20251f;color:#cfd2c9">
+    <div style="max-width:1140px;margin:0 auto;padding:clamp(48px,7vw,80px) 24px 32px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px;align-items:start">
+        <div>
+          <div style="font-family:Georgia,serif;font-size:24px;color:#fff;margin-bottom:12px">Kiyora <span style="color:#9db8a4">Tokyo</span></div>
+          <p style="margin:0 0 6px;font-size:14.5px;color:#a7aa9f;line-height:1.6;max-width:30em">English-speaking aesthetic clinic matching in Ginza &amp; Azabu. Free for visitors, with no markup.</p>
+          <div style="font-size:13px;color:#7e8177;margin-top:10px">Free · No markup for visitors · All clinics English-speaking</div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8b8e83;margin-bottom:14px">Chat with us</div>
+          <div style="display:flex;flex-direction:column;gap:10px;max-width:240px">
+            <button type="button" onClick="{{ goToFormPlain }}" style="display:flex;align-items:center;gap:10px;color:#e6e8df;background:#2c3129;border:1px solid #3a4036;padding:11px 14px;border-radius:10px;font-size:14.5px;font-weight:600;cursor:pointer;font-family:inherit;text-align:left"><span style="width:9px;height:9px;border-radius:50%;background:#25D366"></span>WhatsApp</button>
+            <button type="button" onClick="{{ goToFormPlain }}" style="display:flex;align-items:center;gap:10px;color:#e6e8df;background:#2c3129;border:1px solid #3a4036;padding:11px 14px;border-radius:10px;font-size:14.5px;font-weight:600;cursor:pointer;font-family:inherit;text-align:left"><span style="width:9px;height:9px;border-radius:50%;background:#06C755"></span>LINE</button>
+            <button type="button" onClick="{{ goToFormPlain }}" style="display:flex;align-items:center;gap:10px;color:#e6e8df;background:#2c3129;border:1px solid #3a4036;padding:11px 14px;border-radius:10px;font-size:14.5px;font-weight:600;cursor:pointer;font-family:inherit;text-align:left"><span style="width:9px;height:9px;border-radius:50%;background:#07C160"></span>WeChat</button>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8b8e83;margin-bottom:14px">Explore</div>
+          <div style="display:flex;flex-direction:column;gap:9px;font-size:14.5px">
+            <a href="#how" style="color:#cfd2c9;text-decoration:none">How it works</a>
+            <a href="#clinics" style="color:#cfd2c9;text-decoration:none">Clinics</a>
+            <a href="#pricing" style="color:#cfd2c9;text-decoration:none">Pricing</a>
+            <a href="#about" style="color:#cfd2c9;text-decoration:none">About</a>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:1px solid #34392f;margin-top:40px;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:#7e8177">
+        <span>© 2026 Kiyora Tokyo · kiyoratokyo.com</span>
+        <span>Tokyo (JST) · We usually reply within a few hours</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ FLOATING CHAT DOCK ============ -->
+  <div style="position:fixed;right:20px;bottom:20px;z-index:80;display:flex;flex-direction:column;align-items:flex-end;gap:12px">
+    <sc-if value="{{ chatOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="width:300px;max-width:calc(100vw - 40px);background:#fff;border:1px solid #e7e2d6;border-radius:18px;box-shadow:0 18px 50px rgba(31,40,33,.22);overflow:hidden">
+        <div style="background:var(--accent,#2f4a3f);color:#fff;padding:18px 20px;position:relative">
+          <div style="font-family:Georgia,serif;font-size:19px">Find your clinic in minutes</div>
+          <div style="font-size:12px;opacity:.86;margin-top:5px;line-height:1.4">Free · No markup for visitors · All clinics English-speaking</div>
+          <button type="button" onClick="{{ closeChat }}" aria-label="Close chat" style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,.18);border:none;color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:15px;line-height:1">×</button>
+        </div>
+        <div style="padding:14px;display:flex;flex-direction:column;gap:11px">
+          <p style="margin:0;font-size:13.5px;color:#54584f;line-height:1.55">Tell us what you're after in one quick form — then we'll continue on WhatsApp, LINE, or WeChat.</p>
+          <button type="button" onClick="{{ goToFormFromChat }}" class="kt-cta" style="background:var(--accent,#2f4a3f);color:#fff;border:none;border-radius:11px;padding:13px;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600">Start my request →</button>
+          <div style="display:flex;align-items:center;justify-content:center;gap:14px;padding-top:2px">
+            <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#7a7e74"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>WhatsApp</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#7a7e74"><span style="width:8px;height:8px;border-radius:50%;background:#06C755"></span>LINE</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#7a7e74"><span style="width:8px;height:8px;border-radius:50%;background:#07C160"></span>WeChat</span>
+          </div>
+        </div>
+        </div>
+      </div>
+    </sc-if>
+    <button type="button" onClick="{{ toggleChat }}" aria-label="Chat with us — free" style="display:flex;align-items:center;gap:10px;background:var(--accent,#2f4a3f);color:#fff;border:none;border-radius:999px;padding:14px 22px;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600;box-shadow:0 12px 30px rgba(31,40,33,.28)">
+      <span style="width:20px;height:18px;border-radius:6px 6px 6px 2px;background:#fff;display:inline-block;flex-shrink:0"></span>
+      Chat with us — free
+    </button>
+  </div>
+
+  <!-- ============ WECHAT QR MODAL ============ -->
+  <sc-if value="{{ qrOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeQr }}" style="position:fixed;inset:0;z-index:90;background:rgba(20,24,19,.55);display:flex;align-items:center;justify-content:center;padding:24px">
+      <div onClick="{{ stop }}" style="background:#fff;border-radius:18px;padding:30px;max-width:360px;width:100%;text-align:center;position:relative">
+        <button type="button" onClick="{{ closeQr }}" aria-label="Close" style="position:absolute;top:14px;right:14px;background:#f0ece1;border:none;color:#6c706a;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1">×</button>
+        <div style="font-family:Georgia,serif;font-size:22px;margin-bottom:6px">Add us on WeChat</div>
+        <div style="color:#7a7e74;font-size:14px;margin-bottom:20px">Scan the QR code, or add the ID below.</div>
+        <img src="wechat-qr.png" alt="Kiyora Tokyo WeChat QR code" style="width:200px;height:200px;margin:0 auto;border-radius:12px;border:1px solid #e0d9c9;display:block;background:#fff" />
+        <div style="margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-size:15px"><span>WeChat ID: <strong>{{ wechatId }}</strong></span><button type="button" onClick="{{ onCopyId }}" style="background:#fff;border:1px solid #d8d2c4;color:#2f4a3f;padding:6px 12px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:600">{{ idCopyLabel }}</button></div>
+        <div style="margin-top:18px;text-align:left;background:#f7f5ef;border:1px solid #e7e2d6;border-radius:12px;padding:14px">
+          <div style="font-size:12.5px;font-weight:600;color:#2f342d;margin-bottom:7px">Then paste this message:</div>
+          <div style="font-size:13.5px;color:#54584f;line-height:1.55">{{ prefillText }}</div>
+          <button type="button" onClick="{{ onCopy }}" style="margin-top:11px;background:#fff;border:1px solid #d8d2c4;color:#2f4a3f;padding:8px 15px;border-radius:9px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600">{{ copyLabel }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ CANCELLATION POLICY MODAL (opened via "View details", never auto-shown) ============ -->
+  <sc-if value="{{ policyModalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closePolicyModal }}" style="position:fixed;inset:0;z-index:90;background:rgba(20,24,19,.55);display:flex;align-items:center;justify-content:center;padding:24px">
+      <div onClick="{{ stop }}" style="background:#fff;border-radius:18px;padding:30px;max-width:440px;width:100%;text-align:left;position:relative;max-height:80vh;overflow-y:auto">
+        <button type="button" onClick="{{ closePolicyModal }}" aria-label="Close" style="position:absolute;top:14px;right:14px;background:#f0ece1;border:none;color:#6c706a;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1">×</button>
+        <div style="font-family:Georgia,serif;font-size:21px;margin-bottom:4px">Cancellation policy &amp; fees</div>
+        <div style="color:#7a7e74;font-size:13px;margin-bottom:18px">{{ policyClinicLabel }}</div>
+        <div style="font-size:14px;color:#3a3f39;line-height:1.65;margin-bottom:16px">{{ policyCancellationText }}</div>
+        <div style="font-size:14px;color:#3a3f39;line-height:1.65;margin-bottom:18px">{{ policyFeesText }}</div>
+        <div style="background:#eef2ec;border:1px solid #d7e0d6;border-radius:12px;padding:14px 16px;font-size:13.5px;color:#2f4a3f;line-height:1.55">Kiyora's service is free. Clinic fees (e.g. a first-visit fee) are paid directly to the clinic.</div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1280, &quot;height&quot;: 3200 },
+  &quot;accentColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#2f4a3f&quot;, &quot;options&quot;: [&quot;#2f4a3f&quot;, &quot;#3b4a5a&quot;, &quot;#6b4f33&quot;, &quot;#4a3b52&quot;], &quot;tsType&quot;: &quot;string&quot; },
+  &quot;heroHeadline&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Finding a clinic you can trust shouldn't be the hardest part of your trip.&quot;, &quot;tsType&quot;: &quot;string&quot; }
+}">
+class Component extends DCLogic {
+  /* =====================================================================
+     CHAT ACCOUNTS — single place to swap, per channel behaviour below
+     ---------------------------------------------------------------------
+     WHATSAPP_NUMBER  : international number, digits only (no + / spaces).
+                        Used as  wa.me/<number>?text=<URL-encoded message>.
+     LINE_FRIEND_URL  : LINE "add friend" URL. LINE links CANNOT carry a
+                        prefilled message, so the button just navigates here
+                        and the thank-you screen shows a copyable message.
+     WECHAT_ID        : WeChat ID. WeChat does NOT navigate — buttons open a
+                        modal with the QR image + ID + copyable message.
+     WECHAT_QR_IMG    : QR image file in the project root.
+     FORMSPREE_URL    : AJAX endpoint for the intake form (no page reload).
+     ===================================================================== */
+  WHATSAPP_NUMBER = '819011479299';
+  LINE_FRIEND_URL = 'https://lin.ee/ri562ei';
+  WECHAT_ID = 'Kiyora_Tokyo';
+  WECHAT_QR_IMG = 'wechat-qr.png';
+  FORMSPREE_URL = 'https://formspree.io/f/xlgodkel';
+
+  // Shown in the cancellation-policy modal when no clinic is selected yet,
+  // or a loaded clinic is missing its own cancellation/fees text.
+  DEFAULT_CANCELLATION = 'Free to cancel or reschedule up to 24 hours before your appointment. Cancelling within 24 hours, or not showing up, may incur the clinic’s first-visit fee.';
+  DEFAULT_FEES = 'A first-visit fee (typically ¥3,000–¥5,000) may apply for new patients, payable directly to the clinic and separate from the treatment price.';
+
+  state = {
+    clinicsData: null,    // null = loading, 'error' = failed, [] = loaded
+    treatment: '',
+    area: 'No preference',
+    budget: 60000,
+    arrival: '',
+    departure: '',
+    contactMethod: 'WhatsApp',
+    time: 'Flexible',
+    language: 'English',
+    contactDetail: '',
+    backup: '',
+    clinic: '',           // set when "Ask about this clinic" is used
+    policyAgreed: false,  // cancellation-policy consent checkbox, required to submit
+    policyModalOpen: false,
+    openBookingId: null,  // which clinic card's "Booking & cancellation" panel is open
+    submitting: false,
+    submitted: false,
+    submitErr: false,
+    faqOpen: 0,
+    chatOpen: false,
+    qrOpen: false,
+    copied: false,
+  };
+
+  componentDidMount() {
+    fetch('clinics.json')
+      .then(r => { if (!r.ok) throw new Error('http'); return r.json(); })
+      .then(d => this.setState({ clinicsData: Array.isArray(d) ? d : 'error' }))
+      .catch(() => this.setState({ clinicsData: 'error' }));
+    this.applyAccent();
+  }
+
+  componentWillUnmount() { clearTimeout(this._ct); }
+
+  // The accent is written literally in the template so it paints immediately;
+  // the prop only overrides it after mount (Tweaks panel changes).
+  componentDidUpdate() { this.applyAccent(); }
+  applyAccent() {
+    const a = this.props.accentColor;
+    const el = document.getElementById('top');
+    if (el && a) el.style.setProperty('--accent', a);
+  }
+
+  /* ---- text helpers ---- */
+  budgetLabel() { return '\u00a5' + Number(this.state.budget).toLocaleString('en-US'); }
+  areaText() { return this.state.area === 'No preference' ? 'Ginza or Azabu' : this.state.area; }
+  hasDates() { return !!(this.state.arrival || this.state.departure); }
+  fmtDates() {
+    const mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const p = s => { if (!s) return null; const d = new Date(s + 'T00:00'); if (isNaN(d.getTime())) return null; return { m: mo[d.getMonth()], day: d.getDate() }; };
+    const a = p(this.state.arrival), b = p(this.state.departure);
+    if (a && b) return a.m === b.m ? (a.m + ' ' + a.day + '\u2013' + b.day) : (a.m + ' ' + a.day + ' \u2013 ' + b.m + ' ' + b.day);
+    if (a) return 'from ' + a.m + ' ' + a.day;
+    if (b) return 'until ' + b.m + ' ' + b.day;
+    return 'my trip dates';
+  }
+
+  /* ---- prefilled chat message, built from whatever the form holds ---- */
+  buildMessage() {
+    const clinic = this.state.clinic;
+    const t = this.state.treatment;
+    const treatment = (t && t !== 'Not sure yet') ? t : null;
+    const parts = [];
+    if (clinic) parts.push('interested in ' + clinic);
+    else if (treatment) parts.push('interested in ' + treatment);
+    if (clinic && treatment) parts.push('for ' + treatment);
+    parts.push('in ' + this.areaText());
+    parts.push('budget around ' + this.budgetLabel());
+    if (this.hasDates()) parts.push('in Tokyo on ' + this.fmtDates());
+    const hasContent = clinic || treatment || this.hasDates();
+    const detail = hasContent
+      ? ("I'm " + parts.join(', ') + ". Could you confirm availability during my stay and the cost?")
+      : ("I'm visiting Tokyo and looking for an English-speaking aesthetic clinic. Could you help me find the right one?");
+    return "Hi Kiyora \u2014 I just submitted a request. " + detail;
+  }
+  // Generic message for the always-on floating dock (no form input).
+  genericMessage() {
+    return "Hi Kiyora \u2014 I'm visiting Tokyo and looking for an English-speaking aesthetic clinic. Could you help me find the right one?";
+  }
+
+  /* ---- link builders ---- */
+  waLink(msg) { return 'https://wa.me/' + this.WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg); }
+  lineLink() { return this.LINE_FRIEND_URL; }
+
+  /* ---- navigation ---- */
+  scrollToForm() {
+    const el = document.getElementById('match');
+    if (el) { const y = el.getBoundingClientRect().top + window.pageYOffset - 76; window.scrollTo({ top: y, behavior: 'smooth' }); }
+  }
+  goToFormPlain = () => { this.setState({ clinic: '', submitted: false }); setTimeout(() => this.scrollToForm(), 30); };
+  goToFormFromChat = () => { this.setState({ chatOpen: false }); setTimeout(() => this.scrollToForm(), 30); };
+  askAboutClinic = (name) => {
+    this.setState({ clinic: name, submitted: false, chatOpen: false });
+    setTimeout(() => this.scrollToForm(), 30);
+  };
+  clearClinic = () => this.setState({ clinic: '' });
+
+  /* ---- cancellation-policy consent ---- */
+  onPolicyAgreed = (e) => this.setState({ policyAgreed: e.target.checked });
+  openPolicyModal = () => this.setState({ policyModalOpen: true });
+  closePolicyModal = () => this.setState({ policyModalOpen: false });
+  policyContent() {
+    const data = Array.isArray(this.state.clinicsData) ? this.state.clinicsData : [];
+    const match = this.state.clinic ? data.find(c => c.name === this.state.clinic) : null;
+    return {
+      cancellation: (match && match.cancellation) || this.DEFAULT_CANCELLATION,
+      fees: (match && match.fees) || this.DEFAULT_FEES,
+    };
+  }
+  toggleBooking = (id) => this.setState(s => ({ openBookingId: s.openBookingId === id ? null : id }));
+
+  /* ---- chat dock / modal ---- */
+  openChat = () => this.setState({ chatOpen: true });
+  closeChat = () => this.setState({ chatOpen: false });
+  toggleChat = () => this.setState(s => ({ chatOpen: !s.chatOpen }));
+  openQr = () => this.setState({ qrOpen: true, chatOpen: false });
+  closeQr = () => this.setState({ qrOpen: false });
+  stop = (e) => e.stopPropagation();
+  copyMsg = () => {
+    const t = this.buildMessage();
+    try { if (navigator.clipboard) navigator.clipboard.writeText(t); } catch (e) {}
+    this.setState({ copied: true });
+    clearTimeout(this._ct);
+    this._ct = setTimeout(() => this.setState({ copied: false }), 2200);
+  };
+  copyId = () => {
+    try { if (navigator.clipboard) navigator.clipboard.writeText(this.WECHAT_ID); } catch (e) {}
+    this.setState({ idCopied: true });
+    clearTimeout(this._ci);
+    this._ci = setTimeout(() => this.setState({ idCopied: false }), 2200);
+  };
+
+  /* ---- form field handlers ---- */
+  field = (key) => (e) => this.setState({ [key]: e.target.value });
+  resetForm = () => this.setState({ submitted: false, submitErr: false });
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    if (this.state.submitting || !this.state.policyAgreed) return;
+    const message = this.buildMessage();
+    const payload = {
+      treatment: this.state.treatment || '(not specified)',
+      clinic: this.state.clinic || '(no specific clinic)',
+      area: this.state.area,
+      budget: this.budgetLabel(),
+      dates: this.hasDates() ? this.fmtDates() : '(not specified)',
+      time: this.state.time,
+      language: this.state.language,
+      contactMethod: this.state.contactMethod,
+      contactDetail: this.state.contactDetail,
+      backup: this.state.backup,
+      email: this.state.contactMethod === 'Email' ? this.state.contactDetail : this.state.backup,
+      message: message,
+    };
+    this.setState({ submitting: true, submitErr: false });
+    fetch(this.FORMSPREE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then(r => {
+        if (r.ok) this.setState({ submitted: true, submitting: false });
+        else this.setState({ submitting: false, submitErr: true });
+      })
+      .catch(() => this.setState({ submitting: false, submitErr: true }));
+  };
+
+  renderVals() {
+    const accent = this.props.accentColor || '#2f4a3f';
+    const method = this.state.contactMethod;
+
+    // contact-method segmented control
+    const methods = ['WhatsApp', 'LINE', 'WeChat', 'Email'].map(m => ({
+      name: m,
+      onSelect: () => this.setState({ contactMethod: m }),
+      style: {
+        flex: '1 1 0', minWidth: '74px', padding: '11px 8px', cursor: 'pointer',
+        border: '1px solid ' + (m === method ? accent : '#ddd7c9'),
+        background: m === method ? accent : '#fff',
+        color: m === method ? '#fff' : '#4a4f49',
+        borderRadius: '10px', fontWeight: 600, fontSize: '14px', fontFamily: 'inherit',
+      },
+    }));
+    // shared pill-style segmented control builder (matches contact method)
+    const pill = (list, selected, key) => list.map(v => ({
+      name: v,
+      onSelect: () => this.setState({ [key]: v }),
+      style: {
+        flex: '1 1 0', minWidth: '74px', padding: '11px 8px', cursor: 'pointer',
+        border: '1px solid ' + (v === selected ? accent : '#ddd7c9'),
+        background: v === selected ? accent : '#fff',
+        color: v === selected ? '#fff' : '#4a4f49',
+        borderRadius: '10px', fontWeight: 600, fontSize: '14px', fontFamily: 'inherit',
+      },
+    }));
+    const times = pill(['Morning', 'Afternoon', 'Evening', 'Flexible'], this.state.time, 'time');
+    const languages = pill(['English', '\u65e5\u672c\u8a9e', '\u4e2d\u6587', 'Other'], this.state.language, 'language');
+
+    const placeholders = { WhatsApp: 'Your WhatsApp number (e.g. +1 555 0123)', LINE: 'Your LINE ID', WeChat: 'Your WeChat ID', Email: 'Your email address' };
+    const labels = { WhatsApp: 'Your WhatsApp number', LINE: 'Your LINE ID', WeChat: 'Your WeChat ID', Email: 'Your email address' };
+    const backupRequired = method !== 'Email';
+
+    // thank-you CTA per channel
+    let thanksLabel = 'Send on WhatsApp', thanksHref = this.waLink(this.buildMessage());
+    if (method === 'LINE') { thanksLabel = 'Add us on LINE'; thanksHref = this.lineLink(); }
+    else if (method === 'WeChat') { thanksLabel = 'Open WeChat'; thanksHref = '#'; }
+    else if (method === 'Email') { thanksLabel = ''; thanksHref = '#'; }
+    const thanksIsLink = method === 'WhatsApp';
+
+    // clinics
+    const data = this.state.clinicsData;
+    const loading = data === null;
+    const error = data === 'error';
+    const ready = Array.isArray(data) && data.length > 0;
+    const tagColors = {
+      english: { bg: '#e9f0ea', fg: '#2f4a3f' },
+      transparent: { bg: '#e9f0ea', fg: '#2f4a3f' },
+      discreet: { bg: '#efece5', fg: '#6c706a' },
+    };
+    const clinics = ready ? data.map(c => {
+      const photos = Array.isArray(c.photos) ? c.photos : [];
+      // Never show a rating/review unless real data is present for this clinic \u2014
+      // fall back to plain-text highlights instead of implying an unearned score.
+      const hasRating = !!(c.rating && c.ratingBreakdown);
+      const bookingOpen = this.state.openBookingId === c.id;
+      return {
+        name: c.name, areaLabel: c.areaLabel,
+        priceShort: c.priceLabel ? c.priceLabel.replace(/^From\s*/i, '') : '',
+        procedures: c.procedures || [],
+        treatmentsStr: (c.treatments || []).join('  \u00b7  '),
+        hasPhotos: photos.length > 0, noPhotos: photos.length === 0,
+        cover: photos[0] || '', photoAlt: c.name + ' \u2014 ' + c.areaLabel,
+        tagsView: (c.tags || []).map(t => {
+          const col = tagColors[t.cls] || { bg: '#efece5', fg: '#6c706a' };
+          return { text: t.text, style: { background: col.bg, color: col.fg, padding: '5px 11px', borderRadius: '999px', fontSize: '12px', fontWeight: 600 } };
+        }),
+        hasRating, noRating: !hasRating,
+        rating: c.rating, review: c.review, ratingBreakdown: c.ratingBreakdown || {},
+        highlights: Array.isArray(c.highlights) ? c.highlights : [],
+        access: c.access || '', accessNote: c.accessNote || '',
+        bookingOpen, bookingSign: bookingOpen ? '\u2212' : '+',
+        onToggleBooking: () => this.toggleBooking(c.id),
+        cancellationText: c.cancellation || this.DEFAULT_CANCELLATION,
+        feesText: c.fees || this.DEFAULT_FEES,
+        onAsk: () => this.askAboutClinic(c.name),
+      };
+    }) : [];
+
+    // FAQ
+    const faqData = [
+      { q: 'Are these treatments safe and performed by licensed doctors?', a: 'Yes. In Japan, every aesthetic procedure is legally required to be carried out under a licensed physician. Every clinic we match you with is doctor-led and fully licensed.' },
+      { q: 'Will the clinic speak English?', a: 'Always. We only partner with clinics that have English-speaking staff, so you can ask questions and give consent with full confidence.' },
+      { q: 'How do I pay, and are prices higher for visitors?', a: 'You pay the clinic directly at your appointment. Prices are the same as for local patients — there is no tourist markup, and our matching service is free.' },
+      { q: 'Why is the service free?', a: 'Clinics partner with us to reach English-speaking visitors, so you never pay Kiyora anything. Our recommendations stay independent and based on what fits you.' },
+      { q: 'Can I really get treated during a short trip?', a: 'Yes. The treatments we cover are non-surgical with little to no downtime. Tell us your dates and we will hold a slot that fits your itinerary.' },
+    ];
+    const faqs = faqData.map((f, i) => ({
+      q: f.q, a: f.a, open: this.state.faqOpen === i,
+      sign: this.state.faqOpen === i ? '\u2212' : '+',
+      onToggle: () => this.setState(s => ({ faqOpen: s.faqOpen === i ? -1 : i })),
+    }));
+
+    const compareRows = [
+      { label: 'Light, non-surgical treatments', k: '\u2713', a: '\u2715', b: '\u2713' },
+      { label: 'Boutique, personal care', k: '\u2713', a: '\u2715', b: '\u2715' },
+      { label: 'English-speaking, guaranteed', k: '\u2713', a: '\u2713', b: '\u2715' },
+      { label: "Built around travelers' dates", k: '\u2713', a: '\u2715', b: '\u2715' },
+      { label: 'Free, with no markup', k: '\u2713', a: '\u2715', b: '\u2715' },
+    ];
+
+    const posts = [
+      { tag: 'Guide', read: '5 min read', title: 'What to expect from Botox in Tokyo' },
+      { tag: 'Guide', read: '7 min read', title: "Art Makeup: a visitor's guide to brows & lips" },
+      { tag: 'Treatments', read: '6 min read', title: 'Is HIFU worth it on a short trip?' },
+      { tag: 'Areas', read: '4 min read', title: 'Ginza vs Azabu: where to get treated' },
+      { tag: 'Safety', read: '5 min read', title: "How Japan's medical licensing keeps you safe" },
+      { tag: 'Money', read: '3 min read', title: 'Paying as a visitor: no markup, explained' },
+    ];
+
+    return {
+      accent,
+      heroHeadline: this.props.heroHeadline || "Finding a clinic you can trust shouldn't be the hardest part of your trip.",
+      // form
+      formOpen: !this.state.submitted,
+      clinicSelected: !!this.state.clinic, clinic: this.state.clinic, clearClinic: this.clearClinic,
+      treatment: this.state.treatment, area: this.state.area, budget: this.state.budget,
+      budgetLabel: this.budgetLabel(), arrival: this.state.arrival, departure: this.state.departure,
+      contactDetail: this.state.contactDetail, backup: this.state.backup,
+      onTreatment: this.field('treatment'), onArea: this.field('area'),
+      onBudget: (e) => this.setState({ budget: parseInt(e.target.value, 10) }),
+      onArrival: this.field('arrival'), onDeparture: this.field('departure'),
+      onContactDetail: this.field('contactDetail'), onBackup: this.field('backup'),
+      methods, times, languages,
+      contactPlaceholder: placeholders[method], contactLabel: labels[method],
+      backupRequired, backupHint: backupRequired ? '(required)' : '(optional)',
+      onSubmit: this.onSubmit, submitting: this.state.submitting, submitErr: this.state.submitErr,
+      submitLabel: this.state.submitting ? 'Sending\u2026' : 'Find my clinic',
+      // cancellation-policy consent
+      policyAgreed: this.state.policyAgreed, onPolicyAgreed: this.onPolicyAgreed,
+      submitDisabled: this.state.submitting || !this.state.policyAgreed,
+      policyModalOpen: this.state.policyModalOpen, openPolicyModal: this.openPolicyModal, closePolicyModal: this.closePolicyModal,
+      policyClinicLabel: this.state.clinic ? ('For ' + this.state.clinic) : 'Representative policy \u2014 confirmed for your specific clinic after matching.',
+      policyCancellationText: this.policyContent().cancellation, policyFeesText: this.policyContent().fees,
+      // thank-you
+      submitted: this.state.submitted,
+      thanksLabel, thanksHref, thanksIsLink,
+      isWeChat: method === 'WeChat', isLine: method === 'LINE', isEmail: method === 'Email',
+      showCopyBox: method === 'LINE' || method === 'WeChat',
+      copyBoxLabel: method === 'LINE' ? 'Paste this into LINE:' : 'Paste this into WeChat:',
+      prefillText: this.buildMessage(),
+      copyLabel: this.state.copied ? 'Copied \u2713' : 'Copy message',
+      lineHref: this.lineLink(),
+      emailNote: 'We\u2019ve got your request and will reply to ' + (this.state.contactDetail || 'your email') + ' within a few hours (JST).',
+      wechatId: this.WECHAT_ID, onCopy: this.copyMsg, resetForm: this.resetForm,
+      onCopyId: this.copyId, idCopyLabel: this.state.idCopied ? 'Copied \u2713' : 'Copy ID',
+      // clinics
+      clinicsLoading: loading, clinicsError: error, clinicsReady: ready, clinics,
+      // sections
+      faqs, compareRows, posts,
+      // chat dock + nav
+      chatOpen: this.state.chatOpen, openChat: this.openChat, closeChat: this.closeChat, toggleChat: this.toggleChat,
+      goToFormPlain: this.goToFormPlain, goToFormFromChat: this.goToFormFromChat,
+      waB: this.waLink(this.genericMessage()),
+      qrOpen: this.state.qrOpen, openQr: this.openQr, closeQr: this.closeQr, stop: this.stop,
+    };
+  }
+}
+</script>
+</body>
+</html>
