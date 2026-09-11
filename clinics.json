@@ -6,7 +6,7 @@
     "areaLabel": "Ginza",
     "priceFrom": 29800,
     "priceLabel": "From ¥29,800",
-    "photos": ["images/yoshiki.jpg"],
+    "photos": [],
     "url": "#",
     "treatments": [
       "Botox",
@@ -77,7 +77,7 @@
     "areaLabel": "Ginza",
     "priceFrom": 22000,
     "priceLabel": "From ¥22,000",
-    "photos": ["images/bianca.jpg"],
+    "photos": [],
     "url": "#",
     "treatments": [
       "Art Makeup",
@@ -132,7 +132,7 @@
     "areaLabel": "Azabu",
     "priceFrom": 25000,
     "priceLabel": "From ¥25,000",
-    "photos": ["images/azabu.jpg"],
+    "photos": [],
     "url": "#",
     "treatments": [
       "HIFU",
@@ -187,7 +187,7 @@
     "areaLabel": "Ginza",
     "priceFrom": 15000,
     "priceLabel": "From ¥15,000",
-    "photos": ["images/tokyo-ginza.jpg"],
+    "photos": [],
     "url": "#",
     "treatments": [
       "Laser",
@@ -242,7 +242,7 @@
     "areaLabel": "Jiyugaoka",
     "priceFrom": 16000,
     "priceLabel": "From ¥16,000",
-    "photos": ["images/jiyugaoka.jpg"],
+    "photos": [],
     "url": "#",
     "treatments": [
       "Laser",
