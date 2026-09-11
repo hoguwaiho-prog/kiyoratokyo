@@ -1,312 +1,293 @@
 [
   {
-    "id": 1,
-    "name": "Yoshiki Ginza Clinic",
-    "area": "Ginza",
-    "areaLabel": "Ginza, Chuo-ku \u00b7 2 min from Ginza St.",
-    "rating": 4.8,
-    "priceFrom": 15000,
-    "priceLabel": "From \u00a515,000 / session",
-    "photo": "/images/yoshiki.jpg",
-    "review": "English & Chinese staff available. Same-day appointments possible. Art Makeup by certified specialists.",
-    "url": "https://yoshiki-clinic.com/",
+    "id": "yoshiki-ginza",
+    "name": "Yoshiki Ginza",
+    "area": "ginza",
+    "areaLabel": "Ginza",
+    "priceFrom": 29800,
+    "priceLabel": "From ¥29,800",
+    "photos": [],
+    "url": "#",
     "treatments": [
-      "facial",
-      "anti-aging",
-      "artmakeup",
-      "laser"
+      "Botox",
+      "HIFU",
+      "Photofacial",
+      "Pico laser"
     ],
-    "foreignerCount": 320,
-    "nextAvailable": "Today",
-    "ratingBreakdown": {
-      "service": 4.9,
-      "cleanliness": 4.8,
-      "english": 4.8
-    },
     "tags": [
       {
-        "cls": "tag-green",
-        "text": "\ud83c\uddec\ud83c\udde7 English OK"
+        "cls": "english",
+        "text": "English-speaking"
       },
       {
-        "cls": "tag-urgent",
-        "text": "\ud83d\udd25 Same-day available"
-      },
-      {
-        "cls": "tag-gold",
-        "text": "\u270f\ufe0f Art Makeup Specialist"
-      },
-      {
-        "cls": "tag-blue",
-        "text": "\ud83d\udc89 Botox / HIFU / Laser"
+        "cls": "transparent",
+        "text": "No tourist markup"
       }
     ],
     "procedures": [
       {
-        "name": "Art Makeup (Eyebrow)",
-        "price": "From \u00a555,000",
+        "name": "Botox — forehead / glabella / crow's feet",
+        "price": "¥36,300",
         "downtime": "None"
       },
       {
-        "name": "Botox Injection",
-        "price": "From \u00a522,000",
+        "name": "Botox — chin / philtrum",
+        "price": "¥24,200",
         "downtime": "None"
       },
       {
-        "name": "HIFU Lift",
-        "price": "From \u00a570,000",
+        "name": "HIFU — full face",
+        "price": "¥205,700",
         "downtime": "None"
       },
       {
-        "name": "Laser (Spot)",
-        "price": "From \u00a515,000",
-        "downtime": "3-5 days"
+        "name": "HIFU — cheeks",
+        "price": "¥84,700",
+        "downtime": "None"
       },
       {
-        "name": "Hyaluronic Acid",
-        "price": "From \u00a555,000",
-        "downtime": "1-2 days"
+        "name": "Photofacial STELLAR M22 — full face",
+        "price": "¥55,000",
+        "downtime": "Minimal"
+      },
+      {
+        "name": "Pico laser — whitening, full face",
+        "price": "¥29,800",
+        "downtime": "Minimal"
       }
-    ]
+    ],
+    "rating": null,
+    "review": null,
+    "ratingBreakdown": null,
+    "highlights": [
+      "Doctor-led, English consultation",
+      "Non-surgical menu only",
+      "Same-price policy for visitors"
+    ],
+    "access": "5 min walk from Ginza Station (Exit A3) · 5 min from Shimbashi Station",
+    "accessNote": "There is no entrance on Chuo-dori. Enter from the Hanatsubaki-dori side street, walk through the parking area, and take the elevator at the back.",
+    "cancellation": "Free until 3 days before. ¥5,500 from 2 days before until 12:00 the previous day. ¥11,000 from 12:00 to 19:00 the previous day. ¥22,000 on the day, or for no-shows. Free if you cancel within 12 hours of booking. Rescheduling to another date also incurs these fees.\n\nTime change on the day: ¥3,300 for first-time patients (moving your time by an hour or more).",
+    "fees": "First-visit fee ¥3,630 (when a treatment is performed the same day). ¥11,000 if you book a consultation only, without treatment. Optional fee to request the clinic director (varies by treatment). Some treatments carry a 20% Saturday surcharge.",
+    "confirmed": false
   },
   {
-    "id": 2,
-    "name": "BIANCA Clinic Ginza",
-    "area": "Ginza",
-    "areaLabel": "Ginza, Chuo-ku \u00b7 1 min from Ginza-itchome St.",
-    "rating": 4.9,
-    "priceFrom": 20000,
-    "priceLabel": "Consultation Free / from \u00a520,000",
-    "photo": "/images/bianca.jpg",
-    "review": "Gorgeous space \u2014 clean, welcoming, never pushy. English interpreters available throughout.",
-    "url": "https://biancaclinic-tokyo.com/",
+    "id": "bianca-ginza",
+    "name": "BIANCA Ginza",
+    "area": "ginza",
+    "areaLabel": "Ginza",
+    "priceFrom": 22000,
+    "priceLabel": "From ¥22,000",
+    "photos": [],
+    "url": "#",
     "treatments": [
-      "facial",
-      "anti-aging",
-      "laser"
+      "Art Makeup",
+      "Botox",
+      "Laser"
     ],
-    "foreignerCount": 890,
-    "nextAvailable": "Tomorrow",
-    "ratingBreakdown": {
-      "service": 4.9,
-      "cleanliness": 4.9,
-      "english": 4.9
-    },
     "tags": [
       {
-        "cls": "tag-green",
-        "text": "\ud83c\uddec\ud83c\udde7 English OK"
+        "cls": "english",
+        "text": "English-speaking"
       },
       {
-        "cls": "tag-urgent",
-        "text": "\ud83d\udd25 Foreigner-Friendly"
-      },
-      {
-        "cls": "tag-gold",
-        "text": "\ud83c\udfc6 Editor's Pick"
+        "cls": "transparent",
+        "text": "No tourist markup"
       }
     ],
     "procedures": [
+      {
+        "name": "Art Makeup — brows",
+        "price": "¥58,000",
+        "downtime": "Minimal"
+      },
+      {
+        "name": "Art Makeup — lips",
+        "price": "¥65,000",
+        "downtime": "1–2 days"
+      },
+      {
+        "name": "Botox — jaw slimming",
+        "price": "¥32,000",
+        "downtime": "None"
+      }
+    ],
+    "rating": null,
+    "review": null,
+    "ratingBreakdown": null,
+    "highlights": [
+      "Art Makeup specialists",
+      "Private, single-room treatment",
+      "English-speaking artist on staff"
+    ],
+    "access": "Ginza, Chuo-ku · 5 min from Ginza-itchome Station",
+    "accessNote": "Entry is through a small lobby shared with other tenants — ring the intercom for the clinic floor if the door is locked.",
+    "cancellation": "Free until 3 days before. ¥5,500 from 2 days before until 12:00 the previous day. ¥11,000 from 12:00 to 19:00 the previous day. ¥22,000 on the day, or for no-shows. Free if you cancel within 12 hours of booking. Rescheduling to another date also incurs these fees.\n\nTime change on the day: ¥3,300 for first-time patients (moving your time by an hour or more).",
+    "fees": "First-visit fee ¥3,630 (when a treatment is performed the same day). ¥11,000 if you book a consultation only, without treatment. Optional fee to request the clinic director (varies by treatment). Some treatments carry a 20% Saturday surcharge.",
+    "confirmed": false
+  },
+  {
+    "id": "azabu-skin",
+    "name": "Azabu Skin",
+    "area": "azabu",
+    "areaLabel": "Azabu",
+    "priceFrom": 25000,
+    "priceLabel": "From ¥25,000",
+    "photos": [],
+    "url": "#",
+    "treatments": [
+      "HIFU",
+      "RF Microneedling",
+      "Filler"
+    ],
+    "tags": [
+      {
+        "cls": "english",
+        "text": "English-speaking"
+      },
+      {
+        "cls": "discreet",
+        "text": "Discreet location"
+      }
+    ],
+    "procedures": [
+      {
+        "name": "HIFU — lower face",
+        "price": "¥78,000",
+        "downtime": "None"
+      },
       {
         "name": "RF Microneedling",
-        "price": "From \u00a530,000",
-        "downtime": "2-3 days"
+        "price": "¥45,000",
+        "downtime": "1–2 days"
       },
       {
-        "name": "Botox / Filler",
-        "price": "From \u00a520,000",
-        "downtime": "None"
-      },
-      {
-        "name": "Skin Brightening",
-        "price": "From \u00a525,000",
-        "downtime": "None"
-      },
-      {
-        "name": "PRP Treatment",
-        "price": "From \u00a560,000",
-        "downtime": "1-2 days"
+        "name": "Filler — cheeks",
+        "price": "¥89,000",
+        "downtime": "Minimal"
       }
-    ]
+    ],
+    "rating": null,
+    "review": null,
+    "ratingBreakdown": null,
+    "highlights": [
+      "Discreet Azabu location",
+      "Device-led lifting menu",
+      "Unhurried, private appointments"
+    ],
+    "access": "Azabu-Juban, Minato-ku · 6 min from Azabu-Juban Station",
+    "accessNote": "The clinic sits on a quiet residential street with no large signage — the entrance is a plain door beside a café.",
+    "cancellation": "Free until 3 days before. ¥5,500 from 2 days before until 12:00 the previous day. ¥11,000 from 12:00 to 19:00 the previous day. ¥22,000 on the day, or for no-shows. Free if you cancel within 12 hours of booking. Rescheduling to another date also incurs these fees.\n\nTime change on the day: ¥3,300 for first-time patients (moving your time by an hour or more).",
+    "fees": "First-visit fee ¥3,630 (when a treatment is performed the same day). ¥11,000 if you book a consultation only, without treatment. Optional fee to request the clinic director (varies by treatment). Some treatments carry a 20% Saturday surcharge.",
+    "confirmed": false
   },
   {
-    "id": 3,
-    "name": "Azabu Skin Clinic",
-    "area": "Azabujuban",
-    "areaLabel": "Azabujuban, Minato-ku",
-    "rating": 4.8,
+    "id": "tokyo-ginza-medical",
+    "name": "Tokyo Ginza Medical",
+    "area": "ginza",
+    "areaLabel": "Ginza",
     "priceFrom": 15000,
-    "priceLabel": "From \u00a515,000 / session",
-    "photo": "/images/azabu.jpg",
-    "review": "Many of our patients are foreigners. Experienced with all skin types from around the world.",
-    "url": "http://www.azabu-skinclinic.com/english/index.html",
+    "priceLabel": "From ¥15,000",
+    "photos": [],
+    "url": "#",
     "treatments": [
-      "facial",
-      "whitening",
-      "laser"
+      "Laser",
+      "Botox",
+      "HIFU"
     ],
-    "foreignerCount": 1240,
-    "nextAvailable": "Today",
-    "ratingBreakdown": {
-      "service": 4.8,
-      "cleanliness": 4.7,
-      "english": 4.9
-    },
     "tags": [
       {
-        "cls": "tag-green",
-        "text": "\ud83c\uddec\ud83c\udde7 English OK"
+        "cls": "english",
+        "text": "English-speaking"
       },
       {
-        "cls": "tag-blue",
-        "text": "\ud83d\udd2c Dermatology Specialist"
-      },
-      {
-        "cls": "tag-gold",
-        "text": "\ud83c\udf0d All Skin Types"
+        "cls": "transparent",
+        "text": "No tourist markup"
       }
     ],
     "procedures": [
       {
-        "name": "Laser Whitening",
-        "price": "From \u00a515,000",
-        "downtime": "3-5 days"
+        "name": "Laser toning — face",
+        "price": "¥15,000",
+        "downtime": "Minimal"
       },
       {
-        "name": "Skin Rejuvenation",
-        "price": "From \u00a520,000",
+        "name": "Botox — forehead",
+        "price": "¥19,000",
         "downtime": "None"
       },
       {
-        "name": "Acne Treatment",
-        "price": "From \u00a515,000",
-        "downtime": "1-2 days"
-      },
-      {
-        "name": "Skin Tightening",
-        "price": "From \u00a525,000",
+        "name": "HIFU — full face",
+        "price": "¥102,000",
         "downtime": "None"
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "name": "Tokyo Ginza Medical Clinic",
-    "area": "Ginza",
-    "areaLabel": "Ginza, Chuo-ku \u00b7 1 min from Ginza-itchome St.",
-    "rating": 4.7,
-    "priceFrom": 20000,
-    "priceLabel": "From \u00a520,000 / session",
-    "photo": "/images/tokyo-ginza.jpg",
-    "review": "Fully private rooms, luxury atmosphere. Personalized care from consultation to aftercare.",
-    "url": "https://tokyo-ginza-medicalclinic.com/",
-    "treatments": [
-      "facial",
-      "anti-aging",
-      "laser"
-    ],
-    "foreignerCount": 210,
-    "nextAvailable": "Tomorrow",
-    "ratingBreakdown": {
-      "service": 4.8,
-      "cleanliness": 4.9,
-      "english": 4.6
-    },
-    "tags": [
-      {
-        "cls": "tag-green",
-        "text": "\ud83c\uddec\ud83c\udde7 English OK"
-      },
-      {
-        "cls": "tag-blue",
-        "text": "\ud83c\udfdb\ufe0f Fully Private Rooms"
-      },
-      {
-        "cls": "tag-gold",
-        "text": "\ud83d\udc8e Premium Experience"
       }
     ],
-    "procedures": [
-      {
-        "name": "Custom Facial",
-        "price": "From \u00a520,000",
-        "downtime": "None"
-      },
-      {
-        "name": "Botox / Filler",
-        "price": "From \u00a522,000",
-        "downtime": "None"
-      },
-      {
-        "name": "Laser Treatment",
-        "price": "From \u00a525,000",
-        "downtime": "2-3 days"
-      },
-      {
-        "name": "Anti-Aging Program",
-        "price": "From \u00a550,000",
-        "downtime": "None"
-      }
-    ]
+    "rating": null,
+    "review": null,
+    "ratingBreakdown": null,
+    "highlights": [
+      "Broadest non-surgical menu",
+      "Transparent published pricing",
+      "Frequent international patients"
+    ],
+    "access": "Ginza, Chuo-ku · 3 min from Higashi-Ginza Station",
+    "accessNote": "Share the building with several other clinics — check the floor directory in the lobby before taking the lift.",
+    "cancellation": "Free until 3 days before. ¥5,500 from 2 days before until 12:00 the previous day. ¥11,000 from 12:00 to 19:00 the previous day. ¥22,000 on the day, or for no-shows. Free if you cancel within 12 hours of booking. Rescheduling to another date also incurs these fees.\n\nTime change on the day: ¥3,300 for first-time patients (moving your time by an hour or more).",
+    "fees": "First-visit fee ¥3,630 (when a treatment is performed the same day). ¥11,000 if you book a consultation only, without treatment. Optional fee to request the clinic director (varies by treatment). Some treatments carry a 20% Saturday surcharge.",
+    "confirmed": false
   },
   {
-    "id": 5,
+    "id": "jiyugaoka-clinic",
     "name": "Jiyugaoka Clinic",
-    "area": "Jiyugaoka",
-    "areaLabel": "Jiyugaoka, Meguro-ku",
-    "rating": 4.7,
-    "priceFrom": 20000,
-    "priceLabel": "Consultation Free / from \u00a520,000",
-    "photo": "/images/jiyugaoka.jpg",
-    "review": "Since 1995, pursuing true beauty. No.1 Medical Aesthetic Institute in Asia.",
-    "url": "https://jiyugaokaclinic.com/english/",
+    "area": "jiyugaoka",
+    "areaLabel": "Jiyugaoka",
+    "priceFrom": 16000,
+    "priceLabel": "From ¥16,000",
+    "photos": [],
+    "url": "#",
     "treatments": [
-      "anti-aging",
-      "facial",
-      "laser"
+      "Laser",
+      "Filler",
+      "RF Microneedling"
     ],
-    "foreignerCount": 1580,
-    "nextAvailable": "This week",
-    "ratingBreakdown": {
-      "service": 4.7,
-      "cleanliness": 4.8,
-      "english": 4.6
-    },
     "tags": [
       {
-        "cls": "tag-green",
-        "text": "\ud83c\uddec\ud83c\udde7 English OK"
+        "cls": "english",
+        "text": "English-speaking"
       },
       {
-        "cls": "tag-gold",
-        "text": "\ud83e\udd47 No.1 in Asia"
-      },
-      {
-        "cls": "tag-blue",
-        "text": "\ud83d\udc89 Anti-Aging Specialist"
+        "cls": "transparent",
+        "text": "No tourist markup"
       }
     ],
     "procedures": [
       {
-        "name": "HIFU Facelift",
-        "price": "From \u00a550,000",
-        "downtime": "None"
+        "name": "Laser facial",
+        "price": "¥16,000",
+        "downtime": "Minimal"
       },
       {
-        "name": "Thread Lift",
-        "price": "From \u00a580,000",
-        "downtime": "3-5 days"
+        "name": "Filler — 1ml",
+        "price": "¥68,000",
+        "downtime": "Minimal"
       },
       {
-        "name": "Botox / Filler",
-        "price": "From \u00a520,000",
-        "downtime": "None"
-      },
-      {
-        "name": "Regenerative Care",
-        "price": "From \u00a560,000",
-        "downtime": "1-2 days"
+        "name": "RF Microneedling",
+        "price": "¥48,000",
+        "downtime": "1–2 days"
       }
-    ]
+    ],
+    "rating": null,
+    "review": null,
+    "ratingBreakdown": null,
+    "highlights": [
+      "Unhurried, conversational care",
+      "Laser and skin-quality focus",
+      "Fully English-fluent doctor"
+    ],
+    "access": "Jiyugaoka, Meguro-ku · 5 min from Jiyugaoka Station",
+    "accessNote": "Located above a shopfront — the stairway entrance is easy to miss, just left of the store window.",
+    "cancellation": "Free until 3 days before. ¥5,500 from 2 days before until 12:00 the previous day. ¥11,000 from 12:00 to 19:00 the previous day. ¥22,000 on the day, or for no-shows. Free if you cancel within 12 hours of booking. Rescheduling to another date also incurs these fees.\n\nTime change on the day: ¥3,300 for first-time patients (moving your time by an hour or more).",
+    "fees": "First-visit fee ¥3,630 (when a treatment is performed the same day). ¥11,000 if you book a consultation only, without treatment. Optional fee to request the clinic director (varies by treatment). Some treatments carry a 20% Saturday surcharge.",
+    "confirmed": false
   }
 ]

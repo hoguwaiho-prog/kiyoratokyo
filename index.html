@@ -1,672 +1,715 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kiyora Tokyo — Medical Beauty Clinics in Ginza & Azabu, Matched in English</title>
-<meta name="description" content="Find English-friendly medical beauty clinics in Ginza and Azabu, Tokyo. Botox, HIFU, Laser, Art Makeup and more. Free matching service." />
-<meta property="og:title" content="Kiyora Tokyo — Medical Beauty Clinic Matching" />
-<meta property="og:description" content="Botox, HIFU, Laser, Art Makeup at Ginza & Azabu top clinics. English support. Completely free." />
-<meta property="og:url" content="https://kiyoratokyo.com" />
-<meta property="og:type" content="website" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiyora Tokyo — Aesthetic Clinic Matching for Visitors</title>
+<meta name="description" content="Free, English-speaking aesthetic clinic matching in Ginza & Azabu, Tokyo. Non-surgical treatments, no tourist markup.">
 <style>
-  :root {
-    --cream: #FAF7F2; --warm-white: #FFFCF8; --blush: #E8C4B0;
-    --rose: #C9866A; --deep-rose: #A35C43; --charcoal: #2C2420;
-    --mid: #6B5349; --soft: #B89B90; --green: #4A7C59;
-    --green-light: #EAF2EC; --gold: #C9A96E;
-    --urgent: #C94A4A; --urgent-bg: #FFF0F0;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-
-  /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,247,242,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(200,170,155,0.2); padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 60px; }
-  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--charcoal); }
-  .nav-logo span { color: var(--rose); }
-  .nav-cta { background: var(--charcoal); color: var(--cream); padding: 8px 20px; border-radius: 40px; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
-  .nav-cta:hover { background: var(--deep-rose); }
-
-  /* HERO */
-  .hero { min-height: 100vh; padding: 100px 5vw 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; background: var(--warm-white); position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; top: -120px; right: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,134,106,0.12) 0%, transparent 70%); pointer-events: none; }
-  .hero-left { position: relative; z-index: 2; animation: fadeUp 0.8s ease both; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--green-light); color: var(--green); padding: 6px 14px; border-radius: 40px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 28px; }
-  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 300; line-height: 1.15; color: var(--charcoal); margin-bottom: 24px; }
-  h1 em { font-style: italic; color: var(--rose); }
-  h1 strong { font-weight: 600; }
-  .hero-sub { font-size: 1.05rem; color: var(--mid); margin-bottom: 36px; max-width: 480px; line-height: 1.7; }
-  .urgency-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--urgent-bg); color: var(--urgent); border: 1px solid rgba(201,74,74,0.2); padding: 7px 14px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; margin-bottom: 24px; }
-  .urgency-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--urgent); animation: pulse 1.5s infinite; }
-  .cta-group { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
-  .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--charcoal); color: var(--cream); padding: 16px 32px; border-radius: 6px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; position: relative; overflow: hidden; }
-  .btn-primary::after { content: ''; position: absolute; inset: 0; background: var(--deep-rose); transform: translateX(-100%); transition: transform 0.3s ease; z-index: 0; }
-  .btn-primary:hover::after { transform: translateX(0); }
-  .btn-primary span, .btn-primary .arrow { position: relative; z-index: 1; }
-  .btn-secondary { font-size: 0.85rem; color: var(--mid); display: flex; align-items: center; gap: 6px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; background: none; border: none; }
-  .trust-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-  .pill { display: flex; align-items: center; gap: 6px; background: var(--cream); border: 1px solid rgba(184,155,144,0.3); padding: 5px 12px; border-radius: 40px; font-size: 0.78rem; color: var(--mid); font-weight: 500; }
-
-  /* CARD */
-  .hero-right { position: relative; z-index: 2; animation: fadeUp 0.8s 0.15s ease both; }
-  .matching-card { background: white; border-radius: 16px; padding: 36px; box-shadow: 0 8px 40px rgba(44,36,32,0.1); position: relative; }
-  .matching-card::before { content: '✦ 100% FREE ✦'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--green); color: white; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; padding: 4px 16px; border-radius: 40px; white-space: nowrap; }
-  .card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 6px; text-align: center; }
-  .card-sub { font-size: 0.82rem; color: var(--soft); text-align: center; margin-bottom: 28px; }
-  .form-group { margin-bottom: 16px; }
-  .form-label { font-size: 0.75rem; font-weight: 600; color: var(--mid); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; display: block; }
-  .form-select, .form-input { width: 100%; padding: 12px 16px; border: 1.5px solid rgba(184,155,144,0.35); border-radius: 8px; background: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--charcoal); appearance: none; outline: none; transition: border-color 0.2s; }
-  .form-select:focus, .form-input:focus { border-color: var(--rose); }
-  .select-wrap { position: relative; }
-  .select-wrap::after { content: '▾'; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--soft); pointer-events: none; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .card-cta { width: 100%; padding: 15px; background: var(--charcoal); color: white; border: none; border-radius: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; margin-top: 20px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-  .card-cta:hover { background: var(--deep-rose); }
-  .card-note { font-size: 0.73rem; color: var(--soft); text-align: center; margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 5px; }
-  .thank-you { display: none; text-align: center; padding: 32px 0; }
-  .ty-icon { font-size: 2.5rem; margin-bottom: 16px; }
-  .ty-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 10px; }
-  .ty-sub { font-size: 0.88rem; color: var(--mid); line-height: 1.8; }
-
-  /* STEPS */
-  .steps-section { padding: 90px 5vw; background: var(--cream); }
-  .section-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 12px; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; color: var(--charcoal); line-height: 1.2; margin-bottom: 50px; }
-  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  .step { padding: 28px; background: white; border-radius: 12px; border: 1px solid rgba(184,155,144,0.2); transition: box-shadow 0.2s, transform 0.2s; }
-  .step:hover { box-shadow: 0 8px 30px rgba(44,36,32,0.08); transform: translateY(-3px); }
-  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: rgba(201,134,106,0.25); line-height: 1; margin-bottom: 16px; }
-  .step-icon { font-size: 1.6rem; margin-bottom: 12px; }
-  .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
-  .step p { font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
-  .step-time { display: inline-block; margin-top: 12px; background: var(--green-light); color: var(--green); padding: 3px 10px; border-radius: 40px; font-size: 0.72rem; font-weight: 600; }
-
-  /* CLINICS */
-  .results-section { padding: 90px 5vw; background: white; }
-  .results-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 20px; }
-  .availability-notice { display: flex; align-items: center; gap: 8px; background: var(--urgent-bg); color: var(--urgent); border: 1px solid rgba(201,74,74,0.15); padding: 10px 18px; border-radius: 8px; font-size: 0.82rem; font-weight: 600; }
-  .availability-notice .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--urgent); animation: pulse 1.5s infinite; }
-
-  /* FILTER */
-  .filter-bar { margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
-  .filter-group { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
-  .filter-group-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); min-width: 76px; flex-shrink: 0; }
-  .filter-btn { padding: 6px 14px; border-radius: 40px; border: 1.5px solid rgba(184,155,144,0.35); background: var(--cream); color: var(--mid); font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; cursor: pointer; transition: all 0.18s; white-space: nowrap; }
-  .filter-btn:hover { border-color: var(--rose); color: var(--rose); }
-  .filter-btn.active { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
-
-  /* CLINIC CARD */
-  .clinic-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-  .clinic-card { border: 1.5px solid rgba(184,155,144,0.25); border-radius: 12px; overflow: hidden; background: white; display: grid; grid-template-columns: 220px 1fr; transition: all 0.2s; }
-  .clinic-card:hover { border-color: var(--rose); box-shadow: 0 6px 24px rgba(201,134,106,0.15); transform: translateY(-2px); }
-  .clinic-photo { overflow: hidden; background: var(--cream); }
-  .clinic-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
-  .clinic-card:hover .clinic-photo img { transform: scale(1.04); }
-  .clinic-content { padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
-  .clinic-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
-  .clinic-name { font-weight: 600; font-size: 1rem; margin-bottom: 3px; }
-  .clinic-area { font-size: 0.78rem; color: var(--soft); }
-  .clinic-rating { display: flex; align-items: center; gap: 4px; font-size: 0.85rem; font-weight: 600; white-space: nowrap; }
-  .star { color: #F0B429; }
-  .clinic-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tag { padding: 4px 10px; border-radius: 40px; font-size: 0.72rem; font-weight: 600; }
-  .tag-green { background: var(--green-light); color: var(--green); }
-  .tag-blue { background: #EBF3FF; color: #2D6BC4; }
-  .tag-gold { background: #FFF8EC; color: #9A6E1C; }
-  .tag-urgent { background: var(--urgent-bg); color: var(--urgent); }
-  .clinic-meta-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--green-light); color: var(--green); padding: 4px 11px; border-radius: 40px; font-size: 0.73rem; font-weight: 600; }
-  .rating-bars { display: flex; flex-direction: column; gap: 5px; }
-  .rating-bar-row { display: flex; align-items: center; gap: 8px; }
-  .rating-bar-label { font-size: 0.7rem; color: var(--soft); font-weight: 500; min-width: 74px; text-transform: capitalize; }
-  .rating-bar-track { flex: 1; height: 4px; background: rgba(184,155,144,0.2); border-radius: 99px; overflow: hidden; }
-  .rating-bar-fill { height: 100%; background: var(--rose); border-radius: 99px; }
-  .rating-bar-score { font-size: 0.7rem; font-weight: 600; color: var(--charcoal); min-width: 22px; text-align: right; }
-  .clinic-review { font-size: 0.78rem; color: var(--mid); line-height: 1.6; font-style: italic; border-left: 2px solid var(--blush); padding-left: 10px; }
-  .clinic-procedures { display: flex; flex-wrap: wrap; gap: 6px; }
-  .proc-tag { padding: 3px 9px; background: var(--cream); border: 1px solid rgba(184,155,144,0.3); border-radius: 40px; font-size: 0.7rem; color: var(--mid); }
-  .clinic-footer { padding: 12px 0 0; border-top: 1px solid rgba(184,155,144,0.15); display: flex; align-items: center; justify-content: space-between; margin-top: auto; flex-wrap: wrap; gap: 8px; }
-  .clinic-price { font-weight: 600; font-size: 0.9rem; }
-  .clinic-price small { font-size: 0.75rem; color: var(--soft); font-weight: 400; }
-  .next-available { font-size: 0.77rem; color: var(--green); margin-top: 2px; }
-  .next-available strong { font-weight: 700; }
-  .card-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-  .btn-view { padding: 8px 14px; border: 1.5px solid rgba(184,155,144,0.5); border-radius: 6px; font-size: 0.78rem; font-weight: 600; color: var(--mid); text-decoration: none; font-family: 'DM Sans', sans-serif; transition: all 0.18s; white-space: nowrap; display: inline-block; }
-  .btn-view:hover { border-color: var(--rose); color: var(--rose); }
-  .book-btn { padding: 8px 16px; background: var(--charcoal); color: white; border: none; border-radius: 6px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: background 0.2s; font-family: 'DM Sans', sans-serif; text-decoration: none; display: inline-block; white-space: nowrap; }
-  .book-btn:hover { background: var(--deep-rose); }
-  .no-results-msg { display: none; text-align: center; padding: 60px 0; font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 300; color: var(--soft); }
-
-  /* FAQ */
-  .faq-section { padding: 90px 5vw; background: var(--warm-white); }
-  .faq-list { max-width: 740px; margin-top: 40px; }
-  .faq-item { border-bottom: 1px solid rgba(184,155,144,0.25); }
-  .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; cursor: pointer; font-weight: 600; font-size: 0.95rem; color: var(--charcoal); gap: 16px; user-select: none; transition: color 0.18s; }
-  .faq-question:hover { color: var(--rose); }
-  .faq-icon { font-size: 1.3rem; color: var(--rose); flex-shrink: 0; font-weight: 300; transition: transform 0.25s ease; }
-  .faq-item.open .faq-icon { transform: rotate(45deg); }
-  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.32s ease, padding 0.32s ease; font-size: 0.88rem; color: var(--mid); line-height: 1.8; }
-  .faq-item.open .faq-answer { max-height: 200px; padding-bottom: 20px; }
-
-  /* TRUST */
-  .trust-section { padding: 80px 5vw; background: var(--charcoal); color: white; }
-  .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
-  .trust-item { text-align: center; }
-  .trust-icon { font-size: 2rem; margin-bottom: 16px; }
-  .trust-label { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 6px; line-height: 1.3; }
-  .trust-desc { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
-
-  /* BLOG SECTION */
-  .blog-section { padding: 90px 5vw; background: var(--cream); }
-  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
-  .blog-card { background: white; border-radius: 12px; border: 1.5px solid rgba(184,155,144,0.2); overflow: hidden; transition: all 0.2s; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
-  .blog-card:hover { box-shadow: 0 8px 32px rgba(44,36,32,0.1); transform: translateY(-3px); border-color: var(--rose); }
-  .blog-card-img { height: 140px; background: linear-gradient(135deg, var(--cream) 0%, var(--blush) 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
-  .blog-card-body { padding: 20px 22px 24px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
-  .blog-card-cat { display: inline-flex; background: var(--green-light); color: var(--green); padding: 3px 10px; border-radius: 40px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; align-self: flex-start; }
-  .blog-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; line-height: 1.3; color: var(--charcoal); }
-  .blog-card-excerpt { font-size: 0.8rem; color: var(--mid); line-height: 1.65; flex: 1; }
-  .blog-card-footer { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(184,155,144,0.15); font-size: 0.78rem; font-weight: 600; color: var(--rose); display: flex; align-items: center; gap: 4px; }
-  .blog-view-all { display: inline-flex; align-items: center; gap: 6px; margin-top: 36px; background: var(--charcoal); color: var(--cream); padding: 12px 28px; border-radius: 40px; font-size: 0.82rem; font-weight: 500; text-decoration: none; transition: background 0.2s; }
-  .blog-view-all:hover { background: var(--deep-rose); }
-
-  /* FINAL CTA */
-  .final-cta { padding: 100px 5vw; background: var(--warm-white); text-align: center; position: relative; overflow: hidden; }
-  .final-cta .section-tag { text-align: center; }
-  .final-cta .section-title { margin: 0 auto 16px; max-width: 560px; }
-  .final-hook { font-size: 0.95rem; color: var(--mid); margin-bottom: 36px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-  .final-hook::before { content: '💬'; }
-  .final-cta-group { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
-  .final-urgency { margin-top: 20px; font-size: 0.8rem; color: var(--urgent); font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px; }
-
-  /* FOOTER */
-  footer { background: var(--charcoal); color: rgba(255,255,255,0.45); padding: 24px 5vw; display: flex; align-items: center; justify-content: space-between; font-size: 0.78rem; }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: white; }
-
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
-
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .steps-grid { grid-template-columns: 1fr; }
-    .trust-grid { grid-template-columns: 1fr 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .results-header { flex-direction: column; align-items: flex-start; }
-    .blog-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 640px) {
-    .blog-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 700px) {
-    .clinic-card { grid-template-columns: 1fr; }
-    .clinic-photo { height: 180px; }
-    .clinic-content { padding: 14px 16px; }
-    .card-actions { width: 100%; justify-content: flex-end; }
-  }
-  @media (max-width: 600px) {
-    .trust-grid { grid-template-columns: 1fr; }
-    .hero { padding: 88px 5vw 60px; }
-    h1 { font-size: 2rem; }
-  }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f6f3ec;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#20251f;-webkit-font-smoothing:antialiased;line-height:1.5}
+:focus-visible{outline:2px solid #2f4a3f;outline-offset:3px}
+input::placeholder{color:#a8a89c}
+a{color:#2f4a3f}a:hover{color:#1e332a}
+.kt-cta{transition:transform .15s ease,opacity .15s ease}.kt-cta:hover{transform:translateY(-1px);opacity:.94}
+@keyframes ktReveal{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.kt-reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.kt-reveal.kt-in{opacity:1;transform:none}
+.kt-modal-bg{position:fixed;inset:0;z-index:95;background:rgba(20,24,19,.55);display:flex;align-items:center;justify-content:center;padding:24px}
+.kt-modal{background:#fff;border-radius:18px;padding:clamp(24px,3vw,32px);max-width:520px;width:100%;max-height:82vh;overflow-y:auto;position:relative;text-align:left}
+.kt-modal-close{position:absolute;top:14px;right:14px;background:#f0ece1;border:none;color:#6c706a;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1}
+.kt-pill{flex:1 1 0;min-width:74px;padding:11px 8px;cursor:pointer;border-radius:10px;font-weight:600;font-size:14px;font-family:inherit;text-align:center}
+.kt-pill-off{border:1px solid #ddd7c9;background:#fff;color:#4a4f49}
+.kt-pill-on{border:1px solid #2f4a3f;background:#2f4a3f;color:#fff}
+.hidden{display:none!important}
+@media(max-width:760px){.kt-nav-links{display:none!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.kt-cta{transition:none}.kt-reveal{opacity:1!important;transform:none!important;transition:none}}
 </style>
 </head>
 <body>
+<div id="top" style="--accent:#2f4a3f">
 
-<nav>
-  <div class="nav-logo">Kiyora<span> Tokyo</span></div>
-  <a href="#match" class="nav-cta">Free Matching →</a>
-</nav>
-
-<section class="hero" id="top">
-  <div class="hero-left">
-    <div class="hero-badge">Ginza · Azabu · Medical Aesthetics</div>
-    <h1>
-      Tokyo's Best Medical<br>
-      <em>Beauty Clinics</em> —<br>
-      <strong>Matched in English.</strong>
-    </h1>
-    <p class="hero-sub">
-      Botox, HIFU, Art Makeup, Laser and more —
-      at Ginza &amp; Azabu's top clinics.
-      English support, transparent pricing, completely free to use.
-    </p>
-    <div class="urgency-tag">
-      <span class="dot"></span>
-      Same-day bookings available — limited slots today
-    </div>
-    <div class="cta-group">
-      <a href="#match" class="btn-primary">
-        <span>Find My Clinic — Free →</span>
-      </a>
-      <button class="btn-secondary">💬 Need help? We'll assist you in English — for free</button>
-    </div>
-    <div class="trust-pills">
-      <div class="pill">🆓 Always Free</div>
-      <div class="pill">🇬🇧 English Support</div>
-      <div class="pill">🔒 Verified Clinics</div>
-      <div class="pill">💴 Transparent Pricing</div>
-      <div class="pill">📍 Ginza · Azabu</div>
-    </div>
+<!-- ============ HEADER ============ -->
+<header style="position:sticky;top:0;z-index:50;background:rgba(246,243,236,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #e7e2d6">
+  <div style="max-width:1140px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#20251f">
+      <span style="width:32px;height:32px;border-radius:50%;border:1.5px solid #2f4a3f;display:flex;align-items:center;justify-content:center;font-family:Georgia,'Times New Roman',serif;font-style:italic;color:#2f4a3f;font-size:18px">K</span>
+      <span style="font-family:Georgia,'Times New Roman',serif;font-size:20px;letter-spacing:.01em">Kiyora <span style="color:#2f4a3f">Tokyo</span></span>
+    </a>
+    <nav class="kt-nav-links" style="display:flex;gap:30px;font-size:14.5px">
+      <a href="#how" style="color:#4a4f49;text-decoration:none">How it works</a>
+      <a href="#clinics" style="color:#4a4f49;text-decoration:none">Clinics</a>
+      <a href="#pricing" style="color:#4a4f49;text-decoration:none">Pricing</a>
+      <a href="#about" style="color:#4a4f49;text-decoration:none">About</a>
+    </nav>
+    <button type="button" class="kt-cta" onclick="goToForm()" style="background:#2f4a3f;color:#fff;border:none;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit">Get matched — free</button>
   </div>
+</header>
 
-  <div class="hero-right" id="match">
-    <div class="matching-card">
-      <div class="card-title">Free Clinic Matching</div>
-      <p class="card-sub">3 questions · 100% free · We reply in English</p>
-      <form id="matchForm" action="https://formspree.io/f/xlgodkel" method="POST">
-        <div class="form-group">
-          <label class="form-label">What treatment are you looking for?</label>
-          <div class="select-wrap">
-            <select name="treatment" class="form-select" required>
-              <option value="">Select treatment…</option>
-              <option>Botox / Wrinkle Treatment</option>
-              <option>Hyaluronic Acid Filler</option>
-              <option>HIFU / Facelift</option>
-              <option>Laser (Spot / Whitening)</option>
-              <option>Art Makeup (Eyebrow / Lip)</option>
-              <option>Skin Rejuvenation / Facial</option>
-              <option>Thread Lift</option>
-              <option>PRP / Regenerative</option>
+<!-- ============ HERO ============ -->
+<section style="max-width:1140px;margin:0 auto;padding:clamp(40px,6vw,72px) 24px clamp(36px,4vw,56px)">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,56px);align-items:start">
+    <div class="kt-reveal" style="padding-top:8px">
+      <div style="display:inline-flex;align-items:center;gap:8px;color:#2f4a3f;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px">
+        <span style="width:24px;height:1px;background:#b08d57"></span>Ginza &amp; Azabu · for visitors
+      </div>
+      <h1 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(32px,4.4vw,52px);line-height:1.07;letter-spacing:-.01em;margin:0 0 22px">Finding a clinic you can trust shouldn't be the hardest part of your trip.</h1>
+      <p style="font-size:clamp(16px,1.6vw,18.5px);color:#54584f;line-height:1.62;max-width:32em;margin:0 0 28px">Kiyora Tokyo matches you with hand-picked, English-speaking aesthetic clinics in Ginza &amp; Azabu — free, with no tourist markup. Tell us what you want and we'll send a clinic that fits, with prices and details.</p>
+      <div style="display:flex;flex-direction:column;gap:13px;max-width:30em">
+        <div style="display:flex;gap:13px;align-items:flex-start"><span style="color:#2f4a3f;font-size:17px;line-height:1.3">✓</span><span style="font-size:15px;color:#3a3f39">Doctor-led, English-speaking clinics only</span></div>
+        <div style="display:flex;gap:13px;align-items:flex-start"><span style="color:#2f4a3f;font-size:17px;line-height:1.3">✓</span><span style="font-size:15px;color:#3a3f39">Non-surgical only — laser from ¥8,800, HIFU from ¥36,300</span></div>
+        <div style="display:flex;gap:13px;align-items:flex-start"><span style="color:#2f4a3f;font-size:17px;line-height:1.3">✓</span><span style="font-size:15px;color:#3a3f39">100% free for visitors — no markup, ever</span></div>
+      </div>
+      <div style="margin-top:26px"><a href="#how" style="color:#2f4a3f;text-decoration:none;font-weight:600;font-size:15px;border-bottom:1px solid #c9bfa6;padding-bottom:2px">See how it works →</a></div>
+    </div>
+
+    <!-- ===== INTAKE FORM ===== -->
+    <div id="match" style="scroll-margin-top:84px">
+      <form id="kt-form" style="background:#fff;border:1px solid #e3ddcf;border-radius:20px;padding:clamp(20px,3vw,28px);display:flex;flex-direction:column;gap:18px;box-shadow:0 18px 50px rgba(31,40,33,.08)">
+        <div>
+          <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(23px,2.4vw,28px);margin:0 0 6px;letter-spacing:-.01em">Get matched — free</h2>
+          <p style="margin:0;color:#54584f;font-size:14.5px;line-height:1.55">Tell us what you're after. We'll send vetted clinics in Ginza &amp; Azabu within a few hours.</p>
+        </div>
+        <div id="clinic-banner" class="hidden" style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#eef2ec;border:1px solid #d7e0d6;border-radius:10px;padding:9px 12px">
+          <span style="font-size:13.5px;color:#2f4a3f">Asking about <strong id="clinic-name-display"></strong></span>
+          <button type="button" onclick="clearClinic()" aria-label="Clear clinic" style="background:none;border:none;color:#6c7a6c;cursor:pointer;font-size:18px;line-height:1;font-family:inherit">×</button>
+        </div>
+        <input type="hidden" id="f-clinic" name="clinic" value="">
+        <label style="display:block">
+          <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">What treatment are you interested in?</span>
+          <select id="f-treatment" style="width:100%;padding:12px 13px;border:1px solid #ddd7c9;border-radius:10px;font-family:inherit;font-size:15px;background:#fff;color:#20251f">
+            <option value="">Select a treatment…</option>
+            <option>Botox</option><option>HIFU</option><option>Art Makeup</option><option>Laser</option><option>Filler</option><option>RF Microneedling</option><option value="Not sure yet">Not sure yet — recommend for me</option>
+          </select>
+        </label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <label style="display:block">
+            <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">Area</span>
+            <select id="f-area" style="width:100%;padding:12px 13px;border:1px solid #ddd7c9;border-radius:10px;font-family:inherit;font-size:15px;background:#fff;color:#20251f">
+              <option>Ginza</option><option>Azabu</option><option value="No preference">No preference</option>
             </select>
+          </label>
+          <div>
+            <span style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">Budget <span id="budget-label" style="color:#2f4a3f">¥60,000</span></span>
+            <input type="range" id="f-budget" min="15000" max="150000" step="5000" value="60000" style="width:100%;accent-color:#2f4a3f;margin-top:9px">
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:#9a9a8c;margin-top:1px"><span>¥15k</span><span>¥150k</span></div>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Preferred Area</label>
-            <div class="select-wrap">
-              <select name="area" class="form-select">
-                <option>Anywhere in Tokyo</option>
-                <option>Ginza / Shimbashi</option>
-                <option>Azabu / Roppongi</option>
-                <option>Omotesando</option>
-                <option>Shibuya</option>
-              </select>
-            </div>
+        <div>
+          <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">When will you be in Tokyo?</span>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <input type="date" id="f-arrival" aria-label="Arrival date" style="width:100%;padding:11px 12px;border:1px solid #ddd7c9;border-radius:10px;font-family:inherit;font-size:14.5px;color:#20251f;background:#fff">
+            <input type="date" id="f-departure" aria-label="Departure date" style="width:100%;padding:11px 12px;border:1px solid #ddd7c9;border-radius:10px;font-family:inherit;font-size:14.5px;color:#20251f;background:#fff">
           </div>
-          <div class="form-group">
-            <label class="form-label">Budget (per session)</label>
-            <div class="select-wrap">
-              <select name="budget" class="form-select">
-                <option>Any budget</option>
-                <option>Under ¥20,000</option>
-                <option>¥20,000 – ¥50,000</option>
-                <option>¥50,000 – ¥100,000</option>
-                <option>¥100,000+</option>
-              </select>
-            </div>
+          <div style="font-size:12.5px;color:#7a7e74;margin-top:7px">We'll hold a slot during your stay.</div>
+          <div style="font-size:12px;color:#8a8e84;margin-top:4px">Same-day requests: we'll do our best — next-day booking is guaranteed.</div>
+        </div>
+        <div>
+          <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">Preferred time</span>
+          <div id="time-pills" style="display:flex;gap:7px;flex-wrap:wrap"></div>
+        </div>
+        <div>
+          <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">Preferred language</span>
+          <div id="lang-pills" style="display:flex;gap:7px;flex-wrap:wrap"></div>
+        </div>
+        <div>
+          <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">How should we reach you?</span>
+          <div id="method-pills" style="display:flex;gap:7px;flex-wrap:wrap"></div>
+        </div>
+        <div id="email-field" class="hidden">
+          <label style="display:block">
+            <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">Your email address</span>
+            <input type="email" id="f-email" placeholder="you@example.com" style="width:100%;padding:12px 13px;border:1px solid #ddd7c9;border-radius:10px;font-family:inherit;font-size:15px;color:#20251f">
+          </label>
+        </div>
+        <div id="backup-field">
+          <label style="display:block">
+            <span style="display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#2f342d">Backup email <span style="font-weight:400;color:#9a9a8c">(so we can follow up if needed)</span></span>
+            <input type="email" id="f-backup" placeholder="you@example.com" style="width:100%;padding:12px 13px;border:1px solid #ddd7c9;border-radius:10px;font-family:inherit;font-size:15px;color:#20251f">
+          </label>
+        </div>
+        <div style="border-top:1px solid #f0ece1;padding-top:16px">
+          <div style="display:flex;gap:11px;align-items:flex-start">
+            <span id="consent-placeholder" onclick="openPolicy()" style="width:19px;height:19px;margin:1px 0 0;padding:0;border:1.5px solid #ccc4b0;border-radius:4px;background:#f3f1e8;flex-shrink:0;cursor:pointer;display:inline-block"></span>
+            <input type="checkbox" id="kt-consent" class="hidden" style="width:19px;height:19px;margin:1px 0 0;accent-color:#2f4a3f;flex-shrink:0;cursor:pointer">
+            <label style="font-size:13.5px;color:#3a3f39;line-height:1.55;cursor:pointer" onclick="onConsentLabelClick()">I have read and understood the clinic's cancellation policy and fees. <button type="button" onclick="event.stopPropagation();openPolicy()" style="background:none;border:none;padding:0;color:#2f4a3f;font-weight:600;font-family:inherit;font-size:13.5px;cursor:pointer;text-decoration:underline">View details</button></label>
           </div>
+          <div id="consent-warn" class="hidden" style="margin:8px 0 0 30px;font-size:12.5px;color:#9a5a3a">Please review and confirm the cancellation policy.</div>
+          <div id="policy-warn" class="hidden" style="margin:8px 0 0 30px;font-size:12.5px;color:#9a5a3a">Please open "View details" to review the policy before confirming.</div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Preferred Date</label>
-          <input type="date" name="date" class="form-input" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Your Email <span style="color:var(--rose)">*</span></label>
-          <input type="email" name="email" class="form-input" placeholder="you@example.com" required />
-          <small style="font-size:0.72rem;color:var(--soft);margin-top:4px;display:block">We'll send your matches here. No spam, ever.</small>
-        </div>
-        <button type="submit" class="card-cta" id="submitBtn">
-          <span id="submitLabel">Get My Free Matches →</span>
-        </button>
+        <button type="submit" id="submit-btn" class="kt-cta" style="background:#b6bdb4;color:#fff;border:none;padding:15px;border-radius:12px;cursor:not-allowed;font-family:inherit;font-size:16px;font-weight:600">Find my clinic</button>
+        <div id="submit-err" class="hidden" style="text-align:center;font-size:13px;color:#9a5a3a">Something went wrong sending your request — please try again, or message us directly below.</div>
+        <div style="text-align:center;font-size:12px;color:#7a7e74;line-height:1.5">Free · No markup for visitors · All clinics English-speaking · Based in Tokyo</div>
       </form>
-      <div class="thank-you" id="thankYou">
-        <div class="ty-icon">🎉</div>
-        <div class="ty-title">We've got your request!</div>
-        <div class="ty-sub">We'll email your matches within a few hours.<br>Check your inbox — and spam folder just in case.</div>
+
+      <!-- ===== THANK-YOU STATE ===== -->
+      <div id="kt-thanks" class="hidden" style="background:#fff;border:1px solid #e3ddcf;border-radius:20px;padding:clamp(24px,3.5vw,34px);box-shadow:0 18px 50px rgba(31,40,33,.08)">
+        <div style="width:52px;height:52px;border-radius:50%;background:#e9f0ea;color:#2f4a3f;display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:16px">✓</div>
+        <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(23px,2.6vw,30px);margin:0 0 12px;letter-spacing:-.01em">Request received — let's finish in chat</h2>
+        <p style="margin:0 0 8px;color:#54584f;font-size:15.5px;line-height:1.6">You'll get the fastest reply by messaging us directly. Your details are already filled in — just hit send.</p>
+        <p style="margin:0 0 22px;color:#7a7e74;font-size:14px">Based in Tokyo (JST) — we usually reply within a few hours.</p>
+        <div id="thanks-wa" class="hidden"><a id="thanks-wa-link" href="#" target="_blank" rel="noopener" class="kt-cta" style="display:inline-block;background:#2f4a3f;color:#fff;text-decoration:none;padding:15px 30px;border-radius:12px;font-size:16px;font-weight:600">Send on WhatsApp</a></div>
+        <div id="thanks-line" class="hidden"><a id="thanks-line-link" href="#" target="_blank" rel="noopener" class="kt-cta" style="display:inline-block;background:#2f4a3f;color:#fff;text-decoration:none;padding:15px 30px;border-radius:12px;font-size:16px;font-weight:600">Add us on LINE</a></div>
+        <div id="thanks-wechat" class="hidden"><button type="button" onclick="openQr()" class="kt-cta" style="background:#2f4a3f;color:#fff;border:none;padding:15px 30px;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit">Open WeChat</button></div>
+        <div id="thanks-copy" class="hidden" style="margin:20px 0 0;text-align:left;background:#f7f5ef;border:1px solid #e7e2d6;border-radius:12px;padding:15px">
+          <div id="thanks-copy-label" style="font-size:12.5px;font-weight:600;color:#2f342d;margin-bottom:7px"></div>
+          <div id="thanks-copy-text" style="font-size:14px;color:#54584f;line-height:1.55"></div>
+          <button type="button" onclick="copyMessage()" id="copy-msg-btn" style="margin-top:11px;background:#fff;border:1px solid #d8d2c4;color:#2f4a3f;padding:8px 15px;border-radius:9px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600">Copy message</button>
+        </div>
+        <div id="thanks-email-note" class="hidden" style="background:#eef2ec;border:1px solid #d7e0d6;border-radius:12px;padding:16px 18px;font-size:15px;color:#2f4a3f;line-height:1.55"></div>
+        <div style="margin-top:18px;font-size:12.5px;color:#7a7e74;line-height:1.5">Free until 3 days before, ¥22,000 on the day. <button type="button" onclick="openPolicy()" style="background:none;border:none;padding:0;color:#2f4a3f;font-weight:600;font-family:inherit;font-size:12.5px;cursor:pointer;text-decoration:underline">View full policy</button></div>
+        <div style="margin-top:20px"><button type="button" onclick="resetForm()" style="background:none;border:none;color:#7a7e74;text-decoration:underline;cursor:pointer;font-family:inherit;font-size:13.5px">Submit another request</button></div>
       </div>
-      <p class="card-note" id="cardNote">🆓 100% Free · No credit card · No spam, ever</p>
     </div>
   </div>
 </section>
 
-<section class="steps-section">
-  <div class="section-tag">How It Works</div>
-  <div class="section-title">From search to booking<br>in under a minute.</div>
-  <div class="steps-grid">
-    <div class="step">
-      <div class="step-num">01</div>
-      <div class="step-icon">📋</div>
-      <h3>Tell Us What You Need</h3>
-      <p>Select your treatment, area, and budget. No account needed — just a few quick questions.</p>
-      <span class="step-time">⚡ 30 seconds</span>
+<!-- ============ TRUST STRIP ============ -->
+<section style="border-top:1px solid #e7e2d6;border-bottom:1px solid #e7e2d6;background:#fbfaf5">
+  <div style="max-width:1140px;margin:0 auto;padding:22px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 28px">
+    <div style="display:flex;align-items:center;gap:11px"><span style="color:#2f4a3f;font-size:18px">✓</span><span style="font-size:14.5px;color:#3a3f39">Licensed doctors only — required by law in Japan</span></div>
+    <div style="display:flex;align-items:center;gap:11px"><span style="color:#2f4a3f;font-size:18px">✓</span><span style="font-size:14.5px;color:#3a3f39">Every clinic is English-speaking</span></div>
+    <div style="display:flex;align-items:center;gap:11px"><span style="color:#2f4a3f;font-size:18px">✓</span><span style="font-size:14.5px;color:#3a3f39">No tourist markup — same price as locals</span></div>
+    <div style="display:flex;align-items:center;gap:11px"><span style="color:#2f4a3f;font-size:18px">✓</span><span style="font-size:14.5px;color:#3a3f39">100% free for visitors</span></div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how" style="max-width:1140px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px">
+  <div class="kt-reveal" style="text-align:center;margin-bottom:48px">
+    <div style="color:#2f4a3f;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">How it works</div>
+    <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(27px,3.4vw,40px);margin:0;letter-spacing:-.01em">From message to booked, in three steps</h2>
+  </div>
+  <div class="kt-reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px">
+    <div style="background:#fff;border:1px solid #e7e2d6;border-radius:16px;padding:30px 26px">
+      <div style="font-family:Georgia,serif;font-size:22px;color:#b08d57;margin-bottom:14px">01</div>
+      <h3 style="font-size:19px;margin:0 0 9px;font-weight:600">Tell us what you want</h3>
+      <p style="margin:0;color:#5a5f58;font-size:15px;line-height:1.65">Share your treatment, dates, and budget in the form — one quick request.</p>
     </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <div class="step-icon">✨</div>
-      <h3>See Your Curated Matches</h3>
-      <p>We surface only vetted, English-friendly clinics — with real ratings, prices, and availability.</p>
-      <span class="step-time">⚡ Instant</span>
+    <div style="background:#fff;border:1px solid #e7e2d6;border-radius:16px;padding:30px 26px">
+      <div style="font-family:Georgia,serif;font-size:22px;color:#b08d57;margin-bottom:14px">02</div>
+      <h3 style="font-size:19px;margin:0 0 9px;font-weight:600">Get matched, free</h3>
+      <p style="margin:0;color:#5a5f58;font-size:15px;line-height:1.65">We reply on your chosen app with a vetted clinic that fits, in Ginza or Azabu, with prices.</p>
     </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <div class="step-icon">📅</div>
-      <h3>We Book It For You — Free</h3>
-      <p>Our team handles the reservation in English. No phone calls in Japanese, no stress. Free.</p>
-      <span class="step-time">⚡ Reply within a few hours</span>
+    <div style="background:#fff;border:1px solid #e7e2d6;border-radius:16px;padding:30px 26px">
+      <div style="font-family:Georgia,serif;font-size:22px;color:#b08d57;margin-bottom:14px">03</div>
+      <h3 style="font-size:19px;margin:0 0 9px;font-weight:600">We book it for you</h3>
+      <p style="margin:0;color:#5a5f58;font-size:15px;line-height:1.65">Pick your clinic and we'll arrange the appointment around your trip.</p>
     </div>
   </div>
 </section>
 
-<section class="results-section" id="clinics-section">
-  <div class="results-header">
-    <div>
-      <div class="section-tag">Featured Clinics</div>
-      <div class="section-title" style="margin-bottom:0">Carefully selected for international visitors</div>
+<!-- ============ CLINICS ============ -->
+<section id="clinics" style="background:#fbfaf5;border-top:1px solid #e7e2d6;border-bottom:1px solid #e7e2d6">
+  <div style="max-width:1140px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px">
+    <div class="kt-reveal" style="margin-bottom:40px">
+      <div style="color:#2f4a3f;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">Partner clinics</div>
+      <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(27px,3.4vw,40px);margin:0 0 10px;letter-spacing:-.01em">Hand-picked clinics in Ginza &amp; Azabu</h2>
+      <p style="margin:0;max-width:42em;color:#54584f;font-size:16px;line-height:1.6">Doctor-led clinics we've personally vetted for English-speaking care and transparent, visitor-friendly pricing.</p>
     </div>
-    <div class="availability-notice">
-      <span class="dot"></span>
-      Same-day bookings available now
+    <div id="clinics-loading" style="text-align:center;padding:60px 0;color:#7a7e74;font-size:15px">Loading clinics…</div>
+    <div id="clinics-error" class="hidden" style="text-align:center;padding:48px 24px;background:#fff;border:1px solid #e7e2d6;border-radius:16px;color:#54584f">
+      <p style="margin:0 0 14px">We couldn't load the clinic list right now.</p>
+      <button type="button" class="kt-cta" onclick="goToForm()" style="background:#2f4a3f;color:#fff;border:none;padding:12px 22px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:600">Get matched — free</button>
     </div>
-  </div>
-
-  <div class="filter-bar">
-    <div class="filter-group">
-      <span class="filter-group-label">Area</span>
-      <button class="filter-btn active" data-filter="area" data-value="all">All Areas</button>
-      <button class="filter-btn" data-filter="area" data-value="Ginza">Ginza</button>
-      <button class="filter-btn" data-filter="area" data-value="Azabujuban">Azabujuban</button>
-      <button class="filter-btn" data-filter="area" data-value="Jiyugaoka">Jiyugaoka</button>
-    </div>
-    <div class="filter-group">
-      <span class="filter-group-label">Treatment</span>
-      <button class="filter-btn active" data-filter="treatment" data-value="all">All</button>
-      <button class="filter-btn" data-filter="treatment" data-value="anti-aging">Botox / HIFU</button>
-      <button class="filter-btn" data-filter="treatment" data-value="facial">Facial / Skin</button>
-      <button class="filter-btn" data-filter="treatment" data-value="laser">Laser</button>
-      <button class="filter-btn" data-filter="treatment" data-value="whitening">Whitening</button>
-      <button class="filter-btn" data-filter="treatment" data-value="artmakeup">Art Makeup</button>
-    </div>
-    <div class="filter-group">
-      <span class="filter-group-label">Budget</span>
-      <button class="filter-btn active" data-filter="budget" data-value="all">Any Budget</button>
-      <button class="filter-btn" data-filter="budget" data-value="under-20k">Under ¥20,000</button>
-      <button class="filter-btn" data-filter="budget" data-value="20k-50k">¥20k – ¥50k</button>
-      <button class="filter-btn" data-filter="budget" data-value="50k-plus">¥50k+</button>
-    </div>
-    <div class="filter-group">
-      <span class="filter-group-label">Date</span>
-      <button class="filter-btn active" data-filter="date" data-value="all">Any Date</button>
-      <button class="filter-btn" data-filter="date" data-value="today">Today</button>
-      <button class="filter-btn" data-filter="date" data-value="tomorrow">Tomorrow</button>
-      <button class="filter-btn" data-filter="date" data-value="this-week">This Week</button>
-    </div>
-  </div>
-
-  <div class="clinic-grid" id="clinic-grid"></div>
-  <div class="no-results-msg" id="no-results">No clinics found. Try different filters.</div>
-</section>
-
-<section class="faq-section">
-  <div class="section-tag">Common Questions</div>
-  <div class="section-title">We've got answers.</div>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-question">Will they understand my English? <span class="faq-icon">+</span></div>
-      <div class="faq-answer">All listed clinics have confirmed English-speaking staff or translation support. We verify this directly before listing any clinic on Kiyora Tokyo.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Are prices shown upfront? <span class="faq-icon">+</span></div>
-      <div class="faq-answer">Yes. Every clinic shows pricing before you book. No hidden fees, ever. Japanese-language sites and English-language sites show the same prices — we verify this.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Can I book during my trip? <span class="faq-icon">+</span></div>
-      <div class="faq-answer">Yes. Most treatments have minimal downtime, allowing you to enjoy your trip. Some may have slight redness for 1-2 days. We'll match you with clinics that have same-day or next-day availability.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Is it safe for my skin type? <span class="faq-icon">+</span></div>
-      <div class="faq-answer">Yes. Our clinics are experienced with diverse skin types from around the world. Many specialize in treating international patients with different skin tones and sensitivities.</div>
-    </div>
+    <div id="clinics-grid" class="hidden" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px"></div>
   </div>
 </section>
 
-<section class="blog-section">
-  <div class="section-tag">From the Blog</div>
-  <div class="section-title">Learn before you book.</div>
-  <div class="blog-grid">
-    <a href="/blog/hifu-treatment-tokyo/" class="blog-card">
-      <div class="blog-card-img">🔬</div>
-      <div class="blog-card-body">
-        <span class="blog-card-cat">Treatments</span>
-        <div class="blog-card-title">HIFU Treatment in Tokyo: What Expats Need to Know</div>
-        <div class="blog-card-excerpt">Devices, realistic prices, and how to find English-speaking clinics — everything before you book.</div>
-        <div class="blog-card-footer">Read article ⏱ 8 min →</div>
+<!-- ============ PRICING ============ -->
+<section id="pricing" style="max-width:980px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px">
+  <div class="kt-reveal" style="text-align:center;margin-bottom:42px">
+    <div style="color:#2f4a3f;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">Treatments &amp; pricing</div>
+    <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(27px,3.4vw,40px);margin:0 0 10px;letter-spacing:-.01em">Non-surgical only · ¥15,000–¥150,000</h2>
+    <p style="margin:0 auto;max-width:38em;color:#54584f;font-size:16px;line-height:1.6">Transparent, visitor-friendly pricing. Representative starting prices below — your match confirms the exact figure, with no markup for visitors.</p>
+  </div>
+  <div class="kt-reveal" style="background:#fff;border:1px solid #e7e2d6;border-radius:16px;overflow:hidden">
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;background:#2f4a3f;color:#fff;font-size:13px;font-weight:600;letter-spacing:.03em">
+      <div style="padding:14px 20px">Treatment</div><div style="padding:14px 16px">From</div><div style="padding:14px 16px">Downtime</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:14.5px;border-bottom:1px solid #f0ece1"><div style="padding:15px 20px;font-weight:600">Laser (toning &amp; facials)</div><div style="padding:15px 16px;color:#2f4a3f;font-weight:600">¥15,000</div><div style="padding:15px 16px;color:#6c706a">Minimal</div></div>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:14.5px;border-bottom:1px solid #f0ece1"><div style="padding:15px 20px;font-weight:600">Botox</div><div style="padding:15px 16px;color:#2f4a3f;font-weight:600">¥18,000</div><div style="padding:15px 16px;color:#6c706a">None</div></div>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:14.5px;border-bottom:1px solid #f0ece1"><div style="padding:15px 20px;font-weight:600">RF Microneedling</div><div style="padding:15px 16px;color:#2f4a3f;font-weight:600">¥35,000</div><div style="padding:15px 16px;color:#6c706a">1–2 days</div></div>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:14.5px;border-bottom:1px solid #f0ece1"><div style="padding:15px 20px;font-weight:600">Filler</div><div style="padding:15px 16px;color:#2f4a3f;font-weight:600">¥45,000</div><div style="padding:15px 16px;color:#6c706a">Minimal</div></div>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:14.5px;border-bottom:1px solid #f0ece1"><div style="padding:15px 20px;font-weight:600">Art Makeup (brows &amp; lips)</div><div style="padding:15px 16px;color:#2f4a3f;font-weight:600">¥55,000</div><div style="padding:15px 16px;color:#6c706a">1–2 days</div></div>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:14.5px"><div style="padding:15px 20px;font-weight:600">HIFU</div><div style="padding:15px 16px;color:#2f4a3f;font-weight:600">¥78,000</div><div style="padding:15px 16px;color:#6c706a">None</div></div>
+  </div>
+  <div style="text-align:center;margin-top:22px"><button type="button" class="kt-cta" onclick="goToForm()" style="background:#2f4a3f;color:#fff;border:none;padding:14px 28px;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit">Get matched — free</button></div>
+</section>
+
+<!-- ============ DIFFERENTIATION ============ -->
+<section style="background:#fbfaf5;border-top:1px solid #e7e2d6;border-bottom:1px solid #e7e2d6">
+  <div style="max-width:1140px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px">
+    <div class="kt-reveal" style="text-align:center;margin-bottom:42px">
+      <div style="color:#2f4a3f;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">Why Kiyora</div>
+      <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(27px,3.4vw,40px);margin:0 0 10px;letter-spacing:-.01em">One position no one else fills</h2>
+      <p style="margin:0 auto;max-width:40em;color:#54584f;font-size:16px;line-height:1.6">Travelers · non-surgical treatments · boutique clinics · English-speaking · free.</p>
+    </div>
+    <div class="kt-reveal" style="overflow-x:auto">
+      <div style="min-width:640px;background:#fff;border:1px solid #e7e2d6;border-radius:16px;overflow:hidden">
+        <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr">
+          <div style="padding:16px 20px"></div>
+          <div style="padding:16px 14px;text-align:center;background:#2f4a3f;color:#fff;font-weight:700;font-family:Georgia,serif;font-size:16px">Kiyora Tokyo</div>
+          <div style="padding:16px 14px;text-align:center;color:#7a7e74;font-size:13px;font-weight:600">Large medical-travel agencies</div>
+          <div style="padding:16px 14px;text-align:center;color:#7a7e74;font-size:13px;font-weight:600">High-volume chains</div>
+        </div>
+        <div id="compare-body"></div>
       </div>
-    </a>
-    <a href="/blog/" class="blog-card" style="opacity:0.65;pointer-events:none;">
-      <div class="blog-card-img">💉</div>
-      <div class="blog-card-body">
-        <span class="blog-card-cat">Botox</span>
-        <div class="blog-card-title">Botox in Tokyo: First-Timer's Complete Guide</div>
-        <div class="blog-card-excerpt">Unit pricing, forehead vs. jaw, and what to ask your doctor — coming soon.</div>
-        <div class="blog-card-footer">Coming soon</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" style="background:#2f4a3f;color:#f3f1e8">
+  <div style="max-width:1140px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(32px,5vw,60px);align-items:center">
+    <div class="kt-reveal">
+      <div style="color:#cdbb92;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px">Our story</div>
+      <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(26px,3.2vw,38px);margin:0 0 22px;line-height:1.18;letter-spacing:-.01em">It started with my own appointment in Ginza.</h2>
+      <p style="margin:0 0 16px;color:#d8d6c9;font-size:16px;line-height:1.72">I came to Tokyo as a visitor and booked Art Makeup at a small Ginza clinic. I expected to feel lost — instead the doctor explained everything in careful English, the room was immaculate, and the result was beautifully natural. No upsell, no markup, just real care.</p>
+      <p style="margin:0 0 24px;color:#d8d6c9;font-size:16px;line-height:1.72">I kept thinking: other visitors deserve to find this without the stress of guessing which clinic to trust. So I built Kiyora Tokyo — to introduce travelers to the clinics I'd send my own friends to, for free.</p>
+      <div style="font-family:Georgia,serif;font-style:italic;font-size:17px;color:#f3f1e8">— Founder, Kiyora Tokyo</div>
+    </div>
+    <div class="kt-reveal" style="aspect-ratio:1/1;border-radius:18px;overflow:hidden">
+      <img src="images/founder.png" alt="Founder, Kiyora Tokyo" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section style="max-width:760px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px">
+  <div class="kt-reveal" style="text-align:center;margin-bottom:34px">
+    <div style="color:#2f4a3f;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">FAQ</div>
+    <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(27px,3.4vw,40px);margin:0;letter-spacing:-.01em">Good to know</h2>
+  </div>
+  <div id="faq-list" style="border-top:1px solid #e7e2d6"></div>
+</section>
+
+<!-- ============ BLOG ============ -->
+<section style="background:#fbfaf5;border-top:1px solid #e7e2d6">
+  <div style="max-width:1140px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px">
+    <div class="kt-reveal" style="margin-bottom:34px">
+      <div style="color:#2f4a3f;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">From the journal</div>
+      <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(27px,3.4vw,40px);margin:0;letter-spacing:-.01em">Read before you book</h2>
+    </div>
+    <div class="kt-reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px" id="blog-grid"></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer style="background:#20251f;color:#cfd2c9">
+  <div style="max-width:1140px;margin:0 auto;padding:clamp(48px,7vw,80px) 24px 32px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px;align-items:start">
+      <div>
+        <div style="font-family:Georgia,serif;font-size:24px;color:#fff;margin-bottom:12px">Kiyora <span style="color:#9db8a4">Tokyo</span></div>
+        <p style="margin:0 0 6px;font-size:14.5px;color:#a7aa9f;line-height:1.6;max-width:30em">English-speaking aesthetic clinic matching in Ginza &amp; Azabu. Free for visitors, with no markup.</p>
+        <div style="font-size:13px;color:#7e8177;margin-top:10px">Free · No markup for visitors · All clinics English-speaking</div>
       </div>
-    </a>
-    <a href="/blog/" class="blog-card" style="opacity:0.65;pointer-events:none;">
-      <div class="blog-card-img">✨</div>
-      <div class="blog-card-body">
-        <span class="blog-card-cat">Laser</span>
-        <div class="blog-card-title">Laser Skin Treatments in Tokyo: What to Know Before You Book</div>
-        <div class="blog-card-excerpt">Picosecond, CO₂, IPL — which laser fits your skin concern? Coming soon.</div>
-        <div class="blog-card-footer">Coming soon</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8b8e83;margin-bottom:14px">Chat with us</div>
+        <div style="display:flex;flex-direction:column;gap:10px;max-width:240px">
+          <button type="button" onclick="goToForm()" style="display:flex;align-items:center;gap:10px;color:#e6e8df;background:#2c3129;border:1px solid #3a4036;padding:11px 14px;border-radius:10px;font-size:14.5px;font-weight:600;cursor:pointer;font-family:inherit;text-align:left"><span style="width:9px;height:9px;border-radius:50%;background:#25D366"></span>WhatsApp</button>
+          <button type="button" onclick="goToForm()" style="display:flex;align-items:center;gap:10px;color:#e6e8df;background:#2c3129;border:1px solid #3a4036;padding:11px 14px;border-radius:10px;font-size:14.5px;font-weight:600;cursor:pointer;font-family:inherit;text-align:left"><span style="width:9px;height:9px;border-radius:50%;background:#06C755"></span>LINE</button>
+          <button type="button" onclick="goToForm()" style="display:flex;align-items:center;gap:10px;color:#e6e8df;background:#2c3129;border:1px solid #3a4036;padding:11px 14px;border-radius:10px;font-size:14.5px;font-weight:600;cursor:pointer;font-family:inherit;text-align:left"><span style="width:9px;height:9px;border-radius:50%;background:#07C160"></span>WeChat</button>
+        </div>
       </div>
-    </a>
-  </div>
-  <a href="/blog/" class="blog-view-all">View all articles →</a>
-</section>
-
-<section class="trust-section">
-  <div class="trust-grid">
-    <div class="trust-item">
-      <div class="trust-icon">🆓</div>
-      <div class="trust-label">Free — Always, for Users</div>
-      <div class="trust-desc">Clinics pay us when you book. You never pay a matching fee.</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8b8e83;margin-bottom:14px">Explore</div>
+        <div style="display:flex;flex-direction:column;gap:9px;font-size:14.5px">
+          <a href="#how" style="color:#cfd2c9;text-decoration:none">How it works</a>
+          <a href="#clinics" style="color:#cfd2c9;text-decoration:none">Clinics</a>
+          <a href="#pricing" style="color:#cfd2c9;text-decoration:none">Pricing</a>
+          <a href="#about" style="color:#cfd2c9;text-decoration:none">About</a>
+        </div>
+      </div>
     </div>
-    <div class="trust-item">
-      <div class="trust-icon">🌏</div>
-      <div class="trust-label">Trusted by International Visitors</div>
-      <div class="trust-desc">Used by travelers and expats across Asia, Europe, and beyond.</div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon">🗣️</div>
-      <div class="trust-label">English Support Guaranteed</div>
-      <div class="trust-desc">All listed clinics have confirmed English-speaking staff.</div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon">💴</div>
-      <div class="trust-label">Transparent Pricing</div>
-      <div class="trust-desc">Same price as Japanese patients. No foreigner markup. Ever.</div>
+    <div style="border-top:1px solid #34392f;margin-top:40px;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:#7e8177">
+      <span>© 2026 Kiyora Tokyo · kiyoratokyo.com</span>
+      <span>Tokyo (JST) · We usually reply within a few hours</span>
     </div>
   </div>
-</section>
-
-<section class="final-cta">
-  <div class="section-tag">Ready to Book?</div>
-  <div class="section-title">Find your perfect Tokyo clinic —<br>free, fast, and in English.</div>
-  <p class="final-hook">Not sure which treatment is right for you? Tell us and we'll guide you.</p>
-  <div class="final-cta-group">
-    <a href="#match" class="btn-primary"><span>Get My Free Match Now →</span></a>
-  </div>
-  <div class="final-urgency">⚠️ Same-day bookings available — limited slots today</div>
-</section>
-
-<footer>
-  <div class="footer-logo">Kiyora Tokyo</div>
-  <div>© 2025 Kiyora Tokyo · kiyoratokyo.com · Ginza & Azabu Medical Aesthetics</div>
 </footer>
 
+<!-- ============ FLOATING CHAT DOCK ============ -->
+<div id="chat-dock" style="position:fixed;right:20px;bottom:20px;z-index:80;display:flex;flex-direction:column;align-items:flex-end;gap:12px">
+  <div id="chat-panel" class="hidden" style="width:300px;max-width:calc(100vw - 40px);background:#fff;border:1px solid #e7e2d6;border-radius:18px;box-shadow:0 18px 50px rgba(31,40,33,.22);overflow:hidden">
+    <div style="background:#2f4a3f;color:#fff;padding:18px 20px;position:relative">
+      <div style="font-family:Georgia,serif;font-size:19px">Find your clinic in minutes</div>
+      <div style="font-size:12px;opacity:.86;margin-top:5px;line-height:1.4">Free · No markup for visitors · All clinics English-speaking</div>
+      <button type="button" onclick="toggleChat()" aria-label="Close chat" style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,.18);border:none;color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:15px;line-height:1">×</button>
+    </div>
+    <div style="padding:14px;display:flex;flex-direction:column;gap:11px">
+      <p style="margin:0;font-size:13.5px;color:#54584f;line-height:1.55">Tell us what you're after in one quick form — then we'll continue on WhatsApp, LINE, or WeChat.</p>
+      <button type="button" onclick="goToFormFromChat()" class="kt-cta" style="background:#2f4a3f;color:#fff;border:none;border-radius:11px;padding:13px;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600">Start my request →</button>
+      <div style="display:flex;align-items:center;justify-content:center;gap:14px;padding-top:2px">
+        <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#7a7e74"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>WhatsApp</span>
+        <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#7a7e74"><span style="width:8px;height:8px;border-radius:50%;background:#06C755"></span>LINE</span>
+        <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#7a7e74"><span style="width:8px;height:8px;border-radius:50%;background:#07C160"></span>WeChat</span>
+      </div>
+    </div>
+  </div>
+  <button type="button" onclick="toggleChat()" aria-label="Chat with us — free" style="display:flex;align-items:center;gap:10px;background:#2f4a3f;color:#fff;border:none;border-radius:999px;padding:14px 22px;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600;box-shadow:0 12px 30px rgba(31,40,33,.28)">
+    <span style="width:20px;height:18px;border-radius:6px 6px 6px 2px;background:#fff;display:inline-block;flex-shrink:0"></span>
+    Chat with us — free
+  </button>
+</div>
+
+<!-- ============ POLICY MODAL ============ -->
+<div id="policy-modal" class="hidden kt-modal-bg" onclick="closePolicy()">
+  <div class="kt-modal" onclick="event.stopPropagation()">
+    <button type="button" class="kt-modal-close" onclick="closePolicy()">×</button>
+    <div style="font-family:Georgia,serif;font-size:23px;margin:0 6px 6px 0;line-height:1.25">Before you book — fees &amp; cancellation</div>
+    <div style="background:#eef2ec;border:1px solid #d7e0d6;border-radius:12px;padding:14px 16px;font-size:14px;color:#2f4a3f;line-height:1.6;margin-bottom:20px">Kiyora's service is free. The fees below are paid directly to the clinic, not to Kiyora.</div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div>
+        <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a8e84;margin-bottom:8px">Cancellation (per treatment)</div>
+        <ul style="margin:0;padding-left:18px;font-size:14px;color:#3a3f39;line-height:1.75">
+          <li>Free until 3 days before</li>
+          <li>¥5,500 from 2 days before until 12:00 the previous day</li>
+          <li>¥11,000 from 12:00 to 19:00 the previous day</li>
+          <li>¥22,000 on the day, or for no-shows</li>
+          <li>Free if you cancel within 12 hours of booking</li>
+        </ul>
+        <div style="font-size:13px;color:#7a7e74;margin-top:8px">Rescheduling to another date also incurs these fees.</div>
+      </div>
+      <div>
+        <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a8e84;margin-bottom:8px">Time change on the day</div>
+        <div style="font-size:14px;color:#3a3f39;line-height:1.65">¥3,300 for first-time patients (moving your time by an hour or more).</div>
+      </div>
+      <div>
+        <div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a8e84;margin-bottom:8px">Other fees</div>
+        <ul style="margin:0;padding-left:18px;font-size:14px;color:#3a3f39;line-height:1.75">
+          <li>First-visit fee ¥3,630 (when a treatment is performed the same day)</li>
+          <li>¥11,000 if you book a consultation only, without treatment</li>
+          <li>Optional fee to request the clinic director (varies by treatment)</li>
+          <li>Some treatments carry a 20% Saturday surcharge</li>
+        </ul>
+      </div>
+      <div style="font-size:13px;color:#7a7e74;line-height:1.6">Travel plans change — tell us as early as you can and we'll handle it with the clinic.</div>
+    </div>
+    <button type="button" onclick="acceptPolicy()" class="kt-cta" style="margin-top:22px;width:100%;background:#2f4a3f;color:#fff;border:none;padding:14px;border-radius:12px;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600">Got it — I understand</button>
+  </div>
+</div>
+
+<!-- ============ WECHAT QR MODAL ============ -->
+<div id="qr-modal" class="hidden kt-modal-bg" onclick="closeQr()">
+  <div class="kt-modal" style="max-width:360px;text-align:center" onclick="event.stopPropagation()">
+    <button type="button" class="kt-modal-close" onclick="closeQr()">×</button>
+    <div style="font-family:Georgia,serif;font-size:22px;margin-bottom:6px">Add us on WeChat</div>
+    <div style="color:#7a7e74;font-size:14px;margin-bottom:20px">Scan the QR code, or add the ID below.</div>
+    <img src="wechat-qr.png" alt="Kiyora Tokyo WeChat QR code" style="width:200px;height:200px;margin:0 auto;border-radius:12px;border:1px solid #e0d9c9;display:block;background:#fff">
+    <div style="margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-size:15px">
+      <span>WeChat ID: <strong id="qr-wechat-id"></strong></span>
+      <button type="button" onclick="copyWechatId()" id="copy-id-btn" style="background:#fff;border:1px solid #d8d2c4;color:#2f4a3f;padding:6px 12px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:600">Copy ID</button>
+    </div>
+    <div style="margin-top:18px;text-align:left;background:#f7f5ef;border:1px solid #e7e2d6;border-radius:12px;padding:14px">
+      <div style="font-size:12.5px;font-weight:600;color:#2f342d;margin-bottom:7px">Then paste this message:</div>
+      <div id="qr-prefill" style="font-size:13.5px;color:#54584f;line-height:1.55"></div>
+      <button type="button" onclick="copyMessage()" style="margin-top:11px;background:#fff;border:1px solid #d8d2c4;color:#2f4a3f;padding:8px 15px;border-radius:9px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600">Copy message</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- /top -->
+
 <script>
-// Formspree AJAX
-const form      = document.getElementById('matchForm');
-const submitBtn = document.getElementById('submitBtn');
-const submitLbl = document.getElementById('submitLabel');
-const thankYou  = document.getElementById('thankYou');
-const cardNote  = document.getElementById('cardNote');
+/* =====================================================================
+   CHAT ACCOUNTS — single place to swap
+   ===================================================================== */
+var WHATSAPP_NUMBER = '819011479299';
+var LINE_URL        = 'https://lin.ee/ri562ei';
+var WECHAT_ID       = 'Kiyora_Tokyo';
+// WeChat QR image: wechat-qr.png (same directory as this file)
+var FORMSPREE_URL   = 'https://formspree.io/f/xlgodkel';
 
-if (form) {
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitLbl.textContent = 'Sending…';
-    submitBtn.style.opacity = '0.7';
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        form.style.display = 'none';
-        if (cardNote) cardNote.style.display = 'none';
-        thankYou.style.display = 'block';
-        setTimeout(() => {
-          document.getElementById('clinics-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 800);
-      } else {
-        submitLbl.textContent = 'Something went wrong — please try again';
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = '1';
-      }
-    } catch (err) {
-      submitLbl.textContent = 'Network error — please try again';
-      submitBtn.disabled = false;
-      submitBtn.style.opacity = '1';
-    }
+/* ---- state ---- */
+var S = {
+  method: 'WhatsApp', time: 'Flexible', language: 'English',
+  policyViewed: false, consent: false, submitting: false,
+  chatOpen: false, clinic: ''
+};
+
+/* ---- helpers ---- */
+var $ = function(id){ return document.getElementById(id); };
+var show = function(el){ el.classList.remove('hidden'); };
+var hide = function(el){ el.classList.add('hidden'); };
+var tog = function(el,on){ on ? show(el) : hide(el); };
+
+function budgetLabel(v){ return '¥' + Number(v).toLocaleString('en-US'); }
+function areaText(){ var v=$('f-area').value; return v==='No preference'?'Ginza or Azabu':v; }
+function fmtDates(){
+  var mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function p(s){if(!s)return null;var d=new Date(s+'T00:00');if(isNaN(d.getTime()))return null;return{m:mo[d.getMonth()],day:d.getDate()};}
+  var a=p($('f-arrival').value),b=p($('f-departure').value);
+  if(a&&b) return a.m===b.m?(a.m+' '+a.day+'\u2013'+b.day):(a.m+' '+a.day+' \u2013 '+b.m+' '+b.day);
+  if(a) return 'from '+a.m+' '+a.day;
+  if(b) return 'until '+b.m+' '+b.day;
+  return 'my trip dates';
+}
+function hasDates(){ return !!($('f-arrival').value||$('f-departure').value); }
+
+function buildMessage(){
+  var clinic=S.clinic, t=$('f-treatment').value;
+  var treatment=(t&&t!=='Not sure yet')?t:null;
+  var parts=[];
+  if(clinic) parts.push('interested in '+clinic);
+  else if(treatment) parts.push('interested in '+treatment);
+  if(clinic&&treatment) parts.push('for '+treatment);
+  parts.push('in '+areaText());
+  parts.push('budget around '+budgetLabel($('f-budget').value));
+  if(hasDates()) parts.push('in Tokyo on '+fmtDates());
+  var hasContent=clinic||treatment||hasDates();
+  var detail=hasContent
+    ?("I'm "+parts.join(', ')+". Could you confirm availability during my stay and the cost?")
+    :"I'm visiting Tokyo and looking for an English-speaking aesthetic clinic. Could you help me find the right one?";
+  return "Hi Kiyora \u2014 I just submitted a request. "+detail;
+}
+function genericMessage(){
+  return "Hi Kiyora \u2014 I'm visiting Tokyo and looking for an English-speaking aesthetic clinic. Could you help me find the right one?";
+}
+function waLink(msg){ return 'https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(msg); }
+
+/* ---- pill controls ---- */
+function renderPills(containerId, options, selected, onSelect){
+  var c=$(containerId); c.innerHTML='';
+  options.forEach(function(opt){
+    var b=document.createElement('button'); b.type='button';
+    b.textContent=opt; b.className='kt-pill '+(opt===selected?'kt-pill-on':'kt-pill-off');
+    b.onclick=function(){ onSelect(opt); renderPills(containerId,options,opt,onSelect); };
+    c.appendChild(b);
   });
 }
-
-// Clinic filtering
-let clinics = [];
-const activeFilters = { area: 'all', treatment: 'all', budget: 'all', date: 'all' };
-
-function budgetMatch(priceFrom, value) {
-  if (value === 'all')        return true;
-  if (value === 'under-20k')  return priceFrom < 20000;
-  if (value === '20k-50k')    return priceFrom >= 20000 && priceFrom < 50000;
-  if (value === '50k-plus')   return priceFrom >= 50000;
-  return true;
+function updateMethodUI(){
+  var isEmail=S.method==='Email';
+  tog($('email-field'),isEmail); tog($('backup-field'),!isEmail);
 }
 
-function dateMatch(nextAvailable, value) {
-  if (value === 'all')       return true;
-  if (value === 'today')     return nextAvailable === 'Today';
-  if (value === 'tomorrow')  return nextAvailable === 'Today' || nextAvailable === 'Tomorrow';
-  if (value === 'this-week') return true;
-  return true;
+/* ---- init pills ---- */
+renderPills('time-pills',['Morning','Afternoon','Evening','Flexible'],S.time,function(v){S.time=v;});
+renderPills('lang-pills',['English','日本語','中文','Other'],S.language,function(v){S.language=v;});
+renderPills('method-pills',['WhatsApp','LINE','WeChat','Email'],S.method,function(v){S.method=v;updateMethodUI();});
+updateMethodUI();
+
+/* ---- budget slider ---- */
+$('f-budget').addEventListener('input',function(){ $('budget-label').textContent=budgetLabel(this.value); });
+
+/* ---- consent ---- */
+function updateSubmitBtn(){
+  var btn=$('submit-btn');
+  if(S.consent&&!S.submitting){ btn.style.background='#2f4a3f'; btn.style.cursor='pointer'; }
+  else { btn.style.background='#b6bdb4'; btn.style.cursor='not-allowed'; }
+}
+$('kt-consent').addEventListener('change',function(){
+  S.consent=this.checked; hide($('consent-warn')); updateSubmitBtn();
+});
+function onConsentLabelClick(){
+  if(!S.policyViewed){ show($('policy-warn')); openPolicy(); }
 }
 
-function ratingBars(breakdown) {
-  return ['service', 'cleanliness', 'english'].map(k => `
-    <div class="rating-bar-row">
-      <span class="rating-bar-label">${k}</span>
-      <div class="rating-bar-track">
-        <div class="rating-bar-fill" style="width:${(breakdown[k] / 5) * 100}%"></div>
-      </div>
-      <span class="rating-bar-score">${breakdown[k]}</span>
-    </div>`).join('');
+/* ---- policy modal ---- */
+function openPolicy(){ show($('policy-modal')); S.policyViewed=true; hide($('policy-warn'));
+  hide($('consent-placeholder')); show($('kt-consent'));
+}
+function closePolicy(){ hide($('policy-modal')); }
+function acceptPolicy(){ closePolicy(); S.consent=true; $('kt-consent').checked=true; updateSubmitBtn(); }
+
+/* ---- WeChat QR modal ---- */
+$('qr-wechat-id').textContent=WECHAT_ID;
+function openQr(){ show($('qr-modal')); $('qr-prefill').textContent=buildMessage(); }
+function closeQr(){ hide($('qr-modal')); }
+function copyWechatId(){
+  try{navigator.clipboard.writeText(WECHAT_ID);}catch(e){}
+  $('copy-id-btn').textContent='Copied ✓';
+  setTimeout(function(){$('copy-id-btn').textContent='Copy ID';},2200);
+}
+function copyMessage(){
+  var msg=buildMessage();
+  try{navigator.clipboard.writeText(msg);}catch(e){}
+  $('copy-msg-btn').textContent='Copied ✓';
+  setTimeout(function(){$('copy-msg-btn').textContent='Copy message';},2200);
 }
 
-function renderClinics() {
-  const filtered = clinics.filter(c =>
-    (activeFilters.area === 'all'      || c.area === activeFilters.area) &&
-    (activeFilters.treatment === 'all' || c.treatments.includes(activeFilters.treatment)) &&
-    budgetMatch(c.priceFrom, activeFilters.budget) &&
-    dateMatch(c.nextAvailable, activeFilters.date)
-  );
+/* ---- navigation ---- */
+function scrollToForm(){
+  var el=$('match'); if(!el) return;
+  var y=el.getBoundingClientRect().top+window.pageYOffset-76;
+  window.scrollTo({top:y,behavior:'smooth'});
+}
+function goToForm(){ S.clinic=''; $('f-clinic').value=''; hide($('clinic-banner'));
+  show($('kt-form')); hide($('kt-thanks')); setTimeout(scrollToForm,30); }
+function goToFormFromChat(){ S.chatOpen=false; hide($('chat-panel')); goToForm(); }
+function askClinic(name){ S.clinic=name; $('f-clinic').value=name;
+  $('clinic-name-display').textContent=name; show($('clinic-banner'));
+  show($('kt-form')); hide($('kt-thanks')); setTimeout(scrollToForm,30); }
+function clearClinic(){ S.clinic=''; $('f-clinic').value=''; hide($('clinic-banner')); }
+function toggleChat(){ S.chatOpen=!S.chatOpen; tog($('chat-panel'),S.chatOpen); }
 
-  const grid      = document.getElementById('clinic-grid');
-  const noResults = document.getElementById('no-results');
+/* ---- form submit ---- */
+$('kt-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  if(S.submitting) return;
+  if(!S.consent){ show($('consent-warn')); return; }
+  var method=S.method;
+  var payload={
+    treatment:$('f-treatment').value||'(not specified)',
+    clinic:S.clinic||'(no specific clinic)',
+    area:$('f-area').value,
+    budget:budgetLabel($('f-budget').value),
+    dates:hasDates()?fmtDates():'(not specified)',
+    time:S.time, language:S.language,
+    contactMethod:method,
+    contactDetail: method==='Email'?$('f-email').value:'',
+    backup:$('f-backup')?$('f-backup').value:'',
+    email: method==='Email'?$('f-email').value:($('f-backup')?$('f-backup').value:''),
+    message:buildMessage()
+  };
+  S.submitting=true; $('submit-btn').textContent='Sending…'; updateSubmitBtn(); hide($('submit-err'));
+  fetch(FORMSPREE_URL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)})
+    .then(function(r){
+      S.submitting=false;
+      if(r.ok){ showThanks(method); }
+      else { $('submit-btn').textContent='Find my clinic'; updateSubmitBtn(); show($('submit-err')); }
+    })
+    .catch(function(){
+      S.submitting=false; $('submit-btn').textContent='Find my clinic'; updateSubmitBtn(); show($('submit-err'));
+    });
+});
 
-  if (filtered.length === 0) {
-    grid.innerHTML = '';
-    noResults.style.display = 'block';
-    return;
+function showThanks(method){
+  hide($('kt-form')); show($('kt-thanks'));
+  hide($('thanks-wa'));hide($('thanks-line'));hide($('thanks-wechat'));
+  hide($('thanks-copy'));hide($('thanks-email-note'));
+  var msg=buildMessage();
+  if(method==='WhatsApp'){
+    show($('thanks-wa')); $('thanks-wa-link').href=waLink(msg);
+  } else if(method==='LINE'){
+    show($('thanks-line')); $('thanks-line-link').href=LINE_URL;
+    show($('thanks-copy')); $('thanks-copy-label').textContent='Paste this into LINE:';
+    $('thanks-copy-text').textContent=msg;
+  } else if(method==='WeChat'){
+    show($('thanks-wechat'));
+    show($('thanks-copy')); $('thanks-copy-label').textContent='Paste this into WeChat:';
+    $('thanks-copy-text').textContent=msg;
+  } else {
+    show($('thanks-email-note'));
+    $('thanks-email-note').textContent="We've got your request and will reply to "+($('f-email').value||'your email')+" within a few hours (JST).";
   }
-
-  noResults.style.display = 'none';
-  grid.innerHTML = filtered.map(c => {
-    const procsHTML = c.procedures
-      ? c.procedures.map(p => `<span class="proc-tag">${p.name} <strong>${p.price}</strong></span>`).join('')
-      : '';
-    return `
-    <div class="clinic-card">
-      <div class="clinic-photo">
-        <img src="${c.photo}" alt="${c.name}" loading="lazy" />
-      </div>
-      <div class="clinic-content">
-        <div class="clinic-card-header">
-          <div>
-            <div class="clinic-name">${c.name}</div>
-            <div class="clinic-area">📍 ${c.areaLabel}</div>
-          </div>
-          <div class="clinic-rating"><span class="star">⭐</span> ${c.rating}</div>
-        </div>
-        <div class="clinic-tags">
-          ${c.tags.map(t => `<span class="tag ${t.cls}">${t.text}</span>`).join('')}
-        </div>
-        <div class="clinic-meta-badge">✓ ${c.foreignerCount.toLocaleString()} treatments done for foreigners</div>
-        <div class="rating-bars">${ratingBars(c.ratingBreakdown)}</div>
-        <p class="clinic-review">"${c.review}"</p>
-        ${procsHTML ? `<div class="clinic-procedures">${procsHTML}</div>` : ''}
-        <div class="clinic-footer">
-          <div>
-            <div class="clinic-price">${c.priceLabel}</div>
-            <div class="next-available">📅 Next available: <strong>${c.nextAvailable}</strong></div>
-          </div>
-          <div class="card-actions">
-            <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="btn-view">View Details</a>
-            <a href="#match" class="book-btn">Request Booking →</a>
-          </div>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
+  setTimeout(scrollToForm,30);
+}
+function resetForm(){
+  show($('kt-form')); hide($('kt-thanks'));
+  $('submit-btn').textContent='Find my clinic'; S.submitting=false; updateSubmitBtn();
+  hide($('submit-err'));
 }
 
-fetch('clinics.json')
-  .then(r => r.json())
-  .then(data => { clinics = data; renderClinics(); })
-  .catch(() => {
-    document.getElementById('no-results').style.display = 'block';
-    document.getElementById('no-results').textContent = 'Loading clinics… please refresh.';
+/* ---- clinics ---- */
+fetch('clinics.json').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(data){
+  hide($('clinics-loading')); show($('clinics-grid'));
+  var grid=$('clinics-grid');
+  data.forEach(function(c){
+    var displayName=c.confirmed?c.name:('Partner clinic in '+c.areaLabel+' (name available after booking)');
+    var photos=Array.isArray(c.photos)?c.photos:[];
+    var coverHTML=photos.length>0
+      ?'<img src="'+photos[0]+'" alt="'+c.name+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">'
+      :'<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(150deg,#eef0e9,#e4e7dd)"><span style="width:46px;height:46px;border-radius:50%;border:1.5px solid #2f4a3f;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-style:italic;color:#2f4a3f;font-size:24px">K</span><span style="font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:#8d8a78">clinic photo</span></div>';
+    var highlights=(c.highlights||[]).map(function(h){return '<div style="display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:#4a4f49"><span style="color:#2f4a3f;line-height:1.35">✓</span><span>'+h+'</span></div>';}).join('');
+    var procs=(c.procedures||[]).map(function(p){return '<div style="display:flex;justify-content:space-between;gap:12px;font-size:13.5px"><span style="color:#3a3f39">'+p.name+'</span><span style="color:#2f342d;font-weight:600;white-space:nowrap">'+p.price+'</span></div>';}).join('');
+    var tags=(c.tags||[]).map(function(t){
+      var colors={english:{bg:'#e9f0ea',fg:'#2f4a3f'},transparent:{bg:'#e9f0ea',fg:'#2f4a3f'},discreet:{bg:'#efece5',fg:'#6c706a'}};
+      var col=colors[t.cls]||{bg:'#efece5',fg:'#6c706a'};
+      return '<span style="background:'+col.bg+';color:'+col.fg+';padding:5px 11px;border-radius:999px;font-size:12px;font-weight:600">'+t.text+'</span>';
+    }).join('');
+    var card=document.createElement('div');
+    card.className='kt-reveal';
+    card.style.cssText='background:#fff;border:1px solid #e7e2d6;border-radius:18px;overflow:hidden;display:flex;flex-direction:column';
+    card.innerHTML=
+      '<div style="position:relative;aspect-ratio:16/10;background:#eef0e9;overflow:hidden">'+coverHTML+
+      '<span style="position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);border-radius:999px;padding:5px 11px;font-size:12.5px;font-weight:600;color:#2f342d">📍 '+c.areaLabel+'</span></div>'+
+      '<div style="padding:22px;display:flex;flex-direction:column;gap:14px;flex:1">'+
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px"><div><h3 style="margin:0;font-size:20px;font-family:Georgia,serif;font-weight:400">'+displayName+'</h3><div style="font-size:13px;color:#7a7e74;margin-top:3px">'+(c.treatments||[]).join('  ·  ')+'</div></div><div style="text-align:right;flex-shrink:0"><div style="font-size:12.5px;color:#7a7e74">From</div><div style="font-size:15px;color:#2f342d;font-weight:700;white-space:nowrap">'+(c.priceLabel||'').replace(/^From\s*/i,'')+'</div></div></div>'+
+        (highlights?'<div style="display:flex;flex-direction:column;gap:6px">'+highlights+'</div>':'')+
+        '<div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid #f0ece1;border-bottom:1px solid #f0ece1;padding:12px 0">'+procs+'</div>'+
+        '<div><div style="font-size:13px;color:#3a3f39;line-height:1.5">'+(c.access||'')+'</div><div style="font-size:12.5px;color:#8a8e84;line-height:1.5;margin-top:4px">'+(c.accessNote||'')+'</div></div>'+
+        '<div style="border-top:1px solid #f0ece1;padding-top:12px"><button type="button" class="booking-toggle" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:600;color:#2f342d;text-align:left"><span>Booking & cancellation</span><span style="color:#2f4a3f;font-size:20px;line-height:1">+</span></button>'+
+        '<div class="booking-detail hidden" style="margin-top:10px;display:flex;flex-direction:column;gap:10px"><div><div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a8e84;margin-bottom:4px">Cancellation</div><div style="font-size:13px;color:#4a4f49;line-height:1.6">'+(c.cancellation||'')+'</div></div><div><div style="font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a8e84;margin-bottom:4px">First-visit fee</div><div style="font-size:13px;color:#4a4f49;line-height:1.6">'+(c.fees||'')+'</div></div><div style="font-size:12.5px;color:#7a7e74;line-height:1.55;background:#f7f5ef;border-radius:9px;padding:10px 12px">Kiyora\'s service is free. Clinic fees (e.g. a first-visit fee) are paid directly to the clinic.</div></div></div>'+
+        (tags?'<div style="display:flex;flex-wrap:wrap;gap:7px">'+tags+'</div>':'')+
+        '<button type="button" class="kt-cta ask-btn" style="margin-top:auto;text-align:center;background:#eef2ec;border:1px solid #d7e0d6;color:#2f4a3f;padding:12px;border-radius:11px;font-size:14.5px;font-weight:600;cursor:pointer;font-family:inherit">Ask about this clinic</button>'+
+      '</div>';
+    // bind booking toggle
+    card.querySelector('.booking-toggle').addEventListener('click',function(){
+      var d=this.parentNode.querySelector('.booking-detail');
+      var s=this.querySelector('span:last-child');
+      d.classList.toggle('hidden'); s.textContent=d.classList.contains('hidden')?'+':'−';
+    });
+    // bind ask button
+    card.querySelector('.ask-btn').addEventListener('click',function(){ askClinic(displayName); });
+    grid.appendChild(card);
   });
-
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const type  = btn.dataset.filter;
-    const value = btn.dataset.value;
-    document.querySelectorAll(`.filter-btn[data-filter="${type}"]`).forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeFilters[type] = value;
-    renderClinics();
-  });
+  initReveal();
+}).catch(function(){
+  hide($('clinics-loading')); show($('clinics-error'));
 });
 
-// FAQ
-document.querySelectorAll('.faq-question').forEach(q => {
-  q.addEventListener('click', () => {
-    const item   = q.parentElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
+/* ---- comparison table ---- */
+var rows=[
+  ['Light, non-surgical treatments','✓','✕','✓'],
+  ['Boutique, personal care','✓','✕','✕'],
+  ['English-speaking, guaranteed','✓','✓','✕'],
+  ["Built around travelers' dates",'✓','✕','✕'],
+  ['Free, with no markup','✓','✕','✕']
+];
+var cb=$('compare-body');
+rows.forEach(function(r){
+  cb.innerHTML+='<div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;border-top:1px solid #f0ece1;align-items:center"><div style="padding:15px 20px;font-size:14.5px;font-weight:600;color:#2f342d">'+r[0]+'</div><div style="padding:15px 14px;text-align:center;background:#f3f6f2;color:#2f4a3f;font-size:18px;font-weight:700">'+r[1]+'</div><div style="padding:15px 14px;text-align:center;color:#b9b6a8;font-size:18px">'+r[2]+'</div><div style="padding:15px 14px;text-align:center;color:#b9b6a8;font-size:18px">'+r[3]+'</div></div>';
 });
 
-// Scroll animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+/* ---- FAQ ---- */
+var faqs=[
+  ['Are these treatments safe and performed by licensed doctors?','Yes. In Japan, every aesthetic procedure is legally required to be carried out under a licensed physician. Every clinic we match you with is doctor-led and fully licensed.'],
+  ['Will the clinic speak English?','Always. We only partner with clinics that have English-speaking staff, so you can ask questions and give consent with full confidence.'],
+  ['How do I pay, and are prices higher for visitors?','You pay the clinic directly at your appointment. Prices are the same as for local patients — there is no tourist markup, and our matching service is free.'],
+  ['Why is the service free?','Clinics partner with us to reach English-speaking visitors, so you never pay Kiyora anything. Our recommendations stay independent and based on what fits you.'],
+  ['Can I really get treated during a short trip?','Yes. The treatments we cover are non-surgical with little to no downtime. Tell us your dates and we will hold a slot that fits your itinerary.']
+];
+var faqList=$('faq-list');
+faqs.forEach(function(f,i){
+  var div=document.createElement('div');div.style.borderBottom='1px solid #e7e2d6';
+  div.innerHTML='<button type="button" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 4px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;font-size:17px;color:#20251f;font-weight:600"><span>'+f[0]+'</span><span style="color:#2f4a3f;font-size:24px;flex-shrink:0;line-height:1">+</span></button><div class="hidden" style="padding:0 4px 22px;color:#5a5f58;font-size:15.5px;line-height:1.7">'+f[1]+'</div>';
+  div.querySelector('button').addEventListener('click',function(){
+    var ans=this.nextElementSibling, sign=this.querySelector('span:last-child');
+    ans.classList.toggle('hidden'); sign.textContent=ans.classList.contains('hidden')?'+':'−';
   });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.step, .trust-item').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  observer.observe(el);
+  faqList.appendChild(div);
 });
+
+/* ---- blog ---- */
+var posts=[
+  ['Guide','5 min read','What to expect from Botox in Tokyo'],
+  ['Guide','7 min read',"Art Makeup: a visitor's guide to brows & lips"],
+  ['Treatments','6 min read','Is HIFU worth it on a short trip?'],
+  ['Areas','4 min read','Ginza vs Azabu: where to get treated'],
+  ['Safety','5 min read',"How Japan's medical licensing keeps you safe"],
+  ['Money','3 min read','Paying as a visitor: no markup, explained']
+];
+var bg=$('blog-grid');
+posts.forEach(function(p){
+  bg.innerHTML+='<a href="#" style="text-decoration:none;color:inherit;background:#fff;border:1px solid #e7e2d6;border-radius:16px;overflow:hidden;display:flex;flex-direction:column"><div style="aspect-ratio:16/9;background:repeating-linear-gradient(135deg,#ece6d8,#ece6d8 14px,#e6dfcf 14px,#e6dfcf 28px)"></div><div style="padding:20px"><div style="font-size:12px;color:#b08d57;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:9px">'+p[0]+' · '+p[1]+'</div><div style="font-family:Georgia,serif;font-size:18px;line-height:1.35">'+p[2]+'</div></div></a>';
+});
+
+/* ---- scroll reveal ---- */
+function initReveal(){
+  var els=document.querySelectorAll('.kt-reveal');
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    els.forEach(function(e){e.classList.add('kt-in');}); return;
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('kt-in');io.unobserve(en.target);}});
+    },{threshold:0.1,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(e){io.observe(e);});
+  } else { els.forEach(function(e){e.classList.add('kt-in');}); }
+}
+initReveal();
 </script>
 </body>
 </html>
