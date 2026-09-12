@@ -775,8 +775,8 @@ class Component extends DCLogic {
     const times = pill(['Morning', 'Afternoon', 'Evening', 'Flexible'], this.state.time, 'time');
     const languages = pill(['English', '\u65e5\u672c\u8a9e', '\u4e2d\u6587', 'Other'], this.state.language, 'language');
 
-    const placeholders = { WeChat: 'Your WeChat ID', Email: 'Your email address' };
-    const labels = { WeChat: 'Your WeChat ID', Email: 'Your email address' };
+    const placeholders = { Email: 'Your email address' };
+    const labels = { Email: 'Your email address' };
     const backupRequired = method !== 'Email';
 
     // thank-you CTA per channel
@@ -871,7 +871,7 @@ class Component extends DCLogic {
       onContactDetail: this.field('contactDetail'), onBackup: this.field('backup'),
       methods, times, languages,
       contactPlaceholder: placeholders[method], contactLabel: labels[method],
-      showContactDetail: method === 'WeChat' || method === 'Email',
+      showContactDetail: method === 'Email',
       backupRequired, backupHint: backupRequired ? '(required)' : '(optional)',
       onSubmit: this.onSubmit, submitting: this.state.submitting, submitErr: this.state.submitErr,
       submitLabel: this.state.submitting ? 'Sending\u2026' : 'Find my clinic',
