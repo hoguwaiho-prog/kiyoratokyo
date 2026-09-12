@@ -177,7 +177,7 @@
           <p style="margin:0 0 8px;color:#54584f;font-size:15.5px;line-height:1.6">You'll get the fastest reply by messaging us directly. Your details are already filled in — just hit send.</p>
           <p style="margin:0 0 22px;color:#7a7e74;font-size:14px">Based in Tokyo (JST) — we usually reply within a few hours.</p>
 
-          <!-- WhatsApp: a real link with prefilled text -->
+          <!-- WhatsApp / LINE: a real link (WhatsApp carries prefilled text) -->
           <sc-if value="{{ thanksIsLink }}" hint-placeholder-val="{{ false }}">
             <a href="{{ thanksHref }}" target="_blank" rel="noopener" class="kt-cta" style="display:inline-block;background:var(--accent,#2f4a3f);color:#fff;text-decoration:none;padding:15px 30px;border-radius:12px;font-size:16px;font-weight:600">{{ thanksLabel }}</a>
           </sc-if>
@@ -193,11 +193,6 @@
               <div style="font-size:14px;color:#54584f;line-height:1.55">{{ prefillText }}</div>
               <button type="button" onClick="{{ onCopy }}" style="margin-top:11px;background:#fff;border:1px solid #d8d2c4;color:#2f4a3f;padding:8px 15px;border-radius:9px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600">{{ copyLabel }}</button>
             </div>
-          </sc-if>
-
-          <!-- LINE: link to add as friend -->
-          <sc-if value="{{ isLine }}" hint-placeholder-val="{{ false }}">
-            <div style="margin-top:14px"><a href="{{ lineHref }}" target="_blank" rel="noopener" style="color:var(--accent,#2f4a3f);font-weight:600;font-size:14.5px;text-decoration:none;border-bottom:1px solid #c9bfa6;padding-bottom:2px">Open LINE to add us first →</a></div>
           </sc-if>
 
           <!-- Email: confirmation note -->
@@ -787,7 +782,7 @@ class Component extends DCLogic {
     if (method === 'LINE') { thanksLabel = 'Add us on LINE'; thanksHref = this.lineLink(); }
     else if (method === 'WeChat') { thanksLabel = 'Open WeChat'; thanksHref = '#'; }
     else if (method === 'Email') { thanksLabel = ''; thanksHref = '#'; }
-    const thanksIsLink = method === 'WhatsApp';
+    const thanksIsLink = method === 'WhatsApp' || method === 'LINE';
 
     // clinics
     const data = this.state.clinicsData;
@@ -886,12 +881,11 @@ class Component extends DCLogic {
       // thank-you
       submitted: this.state.submitted,
       thanksLabel, thanksHref, thanksIsLink,
-      isWeChat: method === 'WeChat', isLine: method === 'LINE', isEmail: method === 'Email',
+      isWeChat: method === 'WeChat', isEmail: method === 'Email',
       showCopyBox: method === 'LINE' || method === 'WeChat',
       copyBoxLabel: method === 'LINE' ? 'Paste this into LINE:' : 'Paste this into WeChat:',
       prefillText: this.buildMessage(),
       copyLabel: this.state.copied ? 'Copied \u2713' : 'Copy message',
-      lineHref: this.lineLink(),
       emailNote: 'We\u2019ve got your request and will reply to ' + (this.state.contactDetail || 'your email') + ' within a few hours (JST).',
       wechatId: this.WECHAT_ID, onCopy: this.copyMsg, resetForm: this.resetForm,
       onCopyId: this.copyId, idCopyLabel: this.state.idCopied ? 'Copied \u2713' : 'Copy ID',
