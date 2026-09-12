@@ -736,7 +736,7 @@ class Component extends DCLogic {
       body: JSON.stringify(payload),
     })
       .then(r => {
-        if (r.ok) this.setState({ submitted: true, submitting: false });
+        if (r.ok) { this.setState({ submitted: true, submitting: false }); setTimeout(() => this.scrollToForm(), 30); }
         else this.setState({ submitting: false, submitErr: true });
       })
       .catch(() => this.setState({ submitting: false, submitErr: true }));
