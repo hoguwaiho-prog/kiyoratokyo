@@ -158,10 +158,15 @@
             <input type="text" value="{{ backup }}" onChange="{{ onBackup }}" placeholder="So we can follow up if chat doesn't connect" required="{{ backupRequired }}" style="width:100%;padding:12px 13px;border:1px solid #ddd7c9;border-radius:10px;font-family:inherit;font-size:15px;color:#20251f" />
           </label>
 
-          <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
-            <input type="checkbox" checked="{{ policyAgreed }}" onChange="{{ onPolicyAgreed }}" required="{{ true }}" style="margin-top:3px;width:16px;height:16px;flex-shrink:0;accent-color:var(--accent,#2f4a3f)" />
-            <span style="font-size:13px;color:#54584f;line-height:1.5">I understand the clinic's cancellation policy and first-visit fee. <button type="button" onClick="{{ openPolicyModal }}" style="background:none;border:none;padding:0;color:var(--accent,#2f4a3f);text-decoration:underline;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600">View details</button></span>
-          </label>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+              <input type="checkbox" checked="{{ policyAgreed }}" onChange="{{ onPolicyAgreed }}" disabled="{{ policyCheckboxDisabled }}" required="{{ true }}" style="margin-top:3px;width:16px;height:16px;flex-shrink:0;accent-color:var(--accent,#2f4a3f)" />
+              <span style="font-size:13px;color:#54584f;line-height:1.5">I understand the clinic's cancellation policy and first-visit fee. <button type="button" onClick="{{ openPolicyModal }}" style="background:none;border:none;padding:0;color:var(--accent,#2f4a3f);text-decoration:underline;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600">View details</button></span>
+            </label>
+            <sc-if value="{{ showPolicyHint }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:12px;color:#9a5a3a;padding-left:26px">Please view the cancellation policy above before checking this box.</div>
+            </sc-if>
+          </div>
 
           <button type="submit" class="kt-cta" disabled="{{ submitDisabled }}" style="background:var(--accent,#2f4a3f);color:#fff;border:none;padding:15px;border-radius:12px;cursor:pointer;font-family:inherit;font-size:16px;font-weight:600">{{ submitLabel }}</button>
           <sc-if value="{{ submitErr }}" hint-placeholder-val="{{ false }}">
@@ -590,6 +595,7 @@ class Component extends DCLogic {
     backup: '',
     clinic: '',           // set when "Ask about this clinic" is used
     policyAgreed: false,  // cancellation-policy consent checkbox, required to submit
+    policyViewed: false,  // must open "View details" before the checkbox unlocks
     policyModalOpen: false,
     openBookingId: null,  // which clinic card's "Booking & cancellation" panel is open
     submitting: false,
@@ -676,7 +682,7 @@ class Component extends DCLogic {
 
   /* ---- cancellation-policy consent ---- */
   onPolicyAgreed = (e) => this.setState({ policyAgreed: e.target.checked });
-  openPolicyModal = () => this.setState({ policyModalOpen: true });
+  openPolicyModal = () => this.setState({ policyModalOpen: true, policyViewed: true });
   closePolicyModal = () => this.setState({ policyModalOpen: false });
   policyContent() {
     const data = Array.isArray(this.state.clinicsData) ? this.state.clinicsData : [];
@@ -877,6 +883,8 @@ class Component extends DCLogic {
       submitLabel: this.state.submitting ? 'Sending\u2026' : 'Find my clinic',
       // cancellation-policy consent
       policyAgreed: this.state.policyAgreed, onPolicyAgreed: this.onPolicyAgreed,
+      policyCheckboxDisabled: !this.state.policyViewed,
+      showPolicyHint: !this.state.policyViewed,
       submitDisabled: this.state.submitting || !this.state.policyAgreed,
       policyModalOpen: this.state.policyModalOpen, openPolicyModal: this.openPolicyModal, closePolicyModal: this.closePolicyModal,
       policyClinicLabel: this.state.clinic ? ('For ' + this.state.clinic) : 'Representative policy \u2014 confirmed for your specific clinic after matching.',
