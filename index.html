@@ -452,7 +452,9 @@
       <div class="kt-reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px">
         <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
           <a href="#" style="text-decoration:none;color:inherit;background:#fff;border:1px solid #e7e2d6;border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
-            <div style="aspect-ratio:16/9;background:repeating-linear-gradient(135deg,#ece6d8,#ece6d8 14px,#e6dfcf 14px,#e6dfcf 28px)"></div>
+            <div style="aspect-ratio:16/9;background:#f5f2ea;display:flex;align-items:center;justify-content:center">
+              <img src="logo.png" alt="" style="width:15%;max-width:52px;object-fit:contain;opacity:.4" />
+            </div>
             <div style="padding:20px">
               <div style="font-size:12px;color:#b08d57;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:9px">{{ p.tag }} · {{ p.read }}</div>
               <div style="font-family:Georgia,serif;font-size:18px;line-height:1.35">{{ p.title }}</div>
