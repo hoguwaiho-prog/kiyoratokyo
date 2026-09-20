@@ -449,9 +449,9 @@
         <div style="color:var(--accent,#2f4a3f);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px">From the journal</div>
         <h2 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(27px,3.4vw,40px);margin:0;letter-spacing:-.01em">Read before you book</h2>
       </div>
-      <div class="kt-reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px">
-        <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
-          <a href="#" style="text-decoration:none;color:inherit;background:#fff;border:1px solid #e7e2d6;border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
+      <div class="kt-reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,360px));gap:22px">
+        <sc-for list="{{ posts }}" as="p" hint-placeholder-count="1">
+          <a href="{{ p.href }}" style="text-decoration:none;color:inherit;background:#fff;border:1px solid #e7e2d6;border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
             <div style="aspect-ratio:16/9;background:#f5f2ea;display:flex;align-items:center;justify-content:center">
               <img src="logo.png" alt="" style="width:15%;max-width:52px;object-fit:contain;opacity:.4" />
             </div>
@@ -876,12 +876,7 @@ class Component extends DCLogic {
     ];
 
     const posts = [
-      { tag: 'Guide', read: '5 min read', title: 'What to expect from Botox in Tokyo' },
-      { tag: 'Guide', read: '7 min read', title: "Art Makeup: a visitor's guide to brows & lips" },
-      { tag: 'Treatments', read: '6 min read', title: 'Is HIFU worth it on a short trip?' },
-      { tag: 'Areas', read: '4 min read', title: 'Ginza vs Azabu: where to get treated' },
-      { tag: 'Safety', read: '5 min read', title: "How Japan's medical licensing keeps you safe" },
-      { tag: 'Money', read: '3 min read', title: 'Paying as a visitor: no markup, explained' },
+      { tag: 'Treatments', read: '8 min read', title: 'HIFU Treatment in Tokyo: What Expats Need to Know', href: '/blog/hifu-treatment-tokyo/' },
     ];
 
     return {

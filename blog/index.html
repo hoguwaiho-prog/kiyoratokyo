@@ -70,11 +70,10 @@
   /* ARTICLE GRID */
   .articles-wrap { padding: 0 5vw 80px; max-width: 1100px; margin: 0 auto; }
   .articles-section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); margin-bottom: 20px; }
-  .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 340px)); gap: 24px; }
   .article-card { background: white; border-radius: 12px; overflow: hidden; border: 1.5px solid rgba(184,155,144,0.2); transition: all 0.2s; display: flex; flex-direction: column; }
   .article-card:hover { box-shadow: 0 8px 32px rgba(44,36,32,0.1); transform: translateY(-3px); border-color: var(--rose); }
   .article-card-image { background: linear-gradient(135deg, var(--cream) 0%, var(--blush) 100%); height: 160px; display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; }
-  .article-card-image .coming-badge { position: absolute; top: 10px; right: 10px; background: rgba(44,36,32,0.7); color: var(--cream); font-size: 0.65rem; font-weight: 600; padding: 3px 10px; border-radius: 40px; letter-spacing: 0.06em; text-transform: uppercase; }
   .article-card-body { padding: 20px 22px 24px; flex: 1; display: flex; flex-direction: column; }
   .article-card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
   .article-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; line-height: 1.3; margin-bottom: 10px; color: var(--charcoal); }
@@ -84,7 +83,6 @@
   .article-card-footer { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(184,155,144,0.15); }
   .article-card-footer a { font-size: 0.8rem; font-weight: 600; color: var(--charcoal); text-decoration: none; display: flex; align-items: center; gap: 4px; }
   .article-card-footer a:hover { color: var(--rose); }
-  .coming-soon-card { opacity: 0.65; pointer-events: none; }
 
   /* NEWSLETTER / CTA */
   .newsletter-section { background: var(--charcoal); padding: 80px 5vw; text-align: center; }
@@ -101,11 +99,9 @@
   @media (max-width: 900px) {
     .featured-card { grid-template-columns: 1fr; }
     .featured-image { min-height: 220px; }
-    .articles-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 640px) {
     .nav-links .nav-link { display: none; }
-    .articles-grid { grid-template-columns: 1fr; }
     .featured-content { padding: 24px; }
   }
 </style>
@@ -176,76 +172,6 @@
         <p>Prices, devices, realistic results, and how to find English-speaking HIFU clinics in Ginza and Azabu.</p>
         <div class="article-card-footer">
           <a href="/blog/hifu-treatment-tokyo/">Read article ⏱ 8 min →</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="article-card coming-soon-card">
-      <div class="article-card-image">💉 <span class="coming-badge">Coming soon</span></div>
-      <div class="article-card-body">
-        <div class="article-card-meta">
-          <span class="article-category">Botox</span>
-        </div>
-        <h3>Botox in Tokyo: First-Timer's Complete Guide</h3>
-        <p>Unit pricing, forehead vs. jaw vs. lip flip — what to ask for, what to avoid, and which clinics do it well.</p>
-        <div class="article-card-footer">
-          <a href="#">Coming soon</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="article-card coming-soon-card">
-      <div class="article-card-image">✨ <span class="coming-badge">Coming soon</span></div>
-      <div class="article-card-body">
-        <div class="article-card-meta">
-          <span class="article-category">Laser</span>
-        </div>
-        <h3>Laser Skin Treatments in Tokyo: What to Know Before You Book</h3>
-        <p>Picosecond, fractional CO₂, IPL — which laser is right for your skin concern, and what Japanese clinics do best.</p>
-        <div class="article-card-footer">
-          <a href="#">Coming soon</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="article-card coming-soon-card">
-      <div class="article-card-image">🩺 <span class="coming-badge">Coming soon</span></div>
-      <div class="article-card-body">
-        <div class="article-card-meta">
-          <span class="article-category">Clinics</span>
-        </div>
-        <h3>Best English-Friendly Beauty Clinics in Ginza (2025)</h3>
-        <p>An honest breakdown of which Ginza clinics genuinely support English consultation — verified, not guessed.</p>
-        <div class="article-card-footer">
-          <a href="#">Coming soon</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="article-card coming-soon-card">
-      <div class="article-card-image">💸 <span class="coming-badge">Coming soon</span></div>
-      <div class="article-card-body">
-        <div class="article-card-meta">
-          <span class="article-category">Skincare</span>
-        </div>
-        <h3>Art Makeup in Tokyo: Semi-Permanent Eyebrows, Lips, and Eyeliner</h3>
-        <p>Japan's art makeup scene is world-class. Here's how to navigate it, what to budget, and what lasts.</p>
-        <div class="article-card-footer">
-          <a href="#">Coming soon</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="article-card coming-soon-card">
-      <div class="article-card-image">🏥 <span class="coming-badge">Coming soon</span></div>
-      <div class="article-card-body">
-        <div class="article-card-meta">
-          <span class="article-category">Clinics</span>
-        </div>
-        <h3>How to Read a Japanese Medical Beauty Clinic Price List</h3>
-        <p>Campaign prices, membership tiers, per-shot vs. per-session pricing — decoded with real examples.</p>
-        <div class="article-card-footer">
-          <a href="#">Coming soon</a>
         </div>
       </div>
     </article>
