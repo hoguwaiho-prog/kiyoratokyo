@@ -17,10 +17,12 @@
  *        scrapeGinzaExchange()          … 銀座エクスチェンジだけ取得 → シート「銀座エクスチェンジ」
  *        scrapeAkihabaraMoneyExchange() … 秋葉原だけ取得 → シート「Akihabara Money Exchange」
  *        scrapeShinwaExchange()         … 新和だけ取得 → シート「新和エクスチェンジ」
- *        scrapeAll()                    … 3店まとめて取得 → シート「レート一覧」＋「履歴」に追記
+ *        scrapeAll()                    … 3店まとめて取得 → 上記3シートを更新＋「履歴」に追記
+ *
+ *   店舗シートの形式: A列=通貨 / B列=SELL / C列=BUY、通貨は FX_ORDER の順（扱いのない通貨は空欄）
  *   3. 定期実行したい場合は createDailyTrigger() を一度実行（毎日12時台に scrapeAll）
  *
- *   スプレッドシートに紐づかない単体スクリプトでも動きます（その場合は実行ログに出力のみ）。
+ *   単体スクリプトの場合は、初回にスプレッドシート「外貨両替レート」を自動作成します（URLは実行ログに表示）。
  */
 
 const FX_SHOPS = {
@@ -42,29 +44,29 @@ const FX_SHOPS = {
 };
 
 const FX_HEADERS = ['取得日時', '店舗', '通貨コード', '通貨名', 'buy（買取 外貨→円）', 'sell（販売 円→外貨）', '在庫', 'サイト上の更新表記', 'URL'];
-const FX_SUMMARY_SHEET = 'レート一覧';
+/** 店舗シートに並べる通貨の順番 */
+const FX_ORDER = ['USD', 'GBP', 'EUR', 'CAD', 'CHF', 'AUD', 'NZD', 'IDR', 'KRW', 'CNY', 'HKD', 'MYR', 'PHP', 'SGD', 'TWD', 'THB', 'VND'];
 const FX_HISTORY_SHEET = '履歴';
 
 /* ===================== 実行用（それぞれ単独で実行可） ===================== */
 
-/** 3店まとめて取得。1店が失敗しても他の店は続行する。 */
+/** 3店まとめて取得し、店舗ごとのシートを更新。1店が失敗しても他の店は続行する。 */
 function scrapeAll() {
+  const ss = getSpreadsheet_();
   const all = [];
   const errors = [];
   Object.keys(FX_SHOPS).forEach(function (key) {
     try {
-      all.push.apply(all, fetchShopRates(key));
+      const rows = fetchShopRates(key);
+      writeShopSheet_(ss, FX_SHOPS[key].name, rows);
+      all.push.apply(all, rows);
     } catch (e) {
       errors.push(FX_SHOPS[key].name + ': ' + e.message);
       Logger.log('[ERROR] ' + FX_SHOPS[key].name + ': ' + e.message);
     }
   });
 
-  const ss = getSpreadsheet_();
-  if (ss) {
-    writeRows_(ss, FX_SUMMARY_SHEET, all);
-    appendRows_(ss, FX_HISTORY_SHEET, all);
-  }
+  appendRows_(ss, FX_HISTORY_SHEET, all);
   logRows_(all);
   if (errors.length) throw new Error('一部の店舗で取得に失敗しました:\n' + errors.join('\n'));
   return all;
@@ -125,7 +127,7 @@ function fetchShopRates(key) {
 function runShop_(key) {
   const rows = fetchShopRates(key);
   const ss = getSpreadsheet_();
-  if (ss) writeRows_(ss, FX_SHOPS[key].name, rows);
+  writeShopSheet_(ss, FX_SHOPS[key].name, rows);
   logRows_(rows);
   return rows;
 }
@@ -343,16 +345,36 @@ function toSheetRow_(r) {
   return [r.fetchedAt, r.shop, r.code, r.name, r.buy, r.sell, r.stock, r.siteUpdated, r.url];
 }
 
-/** シートを作り直してヘッダー＋データを書く */
-function writeRows_(ss, sheetName, rows) {
+/**
+ * 店舗シートを書く: A=通貨 / B=SELL / C=BUY を FX_ORDER の順で。
+ * 右側(E〜F列)に取得日時・サイト上の更新表記・URL を表示。
+ */
+function writeShopSheet_(ss, sheetName, rows) {
+  const byCode = {};
+  rows.forEach(function (r) { byCode[r.code] = r; });
+  const table = [['通貨', 'SELL', 'BUY']].concat(FX_ORDER.map(function (code) {
+    const r = byCode[code];
+    return [code, r ? r.sell : '', r ? r.buy : ''];
+  }));
+
   const sh = ss.getSheetByName(sheetName) || ss.insertSheet(sheetName);
-  sh.clearContents();
-  sh.getRange(1, 1, 1, FX_HEADERS.length).setValues([FX_HEADERS]).setFontWeight('bold');
-  if (rows.length) {
-    sh.getRange(2, 1, rows.length, FX_HEADERS.length).setValues(rows.map(toSheetRow_));
-    sh.getRange(2, 1, rows.length, 1).setNumberFormat('yyyy-mm-dd hh:mm');
-  }
+  sh.clear();
+  sh.getRange(1, 1, table.length, 3).setValues(table);
+  sh.getRange(1, 1, 1, 3).setFontWeight('bold').setBackground('#f1f3f4');
+  sh.getRange(2, 2, FX_ORDER.length, 2).setNumberFormat('0.00##');
   sh.setFrozenRows(1);
+
+  const first = rows[0] || {};
+  const info = [
+    ['取得日時', first.fetchedAt || ''],
+    ['サイト更新', first.siteUpdated || ''],
+    ['URL', first.url || ''],
+    ['SELL', '販売（円→外貨）'],
+    ['BUY', '買取（外貨→円）'],
+  ];
+  sh.getRange(1, 5, info.length, 2).setValues(info);
+  sh.getRange(1, 5, info.length, 1).setFontWeight('bold');
+  sh.getRange(1, 6).setNumberFormat('yyyy-mm-dd hh:mm');
 }
 
 /** 履歴シートに追記 */
