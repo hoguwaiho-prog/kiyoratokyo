@@ -47,18 +47,6 @@ const FX_HISTORY_SHEET = '履歴';
 
 /* ===================== 実行用（それぞれ単独で実行可） ===================== */
 
-function scrapeGinzaExchange() {
-  return runShop_('ginza');
-}
-
-function scrapeAkihabaraMoneyExchange() {
-  return runShop_('akihabara');
-}
-
-function scrapeShinwaExchange() {
-  return runShop_('shinwa');
-}
-
 /** 3店まとめて取得。1店が失敗しても他の店は続行する。 */
 function scrapeAll() {
   const all = [];
@@ -80,6 +68,18 @@ function scrapeAll() {
   logRows_(all);
   if (errors.length) throw new Error('一部の店舗で取得に失敗しました:\n' + errors.join('\n'));
   return all;
+}
+
+function scrapeGinzaExchange() {
+  return runShop_('ginza');
+}
+
+function scrapeAkihabaraMoneyExchange() {
+  return runShop_('akihabara');
+}
+
+function scrapeShinwaExchange() {
+  return runShop_('shinwa');
 }
 
 /** 毎日12時台に scrapeAll を実行するトリガーを作成（重複作成しない） */
