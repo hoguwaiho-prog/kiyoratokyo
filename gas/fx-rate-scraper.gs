@@ -373,3 +373,19 @@ function logRows_(rows) {
     Logger.log([r.shop, r.code, r.name, 'buy=' + r.buy, 'sell=' + r.sell, r.stock, r.siteUpdated].join(' | '));
   });
 }
+
+/* ===================== スプレッドシートのメニュー ===================== */
+
+/** スプレッドシートを開くと上部に「為替レート」メニューが出る */
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('為替レート')
+    .addItem('3店まとめて取得', 'scrapeAll')
+    .addSeparator()
+    .addItem('銀座エクスチェンジだけ取得', 'scrapeGinzaExchange')
+    .addItem('Akihabara Money Exchangeだけ取得', 'scrapeAkihabaraMoneyExchange')
+    .addItem('新和エクスチェンジだけ取得', 'scrapeShinwaExchange')
+    .addSeparator()
+    .addItem('毎日自動取得を設定', 'createDailyTrigger')
+    .addToUi();
+}
