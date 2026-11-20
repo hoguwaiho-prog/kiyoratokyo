@@ -5,6 +5,7 @@
  *   - 銀座エクスチェンジ          https://ginza.exchange/
  *   - Akihabara Money Exchange   https://createarc.moneyxhub.com/rates
  *   - 新和エクスチェンジ          https://shinwa-exchange.jp/
+ *   - インターバンク              https://www.interbank.co.jp/
  *
  * 用語（3店とも店舗側から見た表記に統一）:
  *   buy  = 買取レート（お客様が外貨 → 日本円 に両替するときのレート）
@@ -17,7 +18,8 @@
  *        scrapeGinzaExchange()          … 銀座エクスチェンジだけ取得 → シート「銀座エクスチェンジ」
  *        scrapeAkihabaraMoneyExchange() … 秋葉原だけ取得 → シート「Akihabara Money Exchange」
  *        scrapeShinwaExchange()         … 新和だけ取得 → シート「新和エクスチェンジ」
- *        scrapeAll()                    … 3店まとめて取得 → 上記3シートを更新＋「履歴」に追記
+ *        scrapeInterbank()              … インターバンクだけ取得 → シート「インターバンク」
+ *        scrapeAll()                    … 全店まとめて取得 → 上記の店舗シートを更新＋「履歴」に追記
  *
  *   店舗シートの形式: A列=通貨 / B列=SELL / C列=BUY、通貨は FX_ORDER の順（扱いのない通貨は空欄）
  *   3. 定期実行したい場合は createDailyTrigger() を一度実行（毎日12時台に scrapeAll）
@@ -41,6 +43,11 @@ const FX_SHOPS = {
     url: 'https://shinwa-exchange.jp/',
     parser: parseShinwaExchange_,
   },
+  interbank: {
+    name: 'インターバンク',
+    url: 'https://www.interbank.co.jp/',
+    parser: parseInterbank_,
+  },
 };
 
 const FX_HEADERS = ['取得日時', '店舗', '通貨コード', '通貨名', 'buy（買取 外貨→円）', 'sell（販売 円→外貨）', '在庫', 'サイト上の更新表記', 'URL'];
@@ -50,7 +57,7 @@ const FX_HISTORY_SHEET = '履歴';
 
 /* ===================== 実行用（それぞれ単独で実行可） ===================== */
 
-/** 3店まとめて取得し、店舗ごとのシートを更新。1店が失敗しても他の店は続行する。 */
+/** 全店まとめて取得し、店舗ごとのシートを更新。1店が失敗しても他の店は続行する。 */
 function scrapeAll() {
   const ss = getSpreadsheet_();
   const all = [];
@@ -82,6 +89,10 @@ function scrapeAkihabaraMoneyExchange() {
 
 function scrapeShinwaExchange() {
   return runShop_('shinwa');
+}
+
+function scrapeInterbank() {
+  return runShop_('interbank');
 }
 
 /** 毎日12時台に scrapeAll を実行するトリガーを作成（重複作成しない） */
@@ -240,6 +251,43 @@ function parseShinwaExchange_(html) {
 
   const t = html.match(/更新日\s*[:：]\s*([0-9]{4}\/[0-9]{1,2}\/[0-9]{1,2})/);
   return { rates: order.map(function (n) { return byName[n]; }), updated: t ? t[1] : '' };
+}
+
+/**
+ * インターバンク: トップページの「両替レート」欄。通貨ごとに
+ *   <div class="subBox"><h3>アメリカドルUSD</h3> ... <p>ご購入 1＄</p><dl><dt>159.48</dt><dd>we sell</dd></dl>
+ *   <p>ご売却 1＄</p><dl class="blue"><dt>157.03</dt><dd>we buy</dd></dl> ... 更新日： 11/20
+ * 「ご購入 100W」のように単位が1以外なら1単位あたりに換算する。
+ */
+function parseInterbank_(html) {
+  const blocks = matchAll_(html, /<div class="subBox">([\s\S]*?)<!--\/\.subBox-->/g);
+  const rates = [];
+  let updated = '';
+  blocks.forEach(function (b) {
+    const h3 = b.match(/<h3>([\s\S]*?)<\/h3>/);
+    if (!h3) return;
+    const title = stripTags_(h3[1]);
+    const codeM = title.match(/([A-Z]{3})\s*$/);
+    if (!codeM) return;
+    function pick(kind) { // kind = 'sell' | 'buy'
+      const re = new RegExp('<p>([^<]*)</p>\\s*<dl[^>]*>\\s*<dt>([^<]*)</dt>\\s*<dd>\\s*we\\s+' + kind + '\\s*</dd>', 'i');
+      const m = b.match(re);
+      if (!m) return '';
+      const v = toNumber_(m[2]);
+      const unitM = m[1].match(/(\d[\d,]*)/);
+      const unit = unitM ? Number(unitM[1].replace(/,/g, '')) : 1;
+      return v === '' || !unit ? v : Number((v / unit).toPrecision(10));
+    }
+    rates.push({
+      code: codeM[1],
+      name: title.replace(/\s*[A-Z]{3}\s*$/, ''),
+      sell: pick('sell'),
+      buy: pick('buy'),
+    });
+    const u = b.match(/更新日\s*[:：]\s*([0-9]{1,2}\/[0-9]{1,2})/);
+    if (u && !updated) updated = u[1];
+  });
+  return { rates: rates, updated: updated };
 }
 
 const SHINWA_CODE_MAP = {
@@ -402,11 +450,12 @@ function logRows_(rows) {
 function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('為替レート')
-    .addItem('3店まとめて取得', 'scrapeAll')
+    .addItem('全店まとめて取得', 'scrapeAll')
     .addSeparator()
     .addItem('銀座エクスチェンジだけ取得', 'scrapeGinzaExchange')
     .addItem('Akihabara Money Exchangeだけ取得', 'scrapeAkihabaraMoneyExchange')
     .addItem('新和エクスチェンジだけ取得', 'scrapeShinwaExchange')
+    .addItem('インターバンクだけ取得', 'scrapeInterbank')
     .addSeparator()
     .addItem('毎日自動取得を設定', 'createDailyTrigger')
     .addToUi();
