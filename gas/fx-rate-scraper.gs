@@ -312,12 +312,31 @@ function isSoldOut_(v) {
   return /sold\s*out|品切/i.test(String(v));
 }
 
+/**
+ * 書き込み先のスプレッドシートを返す。
+ *   1. スプレッドシートから開いたスクリプトなら、そのスプレッドシート
+ *   2. 単体スクリプトなら、初回に「外貨両替レート」を自動作成して以後それを使う
+ * どちらの場合も書き込み先URLを実行ログに出す。
+ */
 function getSpreadsheet_() {
+  let ss = null;
   try {
-    return SpreadsheetApp.getActiveSpreadsheet();
-  } catch (e) {
-    return null;
+    ss = SpreadsheetApp.getActiveSpreadsheet();
+  } catch (e) {}
+  if (!ss) {
+    const props = PropertiesService.getScriptProperties();
+    const id = props.getProperty('FX_SPREADSHEET_ID');
+    if (id) {
+      try { ss = SpreadsheetApp.openById(id); } catch (e) { ss = null; }
+    }
+    if (!ss) {
+      ss = SpreadsheetApp.create('外貨両替レート');
+      props.setProperty('FX_SPREADSHEET_ID', ss.getId());
+      Logger.log('新しいスプレッドシートを作成しました');
+    }
   }
+  Logger.log('書き込み先: ' + ss.getUrl());
+  return ss;
 }
 
 function toSheetRow_(r) {
